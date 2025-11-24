@@ -184,10 +184,10 @@ const SplashScreen = () => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-black via-slate-900 to-slate-950">
     <div className="relative flex flex-col items-center">
       <div className="absolute inset-0 animate-ping rounded-full bg-sky-400/20 blur-3xl" />
-      <h1 className="relative text-4xl font-black tracking-[0.6em] text-sky-200 drop-shadow-[0_0_25px_rgba(125,211,252,0.6)] md:text-5xl">
+      <h1 className="relative text-4xl font-black tracking-[0.15em] text-sky-200 drop-shadow-[0_0_25px_rgba(125,211,252,0.6)] md:text-5xl">
         SAMMIE SCHMID
       </h1>
-      <p className="relative mt-4 text-xs uppercase tracking-[0.7em] text-slate-300">
+      <p className="relative mt-4 text-xs uppercase tracking-[0.3em] text-slate-300">
         Systems, Data, Momentum
       </p>
     </div>
@@ -195,36 +195,31 @@ const SplashScreen = () => (
 );
 
 const Header = () => (
-  <header className="fixed top-0 z-40 w-full border-b border-white/10 bg-gradient-to-r from-slate-950/90 via-slate-900/80 to-slate-950/90 backdrop-blur">
-    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+  <header className="fixed top-0 z-40 w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-6">
       <div className="flex items-center gap-4">
-        <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-sky-500/30 bg-slate-900">
+        <div className="relative h-12 w-12 overflow-hidden rounded-full border border-slate-700 bg-slate-900">
           <Image
             src="/profile.jpg"
             alt="Samantha Schmid"
-            width={120}
-            height={120}
+            width={96}
+            height={96}
             className="h-full w-full object-cover"
           />
-          <span className="absolute bottom-1 left-1 rounded-full bg-sky-400/90 px-2 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-slate-950">
-            SS
-          </span>
         </div>
         <div>
-          <p className="text-[0.65rem] uppercase tracking-[0.7em] text-slate-300">
-            Systems Engineer & Builder
-          </p>
-          <h1 className="text-2xl font-bold tracking-[0.5em] text-white">
+          <h1 className="text-lg font-semibold text-slate-100">
             Samantha Schmid
           </h1>
+          <p className="text-sm text-slate-400">Systems engineer & builder</p>
         </div>
       </div>
-      <nav className="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.45em] text-slate-300">
+      <nav className="flex flex-wrap items-center gap-3 text-xs font-medium text-slate-100 md:text-sm">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="rounded-full border border-white/10 px-3 py-1.5 transition hover:border-sky-400 hover:text-sky-200"
+            className="rounded-full px-3 py-1 transition hover:text-sky-300"
           >
             {item.label}
           </Link>
@@ -235,55 +230,57 @@ const Header = () => (
 );
 
 const Hero = () => (
-  <section id="hero" className="grid gap-10 pt-6 lg:grid-cols-[1.3fr_0.7fr]">
+  <section id="hero" className="grid gap-10 pt-8 lg:grid-cols-[1.2fr_0.8fr]">
     <div className="space-y-6">
-      <p className="text-xs uppercase tracking-[0.6em] text-slate-400">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
         Samantha Schmid
       </p>
-      <div className="rounded-[2.5rem] border border-sky-500/30 bg-slate-950/70 p-8 shadow-[0_10px_60px_rgba(15,23,42,0.8)]">
-        <h2 className="text-4xl font-black uppercase tracking-[0.4em] text-white drop-shadow-[0_0_25px_rgba(125,211,252,0.45)] md:text-5xl">
-          SAMANTHA SCHMID
+      <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-8 shadow-[0_10px_60px_rgba(15,23,42,0.8)]">
+        <h2 className="text-4xl font-bold tracking-tight text-slate-50 md:text-6xl">
+          Samantha Schmid
         </h2>
-        <div className="mt-6 space-y-1 text-lg text-slate-200">
+        <div className="mt-6 space-y-1 text-sm text-slate-200 md:text-base">
           <p>Arizona State University</p>
           <p>BSE in Mechanical Engineering (2022 - 2025)</p>
           <p>MS in Business Analytics (2026 - 2027)</p>
         </div>
-        <p className="mt-6 text-base leading-relaxed text-slate-300">
+        <p className="mt-6 text-sm leading-relaxed text-slate-200 md:text-base">
           {introParagraph}
         </p>
       </div>
     </div>
-    <div className="rounded-[2rem] border border-sky-500/30 bg-gradient-to-b from-slate-900 to-slate-950 p-6 shadow-[0_15px_80px_rgba(14,116,144,0.35)]">
+    <div className="rounded-[1.75rem] border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-6 shadow-[0_15px_80px_rgba(14,116,144,0.35)]">
       <div className="flex items-center gap-3">
-        <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-white/15 bg-slate-900">
+        <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-slate-700 bg-slate-900">
           <Image
             src="/profile.jpg"
             alt="Samantha Schmid"
-            width={96}
-            height={96}
+            width={88}
+            height={88}
             className="h-full w-full object-cover"
           />
         </div>
         <div>
-          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
             Snapshot
           </p>
-          <p className="font-semibold text-white">Systems-minded builder</p>
+          <p className="text-base font-semibold text-slate-100">
+            Systems-minded builder
+          </p>
         </div>
       </div>
       <div className="mt-6 space-y-5">
         <SnapshotList label="Degrees" items={heroSnapshot.degrees} />
         <SnapshotList label="Recent Roles" items={heroSnapshot.roles} />
         <div>
-          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
             Badges
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {heroSnapshot.badges.map((badge) => (
               <span
                 key={badge}
-                className="rounded-full border border-sky-400/30 bg-sky-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-sky-100"
+                className="rounded-full border border-sky-400/30 bg-sky-500/15 px-3 py-1 text-xs font-semibold tracking-wide text-sky-100"
               >
                 {badge}
               </span>
@@ -309,17 +306,17 @@ const Employment = () => (
 const ExperienceCard = ({ job }) => (
   <details className="group rounded-[1.75rem] border border-white/10 bg-slate-950/70 p-6 shadow-[0_12px_50px_rgba(2,6,23,0.65)] transition hover:border-sky-400/40" open>
     <summary className="flex cursor-pointer list-none flex-col gap-2 text-left">
-      <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.35em] text-slate-400">
+      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
         <span>{job.dates}</span>
-        {job.company && <span className="text-slate-600">/</span>}
-        {job.company && <span>{job.company}</span>}
+        {job.company && <span className="text-slate-600">•</span>}
+        {job.company && <span className="text-slate-300">{job.company}</span>}
       </div>
-      <h3 className="text-2xl font-semibold tracking-[0.2em] text-white">
+      <h3 className="text-xl font-semibold tracking-tight text-slate-50">
         {job.role}
       </h3>
     </summary>
     {job.bullets.length > 0 && (
-      <ul className="mt-4 space-y-3 text-sm text-slate-300">
+      <ul className="mt-4 space-y-3 text-sm text-slate-300 md:text-base">
         {job.bullets.map((bullet) => (
           <li key={bullet}>• {bullet}</li>
         ))}
@@ -338,13 +335,13 @@ const Intelligence = () => (
         ))}
       </div>
       <div className="rounded-[1.75rem] border border-white/5 bg-slate-950/70 p-6">
-        <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
           Independent Learning
         </p>
         <div className="mt-6 space-y-6">
           {independentLearning.map((bucket) => (
             <div key={bucket.label} className="rounded-2xl border border-white/5 bg-slate-900/60 p-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white">
+              <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white">
                 {bucket.label}
               </p>
               <ul className="mt-3 space-y-1 text-sm text-slate-300">
@@ -359,7 +356,7 @@ const Intelligence = () => (
           href="https://www.samanthaschmid.info/intelligence"
           target="_blank"
           rel="noreferrer"
-          className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-sky-400/50 bg-sky-500/10 px-5 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-sky-100 transition hover:bg-sky-400/20"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-sky-400/50 bg-sky-500/10 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky-100 transition hover:bg-sky-400/20"
         >
           All Certifications
         </Link>
@@ -372,10 +369,10 @@ const EducationCard = ({ item }) => (
   <details className="group rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-6 transition hover:border-sky-400/40" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold uppercase tracking-[0.3em] text-white">
+        <h3 className="text-lg font-semibold tracking-tight text-slate-50">
           {item.school}
         </h3>
-        <span className="text-xs uppercase tracking-[0.35em] text-slate-400">
+        <span className="text-xs font-medium uppercase tracking-[0.15em] text-slate-400">
           {item.dates}
         </span>
       </div>
@@ -389,7 +386,7 @@ const EducationCard = ({ item }) => (
         href={item.detailLink}
         target="_blank"
         rel="noreferrer"
-        className="mt-4 inline-flex items-center gap-2 rounded-full border border-sky-400/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-sky-100 transition hover:bg-sky-500/10"
+        className="mt-4 inline-flex items-center gap-2 rounded-full border border-sky-400/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-sky-100 transition hover:bg-sky-500/10"
       >
         Major Map ↗
       </Link>
@@ -406,10 +403,10 @@ const Projects = () => (
           key={project.title}
           className="rounded-[1.6rem] border border-white/10 bg-gradient-to-b from-slate-950 to-slate-900 p-5 shadow-[0_12px_45px_rgba(8,47,73,0.5)] transition hover:-translate-y-2 hover:border-sky-400/30"
         >
-          <h3 className="text-lg font-semibold uppercase tracking-[0.3em] text-white">
+          <h3 className="text-lg font-semibold tracking-tight text-slate-50">
             {project.title}
           </h3>
-          <ul className="mt-4 space-y-3 text-sm text-slate-300">
+          <ul className="mt-4 space-y-3 text-sm text-slate-300 md:text-base">
             {project.bullets.map((bullet) => (
               <li key={bullet}>• {bullet}</li>
             ))}
@@ -434,12 +431,12 @@ const Resume = () => (
       </p>
       <Link
         href="/resume.pdf"
-        className="inline-flex items-center justify-center rounded-full border border-sky-400/50 bg-sky-500/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-sky-100 transition hover:bg-sky-500/20"
+        className="inline-flex items-center justify-center rounded-full border border-sky-400/50 bg-sky-500/10 px-6 py-3 text-sm font-semibold tracking-wide text-sky-100 transition hover:bg-sky-500/20"
       >
         Download my Resume ⬇
       </Link>
     </div>
-    <div className="mt-2 rounded-[2rem] border-2 border-dashed border-white/20 bg-slate-950/80 p-12 text-center text-xs uppercase tracking-[0.6em] text-slate-500">
+    <div className="mt-2 rounded-[2rem] border-2 border-dashed border-white/20 bg-slate-950/80 p-12 text-center text-xs uppercase tracking-[0.2em] text-slate-500">
       Resume preview placeholder
     </div>
   </section>
@@ -449,7 +446,7 @@ const LifeResume = () => (
   <section id="life-resume" className="space-y-10">
     <SectionTitle eyebrow="Beyond Work" title="Life Resume" />
     <div className="rounded-[1.75rem] border border-white/5 bg-slate-950/80 p-6">
-      <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
         Travel + Milestones
       </p>
       <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
@@ -460,7 +457,7 @@ const LifeResume = () => (
     </div>
     <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
       <article className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950 to-slate-900 p-6 shadow-[0_12px_55px_rgba(2,6,23,0.7)]">
-        <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
           Favorite Book
         </p>
         <h3 className="mt-3 text-xl font-semibold text-white">
@@ -470,13 +467,13 @@ const LifeResume = () => (
         <p className="mt-3 text-sm text-slate-300">{favoriteBook.description}</p>
       </article>
       <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-6">
-        <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
           Favorites
         </p>
         <div className="mt-4 space-y-3">
           {favorites.map((fav) => (
             <details key={fav.label} className="rounded-xl border border-white/5 bg-slate-900/70 p-4">
-              <summary className="cursor-pointer text-sm font-semibold uppercase tracking-[0.35em] text-white">
+              <summary className="cursor-pointer text-sm font-semibold text-slate-100">
                 {fav.label}
               </summary>
               <p className="mt-3 text-sm text-slate-300">{fav.value}</p>
@@ -489,7 +486,7 @@ const LifeResume = () => (
 );
 
 const LifeMoment = ({ label }) => (
-  <div className="group relative min-w-[180px] rounded-2xl border border-white/5 bg-gradient-to-b from-slate-900 to-slate-950 p-4 text-center text-sm font-semibold uppercase tracking-[0.2em] text-slate-100 transition hover:-translate-y-1 hover:border-sky-400/40">
+  <div className="group relative min-w-[180px] rounded-2xl border border-white/5 bg-gradient-to-b from-slate-900 to-slate-950 p-4 text-center text-sm font-semibold tracking-wide text-slate-100 transition hover:-translate-y-1 hover:border-sky-400/40">
     {label}
     <div className="pointer-events-none absolute inset-0 rounded-2xl border border-sky-400/40 opacity-0 transition group-hover:opacity-100" />
   </div>
@@ -498,14 +495,14 @@ const LifeMoment = ({ label }) => (
 const Contact = () => (
   <section id="contact" className="space-y-6">
     <SectionTitle eyebrow="Let's Connect" title="Contact" />
-    <p className="max-w-2xl text-sm text-slate-300">
+    <p className="max-w-2xl text-sm text-slate-300 md:text-base">
       Reach out for roles that blend engineering, analytics, and product
       building.
     </p>
     <div className="flex flex-wrap gap-4">
       <Link
         href="mailto:sammieschmid22@gmail.com"
-        className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:border-white/35"
+        className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-white/40"
       >
         Email me
       </Link>
@@ -513,7 +510,7 @@ const Contact = () => (
         href="https://www.linkedin.com/in/samantha-schmid/"
         target="_blank"
         rel="noreferrer"
-        className="inline-flex items-center justify-center rounded-full border border-sky-400 bg-sky-500/10 px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-sky-100 transition hover:bg-sky-500/20"
+        className="inline-flex items-center justify-center rounded-full border border-sky-400 bg-sky-500/10 px-6 py-3 text-sm font-semibold text-sky-100 transition hover:bg-sky-500/20"
       >
         View LinkedIn
       </Link>
@@ -522,24 +519,28 @@ const Contact = () => (
 );
 
 const SectionTitle = ({ eyebrow, title, description }) => (
-  <div className="space-y-3">
+  <div className="space-y-2">
     {eyebrow && (
-      <p className="text-xs uppercase tracking-[0.55em] text-slate-400">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
         {eyebrow}
       </p>
     )}
-    <h2 className="text-3xl font-black uppercase tracking-[0.35em] text-white">
+    <h2 className="text-3xl font-semibold tracking-tight text-slate-50">
       {title}
     </h2>
     {description && description.length > 0 && (
-      <p className="max-w-3xl text-sm text-slate-300">{description}</p>
+      <p className="max-w-3xl text-sm text-slate-300 md:text-base">
+        {description}
+      </p>
     )}
   </div>
 );
 
 const SnapshotList = ({ label, items }) => (
   <div>
-    <p className="text-xs uppercase tracking-[0.4em] text-slate-400">{label}</p>
+    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-slate-400">
+      {label}
+    </p>
     <ul className="mt-2 space-y-1 text-sm text-slate-200">
       {items.map((item) => (
         <li key={item}>• {item}</li>
