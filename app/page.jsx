@@ -218,10 +218,10 @@ const SplashScreen = () => (
 );
 
 const Header = () => (
-  <header className="fixed top-0 z-40 w-full border-b border-subtle bg-[#050507]/95 backdrop-blur">
+  <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
     <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
       <div className="flex items-center gap-4">
-        <div className="relative h-12 w-12 overflow-hidden rounded-full border border-subtle bg-surface-soft">
+        <div className="relative h-12 w-12 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
           {/* Replace /images/profile.jpg with your own headshot path */}
           <Image
             src="/images/profile.jpg"
@@ -279,7 +279,7 @@ const Hero = () => (
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
             Snapshot
           </p>
-          <p className="text-base font-semibold text-primary">
+          <p className="text-base font-semibold text-accent">
             Systems Builder
           </p>
         </div>
@@ -325,7 +325,7 @@ const ExperienceCard = ({ job }) => (
         {job.role}
       </h3>
       {job.company && (
-        <p className="font-display text-sm uppercase tracking-[0.08em] text-muted">
+        <p className="font-display text-sm uppercase tracking-[0.08em] text-accent">
           {job.company}
         </p>
       )}
@@ -351,7 +351,7 @@ const Intelligence = () => (
         ))}
       </div>
       <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
           Independent Learning
         </p>
         <div className="mt-6 space-y-6">
@@ -469,9 +469,9 @@ const LifeResume = () => {
     <section id="life-resume" className="space-y-10">
       <SectionTitle title="Life Resume" />
     <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-          Travel + Milestones
-        </p>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+            Travel + Milestones
+          </p>
         <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
           {lifeMoments.map((moment) => (
             <LifeMoment key={moment.label} {...moment} />
@@ -483,9 +483,9 @@ const LifeResume = () => {
           Beyond work, I chase altitude, endurance, and stories worth retelling.
         </article>
         <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-            Favorites
-          </p>
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          Favorites
+        </p>
           <div className="mt-4 space-y-3">
             {favorites.map((fav, idx) => (
               <div key={fav.label} className="rounded-xl border border-accent/25 bg-surface-soft px-4 py-3 shadow-[0_0_18px_rgba(56,189,248,0.07)]">
