@@ -318,7 +318,7 @@ const Employment = () => (
 const ExperienceCard = ({ job }) => (
   <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6" open>
     <summary className="flex cursor-pointer list-none flex-col gap-2 text-left">
-      <h3 className="font-display text-xl font-semibold tracking-tight text-primary">
+      <h3 className="font-display text-xl font-semibold uppercase tracking-[0.08em] text-primary">
         {job.role}
       </h3>
       {job.company && (
