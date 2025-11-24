@@ -292,7 +292,7 @@ const Hero = () => (
             {heroSnapshot.badges.map((badge) => (
               <span
                 key={badge}
-                className="rounded-full border border-subtle px-3 py-1 text-xs font-medium text-muted"
+                className="rounded-full border border-accent bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-accent"
               >
                 {badge}
               </span>
@@ -316,9 +316,9 @@ const Employment = () => (
 );
 
 const ExperienceCard = ({ job }) => (
-  <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6" open>
+  <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6 transition hover:border-accent" open>
     <summary className="flex cursor-pointer list-none flex-col gap-2 text-left">
-      <h3 className="font-display text-xl font-semibold uppercase tracking-[0.08em] text-primary">
+      <h3 className="font-display text-lg font-semibold uppercase tracking-[0.08em] text-primary md:text-[1.15rem]">
         {job.role}
       </h3>
       {job.company && (
@@ -369,7 +369,7 @@ const Intelligence = () => (
           href="https://www.samanthaschmid.info/intelligence"
           target="_blank"
           rel="noreferrer"
-          className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-subtle px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-primary transition hover:bg-surface-soft"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-accent px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent transition hover:bg-accent/10"
         >
           All Certifications
         </Link>
@@ -379,10 +379,10 @@ const Intelligence = () => (
 );
 
 const EducationCard = ({ item }) => (
-  <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6" open>
+  <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6 transition hover:border-accent" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="font-display text-lg font-semibold tracking-tight text-primary">
+        <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
           {item.school}
         </h3>
         <span className="text-xs font-medium uppercase tracking-[0.12em] text-soft">
@@ -399,7 +399,7 @@ const EducationCard = ({ item }) => (
         href={item.detailLink}
         target="_blank"
         rel="noreferrer"
-        className="mt-4 inline-flex items-center gap-2 rounded-full border border-subtle px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-primary transition hover:bg-surface-soft"
+        className="mt-4 inline-flex items-center gap-2 rounded-full border border-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-accent transition hover:bg-accent/10"
       >
         Major Map ↗
       </Link>
@@ -414,7 +414,7 @@ const Projects = () => (
       {projects.map((project) => (
         <article
           key={project.title}
-          className="rounded-[1.6rem] border border-subtle bg-surface p-5"
+          className="rounded-[1.6rem] border border-subtle bg-surface p-5 transition hover:border-accent"
         >
           {project.image && (
             <div className="mb-4 h-36 w-full overflow-hidden rounded-2xl bg-surface-soft">
@@ -428,7 +428,7 @@ const Projects = () => (
               />
             </div>
           )}
-          <h3 className="font-display text-xl font-semibold tracking-tight text-primary">
+          <h3 className="font-display text-lg font-semibold uppercase tracking-[0.08em] text-primary">
             {project.title}
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-muted md:text-base">
@@ -516,7 +516,7 @@ const LifeResume = () => {
 };
 
 const LifeMoment = ({ label, image }) => (
-  <div className="group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-subtle bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:bg-surface">
+  <div className="group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-subtle bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface">
     {image && (
       <div className="h-24 w-full overflow-hidden rounded-xl bg-surface">
         {/* Replace the placeholder path with your travel photo */}
@@ -560,10 +560,11 @@ const Contact = () => (
 );
 
 const SectionTitle = ({ title, description }) => (
-  <div className="space-y-2">
-    <h2 className="font-display text-3xl font-semibold uppercase tracking-[0.08em] text-primary md:text-[2.1rem]">
+  <div className="space-y-3">
+    <h2 className="font-display text-3xl font-semibold uppercase tracking-[0.06em] text-primary md:text-[2.1rem]">
       {title}
     </h2>
+    <div className="h-px w-12 bg-accent" />
     {description && description.length > 0 && (
       <p className="max-readable text-sm text-muted md:text-base">{description}</p>
     )}
