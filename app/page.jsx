@@ -163,6 +163,13 @@ const lifeMoments = [
   { label: "Volleyball", image: "/images/life/volleyball.jpg" },
 ];
 
+const favoriteBook = {
+  title: "I Will Teach You To Be Rich",
+  author: "by Ramit Sethi",
+  description:
+    "I love I Will Teach You to Be Rich because it treats money like a system with automation, checklists and simple scripts, so you can set it once and focus on life. It's practical, with clear psychology, high leverage moves like negotiation and conscious spending, and a plan you can actually execute.",
+};
+
 const favorites = [
   { label: "Favorite Game", value: "Chess" },
   { label: "Favorite Music", value: "House Music" },
@@ -170,13 +177,6 @@ const favorites = [
   { label: "Favorite Movie", value: "21" },
   { label: "Favorite Book", value: favoriteBook.description },
 ];
-
-const favoriteBook = {
-  title: "I Will Teach You To Be Rich",
-  author: "by Ramit Sethi",
-  description:
-    "I love I Will Teach You to Be Rich because it treats money like a system with automation, checklists and simple scripts, so you can set it once and focus on life. It's practical, with clear psychology, high leverage moves like negotiation and conscious spending, and a plan you can actually execute.",
-};
 
 const introParagraph =
   "I am Sammie Schmid. I see patterns where others see problems, and I build order that lasts. Chaos has its beauty. It's the invitation to fix things. I learn fast, think in systems, and create processes that make life safer, smarter, and more efficient. Order isn't found; it's made.";
