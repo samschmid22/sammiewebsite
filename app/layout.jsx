@@ -1,4 +1,4 @@
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Syncopate } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -6,10 +6,10 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const syncopate = Syncopate({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
 });
 
 export const metadata = {
@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased font-sans`}>
+      <body className={`${inter.variable} ${syncopate.variable} antialiased font-sans`}>
         {children}
       </body>
     </html>
