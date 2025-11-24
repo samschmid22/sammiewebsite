@@ -1,0 +1,22 @@
+# Query: general 
+# ContextLines: 1
+
+4 results - 2 files
+
+app/page.jsx:
+  28    roles: [
+  29:     "General Dynamics Mission Systems",
+  30      "Nissan Motor Co.",
+
+  38      role: "Manufacturing Engineer Intern",
+  39:     company: "General Dynamics Mission Systems",
+  40      dates: "09/2025 - 11/2025",
+
+app/page.tsx:
+  19    roles: [
+  20:     "General Dynamics Mission Systems",
+  21      "Nissan Motor Co.",
+
+  29      role: "Manufacturing Engineer Intern",
+  30:     company: "General Dynamics Mission Systems",
+  31      dates: "09/2025 - 11/2025",
