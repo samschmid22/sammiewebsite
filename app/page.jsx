@@ -184,7 +184,7 @@ const SplashScreen = () => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-black via-slate-900 to-slate-950">
     <div className="relative flex flex-col items-center">
       <div className="absolute inset-0 animate-ping rounded-full bg-sky-400/20 blur-3xl" />
-      <h1 className="relative text-4xl font-black tracking-[0.15em] text-sky-200 drop-shadow-[0_0_25px_rgba(125,211,252,0.6)] md:text-5xl">
+      <h1 className="relative font-display text-4xl font-semibold tracking-[0.15em] text-sky-200 drop-shadow-[0_0_25px_rgba(125,211,252,0.6)] md:text-5xl">
         SAMMIE SCHMID
       </h1>
       <p className="relative mt-4 text-xs uppercase tracking-[0.3em] text-slate-300">
@@ -208,7 +208,7 @@ const Header = () => (
           />
         </div>
         <div>
-          <h1 className="text-lg font-semibold text-slate-100">
+          <h1 className="font-display text-xl font-semibold text-slate-50">
             Samantha Schmid
           </h1>
           <p className="text-sm text-slate-400">Systems engineer & builder</p>
@@ -236,7 +236,7 @@ const Hero = () => (
         Samantha Schmid
       </p>
       <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-8 shadow-[0_10px_60px_rgba(15,23,42,0.8)]">
-        <h2 className="text-4xl font-bold tracking-tight text-slate-50 md:text-6xl">
+        <h2 className="font-display text-4xl font-semibold tracking-tight text-slate-50 md:text-6xl">
           Samantha Schmid
         </h2>
         <div className="mt-6 space-y-1 text-sm text-slate-200 md:text-base">
@@ -311,7 +311,7 @@ const ExperienceCard = ({ job }) => (
         {job.company && <span className="text-slate-600">•</span>}
         {job.company && <span className="text-slate-300">{job.company}</span>}
       </div>
-      <h3 className="text-xl font-semibold tracking-tight text-slate-50">
+      <h3 className="font-display text-xl font-semibold tracking-tight text-slate-50">
         {job.role}
       </h3>
     </summary>
@@ -369,7 +369,7 @@ const EducationCard = ({ item }) => (
   <details className="group rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-6 transition hover:border-sky-400/40" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-semibold tracking-tight text-slate-50">
+        <h3 className="font-display text-lg font-semibold tracking-tight text-slate-50">
           {item.school}
         </h3>
         <span className="text-xs font-medium uppercase tracking-[0.15em] text-slate-400">
@@ -403,7 +403,7 @@ const Projects = () => (
           key={project.title}
           className="rounded-[1.6rem] border border-white/10 bg-gradient-to-b from-slate-950 to-slate-900 p-5 shadow-[0_12px_45px_rgba(8,47,73,0.5)] transition hover:-translate-y-2 hover:border-sky-400/30"
         >
-          <h3 className="text-lg font-semibold tracking-tight text-slate-50">
+          <h3 className="font-display text-lg font-semibold tracking-tight text-slate-50">
             {project.title}
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-300 md:text-base">
