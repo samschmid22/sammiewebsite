@@ -74,19 +74,19 @@ const education = [
     school: "East Valley Institute of Technology",
     program: "Automotive Technologies",
     dates: "July 2021 - May 2022",
-    gpa: "GPA: 3.8 / 4.0 (update as needed)",
+    gpa: "GPA: 4.0 / 4.0",
   },
   {
     school: "Chandler-Gilbert Community College",
     program: "Dual Enrollment",
     dates: "July 2018 - May 2022",
-    gpa: "GPA: 3.8 / 4.0 (update as needed)",
+    gpa: "GPA: 4.0 / 4.0",
   },
   {
     school: "Casteel High School",
     program: "",
     dates: "July 2018 - May 2022",
-    gpa: "GPA: 4.0 / 4.0 (update as needed)",
+    gpa: "GPA: 4.0 / 4.0",
   },
 ];
 
@@ -208,20 +208,15 @@ export default function Home() {
 
 const SplashScreen = () => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-body">
-    <div className="flex flex-col items-center gap-4">
-      <h1 className="font-display text-4xl font-semibold text-primary md:text-5xl">
-        SAMMIE SCHMID
-      </h1>
-      <p className="text-xs uppercase tracking-[0.25em] text-muted">
-        Systems, Data, Momentum
-      </p>
-    </div>
+    <h1 className="font-display text-5xl font-semibold tracking-[0.08em] text-primary md:text-6xl">
+      Samantha Schmid
+    </h1>
   </div>
 );
 
 const Header = () => (
   <header className="fixed top-0 z-40 w-full border-b border-subtle bg-[#050507]/95 backdrop-blur">
-    <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-5 md:flex-row md:items-center md:justify-between md:px-6">
+    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
       <div className="flex items-center gap-4">
         <div className="relative h-12 w-12 overflow-hidden rounded-full border border-subtle bg-surface-soft">
           {/* Replace /images/profile.jpg with your own headshot path */}
@@ -234,12 +229,12 @@ const Header = () => (
           />
         </div>
         <div>
-          <h1 className="font-display text-xl font-semibold text-primary">
+          <h1 className="text-2xl font-semibold tracking-tight text-primary">
             Samantha Schmid
           </h1>
         </div>
       </div>
-      <nav className={`${anton.className} flex flex-wrap items-center gap-4 text-sm uppercase text-primary md:text-base`}>
+      <nav className={`${anton.className} flex flex-wrap items-center gap-4 text-base uppercase text-primary md:text-lg`}>
         {navItems.map((item) => (
           <Link
             key={item.href}
@@ -261,11 +256,6 @@ const Hero = () => (
         <h2 className="font-display text-4xl font-semibold tracking-tight text-primary md:text-[3.25rem]">
           Samantha Schmid
         </h2>
-        <div className="mt-6 space-y-1 text-sm text-muted md:text-base">
-          <p>Arizona State University</p>
-          <p>BSE in Mechanical Engineering (2022 - 2025)</p>
-          <p>MS in Business Analytics (2026 - 2027)</p>
-        </div>
         <p className="mt-6 max-readable text-sm leading-relaxed text-muted md:text-base">
           {introParagraph}
         </p>
@@ -287,7 +277,7 @@ const Hero = () => (
             Snapshot
           </p>
           <p className="text-base font-semibold text-primary">
-            Systems-minded builder
+            Architecting systems with momentum
           </p>
         </div>
       </div>
@@ -332,7 +322,9 @@ const ExperienceCard = ({ job }) => (
         {job.role}
       </h3>
       {job.company && (
-        <p className="text-base font-semibold text-muted">{job.company}</p>
+        <p className="font-display text-sm uppercase tracking-[0.12em] text-muted">
+          {job.company}
+        </p>
       )}
       <p className="text-sm font-medium text-soft">{job.dates}</p>
     </summary>
@@ -456,10 +448,13 @@ const Resume = () => (
       title="Resume"
       description="This site highlights my work and projects. Download my one-page resume below for the full story."
     />
-    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div className="flex flex-col gap-3 text-sm text-muted md:flex-row md:items-center md:gap-6 md:text-base">
+      <p className="max-readable">
+        This site highlights my work and projects. Download my one-page resume below for the full story.
+      </p>
       <Link
         href="/resume.pdf"
-        className="inline-flex items-center justify-center rounded-full border border-subtle px-6 py-3 text-sm font-semibold text-primary transition hover:bg-surface-soft"
+        className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
       >
         Download my Resume ⬇
       </Link>
@@ -467,47 +462,58 @@ const Resume = () => (
   </section>
 );
 
-const LifeResume = () => (
-  <section id="life-resume" className="space-y-10">
-    <SectionTitle title="Life Resume" />
-    <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
-      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-        Travel + Milestones
-      </p>
-      <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
-        {lifeMoments.map((moment) => (
-          <LifeMoment key={moment.label} {...moment} />
-        ))}
-      </div>
-    </div>
-    <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
-      <article className="rounded-[1.75rem] border border-subtle bg-surface p-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-          Favorite Book
-        </p>
-        <h3 className="mt-3 font-display text-2xl font-semibold text-primary">
-          {favoriteBook.title}
-        </h3>
-        <p className="text-sm text-soft">{favoriteBook.author}</p>
-      </article>
+const LifeResume = () => {
+  const [openFavorite, setOpenFavorite] = useState(null);
+
+  return (
+    <section id="life-resume" className="space-y-10">
+      <SectionTitle title="Life Resume" />
       <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-          Favorites
+          Travel + Milestones
         </p>
-        <div className="mt-4 space-y-3">
-          {favorites.map((fav) => (
-            <details key={fav.label} className="rounded-xl border border-subtle bg-surface-soft p-4">
-              <summary className="cursor-pointer text-sm font-semibold text-primary">
-                {fav.label}
-              </summary>
-              <p className="mt-3 text-sm text-muted">{fav.value}</p>
-            </details>
+        <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
+          {lifeMoments.map((moment) => (
+            <LifeMoment key={moment.label} {...moment} />
           ))}
         </div>
       </div>
-    </div>
-  </section>
-);
+      <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
+        <article className="rounded-[1.75rem] border border-subtle bg-surface p-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
+            Favorite Book
+          </p>
+          <h3 className="mt-3 font-display text-2xl font-semibold text-primary">
+            {favoriteBook.title}
+          </h3>
+          <p className="text-sm text-soft">{favoriteBook.author}</p>
+        </article>
+        <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
+            Favorites
+          </p>
+          <div className="mt-4 space-y-3">
+            {favorites.map((fav, idx) => (
+              <div key={fav.label} className="rounded-xl border border-subtle bg-surface-soft px-4 py-3">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-left text-sm font-semibold text-primary"
+                  onClick={() => setOpenFavorite(openFavorite === idx ? null : idx)}
+                >
+                  <span>{fav.label}</span>
+                  <span className="text-accent">{openFavorite === idx ? "–" : "+"}</span>
+                </button>
+                {openFavorite === idx && (
+                  <p className="mt-3 text-sm text-muted">{fav.value}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const LifeMoment = ({ label, image }) => (
   <div className="group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-subtle bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:bg-surface">
