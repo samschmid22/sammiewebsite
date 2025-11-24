@@ -208,9 +208,12 @@ export default function Home() {
 
 const SplashScreen = () => (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-body">
-    <h1 className="font-display text-5xl font-semibold tracking-[0.08em] text-primary md:text-6xl">
-      Samantha Schmid
-    </h1>
+    <div className="flex flex-col items-center gap-4">
+      <h1 className="font-display text-5xl font-semibold uppercase tracking-[0.06em] text-accent drop-shadow-[0_0_25px_rgba(56,189,248,0.45)] md:text-6xl">
+        Samantha Schmid
+      </h1>
+      <div className="h-0.5 w-24 rounded-full bg-accent/80 animate-pulse" />
+    </div>
   </div>
 );
 
@@ -229,7 +232,7 @@ const Header = () => (
           />
         </div>
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-primary">
+          <h1 className="font-display text-2xl font-semibold uppercase tracking-[0.06em] text-primary">
             Samantha Schmid
           </h1>
         </div>
@@ -252,8 +255,8 @@ const Header = () => (
 const Hero = () => (
   <section id="hero" className="grid gap-12 pt-16 lg:grid-cols-[1.2fr_0.8fr]">
     <div className="space-y-6">
-      <div className="flex h-full flex-col rounded-3xl border border-subtle bg-surface p-8">
-        <h2 className="font-display text-4xl font-semibold tracking-tight text-primary md:text-[3.25rem]">
+      <div className="flex h-full flex-col rounded-3xl border border-accent/30 bg-surface p-8 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
+        <h2 className="font-display text-4xl font-semibold uppercase tracking-[0.06em] text-primary md:text-[3.25rem]">
           Samantha Schmid
         </h2>
         <p className="mt-6 max-readable text-sm leading-relaxed text-muted md:text-base">
@@ -261,7 +264,7 @@ const Hero = () => (
         </p>
       </div>
     </div>
-    <div className="flex h-full flex-col rounded-[1.75rem] border border-subtle bg-surface p-6">
+    <div className="flex h-full flex-col rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
       <div className="flex items-center gap-3">
         <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-subtle bg-surface-soft">
           <Image
@@ -277,7 +280,7 @@ const Hero = () => (
             Snapshot
           </p>
           <p className="text-base font-semibold text-primary">
-            Architecting systems with momentum
+            Systems Builder
           </p>
         </div>
       </div>
@@ -316,13 +319,13 @@ const Employment = () => (
 );
 
 const ExperienceCard = ({ job }) => (
-  <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6 transition hover:border-accent" open>
+  <details className="group rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent" open>
     <summary className="flex cursor-pointer list-none flex-col gap-2 text-left">
-      <h3 className="font-display text-lg font-semibold uppercase tracking-[0.08em] text-primary md:text-[1.15rem]">
+      <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
         {job.role}
       </h3>
       {job.company && (
-        <p className="font-display text-sm uppercase tracking-[0.12em] text-muted">
+        <p className="font-display text-sm uppercase tracking-[0.08em] text-muted">
           {job.company}
         </p>
       )}
@@ -347,13 +350,13 @@ const Intelligence = () => (
           <EducationCard key={`${item.school}-${item.program}-${item.dates}`} item={item} />
         ))}
       </div>
-      <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
+      <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
           Independent Learning
         </p>
         <div className="mt-6 space-y-6">
           {independentLearning.map((bucket) => (
-            <div key={bucket.label} className="rounded-2xl border border-subtle bg-surface-soft p-4">
+            <div key={bucket.label} className="rounded-2xl border border-accent/25 bg-surface-soft p-4 shadow-[0_0_18px_rgba(56,189,248,0.07)]">
               <p className="text-sm font-semibold uppercase tracking-[0.1em] text-primary">
                 {bucket.label}
               </p>
@@ -379,7 +382,7 @@ const Intelligence = () => (
 );
 
 const EducationCard = ({ item }) => (
-  <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6 transition hover:border-accent" open>
+  <details className="group rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
@@ -414,7 +417,7 @@ const Projects = () => (
       {projects.map((project) => (
         <article
           key={project.title}
-          className="rounded-[1.6rem] border border-subtle bg-surface p-5 transition hover:border-accent"
+          className="rounded-[1.6rem] border border-accent/30 bg-surface p-5 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent"
         >
           {project.image && (
             <div className="mb-4 h-36 w-full overflow-hidden rounded-2xl bg-surface-soft">
@@ -444,13 +447,10 @@ const Projects = () => (
 
 const Resume = () => (
   <section id="resume" className="space-y-8">
-    <SectionTitle
-      title="Resume"
-      description="This site highlights my work and projects. Download my one-page resume below for the full story."
-    />
+    <SectionTitle title="Resume" />
     <div className="flex flex-col gap-3 text-sm text-muted md:flex-row md:items-center md:gap-6 md:text-base">
       <p className="max-readable">
-        This site highlights my work and projects. Download my one-page resume below for the full story.
+        Download my one-page resume for a concise view of my experience.
       </p>
       <Link
         href="/resume.pdf"
@@ -468,7 +468,7 @@ const LifeResume = () => {
   return (
     <section id="life-resume" className="space-y-10">
       <SectionTitle title="Life Resume" />
-      <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
+    <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
           Travel + Milestones
         </p>
@@ -478,23 +478,17 @@ const LifeResume = () => {
           ))}
         </div>
       </div>
-      <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
-        <article className="rounded-[1.75rem] border border-subtle bg-surface p-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-            Favorite Book
-          </p>
-          <h3 className="mt-3 font-display text-2xl font-semibold text-primary">
-            {favoriteBook.title}
-          </h3>
-          <p className="text-sm text-soft">{favoriteBook.author}</p>
+      <div className="space-y-6">
+        <article className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 text-sm text-muted shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+          Beyond work, I chase altitude, endurance, and stories worth retelling.
         </article>
-        <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
+        <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
             Favorites
           </p>
           <div className="mt-4 space-y-3">
             {favorites.map((fav, idx) => (
-              <div key={fav.label} className="rounded-xl border border-subtle bg-surface-soft px-4 py-3">
+              <div key={fav.label} className="rounded-xl border border-accent/25 bg-surface-soft px-4 py-3 shadow-[0_0_18px_rgba(56,189,248,0.07)]">
                 <button
                   type="button"
                   className="flex w-full items-center justify-between text-left text-sm font-semibold text-primary"
@@ -516,7 +510,7 @@ const LifeResume = () => {
 };
 
 const LifeMoment = ({ label, image }) => (
-  <div className="group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-subtle bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface">
+  <div className="group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-accent/25 bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface">
     {image && (
       <div className="h-24 w-full overflow-hidden rounded-xl bg-surface">
         {/* Replace the placeholder path with your travel photo */}
