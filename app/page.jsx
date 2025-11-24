@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,14 +59,16 @@ const education = [
     school: "Arizona State University",
     program: "MS in Business Analytics",
     dates: "January 2026 - December 2026",
-    cta: "Major Map",
+    detailLink:
+      "https://docs.google.com/spreadsheets/u/1/d/1rlqH7lqekrtDR9860hvZxFQkvML7DMlj5u8sPoMORZ8/edit?usp=sharing",
   },
   {
     school: "Arizona State University",
     program: "BSE in Mechanical Engineering",
     dates: "August 2022 - December 2025",
     detail: "GPA: 3.4 / 4.0",
-    cta: "Major Map",
+    detailLink:
+      "https://docs.google.com/spreadsheets/d/1n6-t9dWnLEzUf3ewTaFjRiUsAYlM25JsBRmEFdhw6gY/edit",
   },
   {
     school: "East Valley Institute of Technology",
@@ -116,7 +121,7 @@ const projects = [
   },
 ];
 
-const lifeTiles = [
+const lifeMoments = [
   "Cusco, Peru",
   "Ambergris Caye, Belize",
   "Paris, France",
@@ -150,11 +155,19 @@ const introParagraph =
   "I am Sammie Schmid. I see patterns where others see problems, and I build order that lasts. Chaos has its beauty. It's the invitation to fix things. I learn fast, think in systems, and create processes that make life safer, smarter, and more efficient. Order isn't found; it's made.";
 
 export default function Home() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 2200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-black via-slate-950 to-slate-900 text-slate-100">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.12),_transparent_55%)]" />
+    <div className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+      {showSplash && <SplashScreen />}
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(125,211,252,0.25),_transparent_55%)]" />
       <Header />
-      <main className="relative z-10 mx-auto max-w-6xl space-y-24 px-4 pb-24 pt-28 lg:space-y-28 lg:px-0 lg:pt-36">
+      <main className="relative z-10 mx-auto max-w-6xl space-y-24 px-4 pb-24 pt-32 md:px-8">
         <Hero />
         <Employment />
         <Intelligence />
@@ -167,50 +180,51 @@ export default function Home() {
   );
 }
 
+const SplashScreen = () => (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-black via-slate-900 to-slate-950">
+    <div className="relative flex flex-col items-center">
+      <div className="absolute inset-0 animate-ping rounded-full bg-sky-400/20 blur-3xl" />
+      <h1 className="relative text-4xl font-black tracking-[0.6em] text-sky-200 drop-shadow-[0_0_25px_rgba(125,211,252,0.6)] md:text-5xl">
+        SAMMIE SCHMID
+      </h1>
+      <p className="relative mt-4 text-xs uppercase tracking-[0.7em] text-slate-300">
+        Systems, Data, Momentum
+      </p>
+    </div>
+  </div>
+);
+
 const Header = () => (
-  <header className="sticky top-0 z-40 border-b border-white/10 bg-black/70 backdrop-blur">
-    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 lg:flex-row lg:items-center lg:justify-between lg:px-0">
-      <div className="flex items-center justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <div className="h-10 w-10 overflow-hidden rounded-full border border-white/20 bg-white/5">
-            <Image
-              src="/profile.jpg"
-              alt="Samantha Schmid"
-              width={64}
-              height={64}
-              className="h-full w-full object-cover"
-            />
-          </div>
-          <span className="text-xs font-semibold uppercase tracking-[0.5em] text-white">
-            Samantha Schmid
+  <header className="fixed top-0 z-40 w-full border-b border-white/10 bg-gradient-to-r from-slate-950/90 via-slate-900/80 to-slate-950/90 backdrop-blur">
+    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-8">
+      <div className="flex items-center gap-4">
+        <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-sky-500/30 bg-slate-900">
+          <Image
+            src="/profile.jpg"
+            alt="Samantha Schmid"
+            width={120}
+            height={120}
+            className="h-full w-full object-cover"
+          />
+          <span className="absolute bottom-1 left-1 rounded-full bg-sky-400/90 px-2 text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-slate-950">
+            SS
           </span>
         </div>
-        <Link
-          href="https://www.linkedin.com/in/samantha-schmid/"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-sky-400 text-sm font-semibold uppercase tracking-[0.4em] text-sky-300 transition hover:bg-sky-400/20"
-        >
-          in
-        </Link>
+        <div>
+          <p className="text-[0.65rem] uppercase tracking-[0.7em] text-slate-300">
+            Systems Engineer & Builder
+          </p>
+          <h1 className="text-2xl font-bold tracking-[0.5em] text-white">
+            Samantha Schmid
+          </h1>
+        </div>
       </div>
-      <nav className="hidden items-center gap-6 text-[0.65rem] uppercase tracking-[0.4em] text-slate-300 lg:flex">
+      <nav className="flex flex-wrap gap-3 text-[0.65rem] uppercase tracking-[0.45em] text-slate-300">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="transition hover:text-white"
-          >
-            {item.label}
-          </Link>
-        ))}
-      </nav>
-      <nav className="flex flex-wrap gap-3 text-[0.6rem] uppercase tracking-[0.4em] text-slate-400 lg:hidden">
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="rounded-full border border-white/10 px-3 py-1 transition hover:border-slate-200 hover:text-white"
+            className="rounded-full border border-white/10 px-3 py-1.5 transition hover:border-sky-400 hover:text-sky-200"
           >
             {item.label}
           </Link>
@@ -221,26 +235,28 @@ const Header = () => (
 );
 
 const Hero = () => (
-  <section id="hero" className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-    <div>
+  <section id="hero" className="grid gap-10 pt-6 lg:grid-cols-[1.3fr_0.7fr]">
+    <div className="space-y-6">
       <p className="text-xs uppercase tracking-[0.6em] text-slate-400">
         Samantha Schmid
       </p>
-      <h1 className="mt-4 text-4xl font-black tracking-[0.3em] text-white drop-shadow-[0_0_25px_rgba(56,189,248,0.45)] md:text-5xl">
-        SAMANTHA SCHMID
-      </h1>
-      <div className="mt-6 space-y-2 text-lg text-slate-200">
-        <p>Arizona State University</p>
-        <p>BSE in Mechanical Engineering (2022 - 2025)</p>
-        <p>MS in Business Analytics (2026 - 2027)</p>
+      <div className="rounded-[2.5rem] border border-sky-500/30 bg-slate-950/70 p-8 shadow-[0_10px_60px_rgba(15,23,42,0.8)]">
+        <h2 className="text-4xl font-black uppercase tracking-[0.4em] text-white drop-shadow-[0_0_25px_rgba(125,211,252,0.45)] md:text-5xl">
+          SAMANTHA SCHMID
+        </h2>
+        <div className="mt-6 space-y-1 text-lg text-slate-200">
+          <p>Arizona State University</p>
+          <p>BSE in Mechanical Engineering (2022 - 2025)</p>
+          <p>MS in Business Analytics (2026 - 2027)</p>
+        </div>
+        <p className="mt-6 text-base leading-relaxed text-slate-300">
+          {introParagraph}
+        </p>
       </div>
-      <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300">
-        {introParagraph}
-      </p>
     </div>
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-sky-500/10">
+    <div className="rounded-[2rem] border border-sky-500/30 bg-gradient-to-b from-slate-900 to-slate-950 p-6 shadow-[0_15px_80px_rgba(14,116,144,0.35)]">
       <div className="flex items-center gap-3">
-        <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+        <div className="relative h-16 w-16 overflow-hidden rounded-2xl border border-white/15 bg-slate-900">
           <Image
             src="/profile.jpg"
             alt="Samantha Schmid"
@@ -256,7 +272,7 @@ const Hero = () => (
           <p className="font-semibold text-white">Systems-minded builder</p>
         </div>
       </div>
-      <div className="mt-7 space-y-5">
+      <div className="mt-6 space-y-5">
         <SnapshotList label="Degrees" items={heroSnapshot.degrees} />
         <SnapshotList label="Recent Roles" items={heroSnapshot.roles} />
         <div>
@@ -267,7 +283,7 @@ const Hero = () => (
             {heroSnapshot.badges.map((badge) => (
               <span
                 key={badge}
-                className="rounded-full border border-white/10 bg-sky-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-200"
+                className="rounded-full border border-sky-400/30 bg-sky-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-sky-100"
               >
                 {badge}
               </span>
@@ -280,94 +296,58 @@ const Hero = () => (
 );
 
 const Employment = () => (
-  <section id="employment">
-    <SectionTitle
-      eyebrow="Professional Experience"
-      title="Employment"
-    />
-    <div className="space-y-6">
+  <section id="employment" className="space-y-8">
+    <SectionTitle eyebrow="Professional Experience" title="Employment" />
+    <div className="grid gap-6 lg:grid-cols-2">
       {employmentHistory.map((job) => (
-        <div
-          key={job.role}
-          className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/30"
-        >
-          <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-400">
-            <span>{job.dates}</span>
-            {job.company && <span className="text-slate-500">/</span>}
-            {job.company && <span>{job.company}</span>}
-          </div>
-          <h3 className="mt-3 text-2xl font-semibold tracking-[0.15em] text-white">
-            {job.role}
-          </h3>
-          {job.bullets.length > 0 && (
-            <ul className="mt-4 space-y-3 text-sm text-slate-300">
-              {job.bullets.map((bullet) => (
-                <li key={bullet} className="leading-relaxed">
-                  • {bullet}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        <ExperienceCard key={job.role} job={job} />
       ))}
     </div>
   </section>
 );
 
+const ExperienceCard = ({ job }) => (
+  <details className="group rounded-[1.75rem] border border-white/10 bg-slate-950/70 p-6 shadow-[0_12px_50px_rgba(2,6,23,0.65)] transition hover:border-sky-400/40" open>
+    <summary className="flex cursor-pointer list-none flex-col gap-2 text-left">
+      <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.35em] text-slate-400">
+        <span>{job.dates}</span>
+        {job.company && <span className="text-slate-600">/</span>}
+        {job.company && <span>{job.company}</span>}
+      </div>
+      <h3 className="text-2xl font-semibold tracking-[0.2em] text-white">
+        {job.role}
+      </h3>
+    </summary>
+    {job.bullets.length > 0 && (
+      <ul className="mt-4 space-y-3 text-sm text-slate-300">
+        {job.bullets.map((bullet) => (
+          <li key={bullet}>• {bullet}</li>
+        ))}
+      </ul>
+    )}
+  </details>
+);
+
 const Intelligence = () => (
-  <section id="intelligence">
-    <SectionTitle
-      eyebrow="Learning & Skills"
-      title="Intelligence"
-    />
-    <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr]">
-      <div className="space-y-5">
-        <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
-          Education
-        </p>
+  <section id="intelligence" className="space-y-12">
+    <SectionTitle eyebrow="Learning & Skills" title="Intelligence" />
+    <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="space-y-6">
         {education.map((item) => (
-          <div
-            key={`${item.school}-${item.program}-${item.dates}`}
-            className="rounded-2xl border border-white/10 bg-white/5 p-5"
-          >
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="text-lg font-semibold uppercase tracking-[0.2em] text-white">
-                {item.school}
-              </h3>
-              <span className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                {item.dates}
-              </span>
-            </div>
-            {item.program && (
-              <p className="mt-2 text-sm text-slate-200">{item.program}</p>
-            )}
-            {item.detail && (
-              <p className="text-sm text-slate-400">{item.detail}</p>
-            )}
-            {item.cta && (
-              <Link
-                href="https://www.samanthaschmid.info/intelligence"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-flex items-center gap-2 rounded-full border border-sky-400 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-sky-200 transition hover:bg-sky-500/10"
-              >
-                {item.cta}
-              </Link>
-            )}
-          </div>
+          <EducationCard key={`${item.school}-${item.program}-${item.dates}`} item={item} />
         ))}
       </div>
-      <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900/70 to-black p-6">
-        <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+      <div className="rounded-[1.75rem] border border-white/5 bg-slate-950/70 p-6">
+        <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
           Independent Learning
         </p>
-        <div className="mt-5 space-y-5">
+        <div className="mt-6 space-y-6">
           {independentLearning.map((bucket) => (
-            <div key={bucket.label}>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white">
+            <div key={bucket.label} className="rounded-2xl border border-white/5 bg-slate-900/60 p-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-white">
                 {bucket.label}
               </p>
-              <ul className="mt-2 space-y-1 text-sm text-slate-300">
+              <ul className="mt-3 space-y-1 text-sm text-slate-300">
                 {bucket.items.map((item) => (
                   <li key={item}>• {item}</li>
                 ))}
@@ -379,7 +359,7 @@ const Intelligence = () => (
           href="https://www.samanthaschmid.info/intelligence"
           target="_blank"
           rel="noreferrer"
-          className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white/30"
+          className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-sky-400/50 bg-sky-500/10 px-5 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-sky-100 transition hover:bg-sky-400/20"
         >
           All Certifications
         </Link>
@@ -388,16 +368,45 @@ const Intelligence = () => (
   </section>
 );
 
+const EducationCard = ({ item }) => (
+  <details className="group rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-6 transition hover:border-sky-400/40" open>
+    <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h3 className="text-lg font-semibold uppercase tracking-[0.3em] text-white">
+          {item.school}
+        </h3>
+        <span className="text-xs uppercase tracking-[0.35em] text-slate-400">
+          {item.dates}
+        </span>
+      </div>
+      {item.program && (
+        <p className="text-sm text-slate-200">{item.program}</p>
+      )}
+    </summary>
+    {item.detail && <p className="mt-3 text-sm text-slate-400">{item.detail}</p>}
+    {item.detailLink && (
+      <Link
+        href={item.detailLink}
+        target="_blank"
+        rel="noreferrer"
+        className="mt-4 inline-flex items-center gap-2 rounded-full border border-sky-400/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-sky-100 transition hover:bg-sky-500/10"
+      >
+        Major Map ↗
+      </Link>
+    )}
+  </details>
+);
+
 const Projects = () => (
-  <section id="projects">
+  <section id="projects" className="space-y-8">
     <SectionTitle eyebrow="Builds In Progress" title="Projects" />
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid gap-6 md:grid-cols-3">
       {projects.map((project) => (
-        <div
+        <article
           key={project.title}
-          className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-lg shadow-black/30"
+          className="rounded-[1.6rem] border border-white/10 bg-gradient-to-b from-slate-950 to-slate-900 p-5 shadow-[0_12px_45px_rgba(8,47,73,0.5)] transition hover:-translate-y-2 hover:border-sky-400/30"
         >
-          <h3 className="text-xl font-semibold uppercase tracking-[0.2em] text-white">
+          <h3 className="text-lg font-semibold uppercase tracking-[0.3em] text-white">
             {project.title}
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-300">
@@ -405,14 +414,14 @@ const Projects = () => (
               <li key={bullet}>• {bullet}</li>
             ))}
           </ul>
-        </div>
+        </article>
       ))}
     </div>
   </section>
 );
 
 const Resume = () => (
-  <section id="resume">
+  <section id="resume" className="space-y-8">
     <SectionTitle
       eyebrow="One Page"
       title="Resume"
@@ -425,55 +434,53 @@ const Resume = () => (
       </p>
       <Link
         href="/resume.pdf"
-        className="inline-flex items-center justify-center rounded-full border border-sky-400 bg-sky-500/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-sky-200 transition hover:bg-sky-500/20"
+        className="inline-flex items-center justify-center rounded-full border border-sky-400/50 bg-sky-500/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-sky-100 transition hover:bg-sky-500/20"
       >
         Download my Resume ⬇
       </Link>
     </div>
-    <div className="mt-8 rounded-[2rem] border-2 border-dashed border-white/20 bg-white/5 p-12 text-center text-xs uppercase tracking-[0.5em] text-slate-500">
+    <div className="mt-2 rounded-[2rem] border-2 border-dashed border-white/20 bg-slate-950/80 p-12 text-center text-xs uppercase tracking-[0.6em] text-slate-500">
       Resume preview placeholder
     </div>
   </section>
 );
 
 const LifeResume = () => (
-  <section id="life-resume">
+  <section id="life-resume" className="space-y-10">
     <SectionTitle eyebrow="Beyond Work" title="Life Resume" />
-    <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr]">
-      <div className="grid gap-4 sm:grid-cols-2">
-        {lifeTiles.map((tile) => (
-          <div
-            key={tile}
-            className="flex h-32 items-center justify-center rounded-3xl border border-white/5 bg-white/5 text-center text-sm font-semibold uppercase tracking-[0.2em] text-slate-200"
-          >
-            {tile}
-          </div>
+    <div className="rounded-[1.75rem] border border-white/5 bg-slate-950/80 p-6">
+      <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
+        Travel + Milestones
+      </p>
+      <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
+        {lifeMoments.map((moment) => (
+          <LifeMoment key={moment} label={moment} />
         ))}
       </div>
-      <div className="space-y-6">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-black p-6">
-          <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
-            Favorite Book
-          </p>
-          <h3 className="mt-3 text-xl font-semibold text-white">
-            {favoriteBook.title}
-          </h3>
-          <p className="text-sm text-slate-400">{favoriteBook.author}</p>
-          <p className="mt-3 text-sm text-slate-300">
-            {favoriteBook.description}
-          </p>
-        </div>
-        <div className="grid gap-4">
+    </div>
+    <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr]">
+      <article className="rounded-[1.75rem] border border-white/10 bg-gradient-to-b from-slate-950 to-slate-900 p-6 shadow-[0_12px_55px_rgba(2,6,23,0.7)]">
+        <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
+          Favorite Book
+        </p>
+        <h3 className="mt-3 text-xl font-semibold text-white">
+          {favoriteBook.title}
+        </h3>
+        <p className="text-sm text-slate-400">{favoriteBook.author}</p>
+        <p className="mt-3 text-sm text-slate-300">{favoriteBook.description}</p>
+      </article>
+      <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-6">
+        <p className="text-xs uppercase tracking-[0.45em] text-slate-400">
+          Favorites
+        </p>
+        <div className="mt-4 space-y-3">
           {favorites.map((fav) => (
-            <div
-              key={fav.label}
-              className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm"
-            >
-              <p className="text-xs uppercase tracking-[0.4em] text-slate-400">
+            <details key={fav.label} className="rounded-xl border border-white/5 bg-slate-900/70 p-4">
+              <summary className="cursor-pointer text-sm font-semibold uppercase tracking-[0.35em] text-white">
                 {fav.label}
-              </p>
-              <p className="mt-2 font-semibold text-white">{fav.value}</p>
-            </div>
+              </summary>
+              <p className="mt-3 text-sm text-slate-300">{fav.value}</p>
+            </details>
           ))}
         </div>
       </div>
@@ -481,17 +488,24 @@ const LifeResume = () => (
   </section>
 );
 
+const LifeMoment = ({ label }) => (
+  <div className="group relative min-w-[180px] rounded-2xl border border-white/5 bg-gradient-to-b from-slate-900 to-slate-950 p-4 text-center text-sm font-semibold uppercase tracking-[0.2em] text-slate-100 transition hover:-translate-y-1 hover:border-sky-400/40">
+    {label}
+    <div className="pointer-events-none absolute inset-0 rounded-2xl border border-sky-400/40 opacity-0 transition group-hover:opacity-100" />
+  </div>
+);
+
 const Contact = () => (
-  <section id="contact">
-    <SectionTitle title="Contact" eyebrow="Let's Connect" />
+  <section id="contact" className="space-y-6">
+    <SectionTitle eyebrow="Let's Connect" title="Contact" />
     <p className="max-w-2xl text-sm text-slate-300">
       Reach out for roles that blend engineering, analytics, and product
       building.
     </p>
-    <div className="mt-6 flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-4">
       <Link
         href="mailto:sammieschmid22@gmail.com"
-        className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white/35"
+        className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:border-white/35"
       >
         Email me
       </Link>
@@ -499,7 +513,7 @@ const Contact = () => (
         href="https://www.linkedin.com/in/samantha-schmid/"
         target="_blank"
         rel="noreferrer"
-        className="inline-flex items-center justify-center rounded-full border border-sky-400 bg-sky-500/10 px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-sky-200 transition hover:bg-sky-500/20"
+        className="inline-flex items-center justify-center rounded-full border border-sky-400 bg-sky-500/10 px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-sky-100 transition hover:bg-sky-500/20"
       >
         View LinkedIn
       </Link>
@@ -508,17 +522,17 @@ const Contact = () => (
 );
 
 const SectionTitle = ({ eyebrow, title, description }) => (
-  <div className="mb-10 space-y-3">
+  <div className="space-y-3">
     {eyebrow && (
-      <p className="text-xs uppercase tracking-[0.5em] text-slate-500">
+      <p className="text-xs uppercase tracking-[0.55em] text-slate-400">
         {eyebrow}
       </p>
     )}
-    <h2 className="text-3xl font-black uppercase tracking-[0.3em] text-white">
+    <h2 className="text-3xl font-black uppercase tracking-[0.35em] text-white">
       {title}
     </h2>
     {description && description.length > 0 && (
-      <p className="max-w-2xl text-sm text-slate-300">{description}</p>
+      <p className="max-w-3xl text-sm text-slate-300">{description}</p>
     )}
   </div>
 );
