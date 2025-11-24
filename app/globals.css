@@ -8,6 +8,7 @@
   --color-text-primary: #ffffff;
   --color-text-muted: #a1a1aa;
   --color-text-soft: #6b7280;
+  --color-accent: #9ec5ff;
   --font-sans: "Inter", "system-ui", sans-serif;
   --font-display: "Syncopate", "Inter", "system-ui", sans-serif;
 }
@@ -23,7 +24,7 @@ html {
 }
 
 body {
-  background: var(--color-body);
+  background: linear-gradient(180deg, #050507 0%, #0b0c11 40%, #101015 100%);
   color: var(--color-text-primary);
   font-family: var(--font-sans);
 }
@@ -58,6 +59,18 @@ body {
 
 .border-subtle {
   border-color: var(--color-border-subtle);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
 }
 
 .max-readable {

@@ -3,6 +3,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Anton } from "next/font/google";
+
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -16,8 +22,8 @@ const navItems = [
 
 const heroSnapshot = {
   degrees: [
-    "BSE in Mechanical Engineering (2022 - 2025)",
     "MS in Business Analytics (2026 - 2027)",
+    "BSE in Mechanical Engineering (2022 - 2025)",
   ],
   roles: [
     "General Dynamics Mission Systems",
@@ -46,12 +52,6 @@ const employmentHistory = [
       "Recommended test/tuning adjustments that reduced iteration time and improved test workflow consistency.",
     ],
   },
-  {
-    role: "Arizona Real Estate Salesperson",
-    company: "",
-    dates: "07/2022 - Present",
-    bullets: [],
-  },
 ];
 
 const education = [
@@ -66,24 +66,27 @@ const education = [
     school: "Arizona State University",
     program: "BSE in Mechanical Engineering",
     dates: "August 2022 - December 2025",
-    detail: "GPA: 3.4 / 4.0",
+    gpa: "GPA: 3.4 / 4.0",
     detailLink:
       "https://docs.google.com/spreadsheets/d/1n6-t9dWnLEzUf3ewTaFjRiUsAYlM25JsBRmEFdhw6gY/edit",
   },
   {
     school: "East Valley Institute of Technology",
     program: "Automotive Technologies",
-    dates: "2021 - 2022",
+    dates: "July 2021 - May 2022",
+    gpa: "GPA: 3.8 / 4.0 (update as needed)",
   },
   {
     school: "Chandler-Gilbert Community College",
     program: "Dual Enrollment",
-    dates: "2018 - 2022",
+    dates: "July 2018 - May 2022",
+    gpa: "GPA: 3.8 / 4.0 (update as needed)",
   },
   {
     school: "Casteel High School",
     program: "",
-    dates: "2018 - 2022",
+    dates: "July 2018 - May 2022",
+    gpa: "GPA: 4.0 / 4.0 (update as needed)",
   },
 ];
 
@@ -92,49 +95,72 @@ const independentLearning = [
   { label: "Engineering", items: ["SolidWorks", "MATLAB", "ANSYS"] },
   {
     label: "Other",
-    items: ["Chat GPT Advanced / Power User", "Wix Studio (personal website)"],
+    items: [
+      "Chat GPT Advanced / Power User",
+      "Wix Studio",
+      "Visual Studio Code",
+      "Vercel",
+      "React / Next.js",
+      "Supabase",
+    ],
   },
 ];
 
+// Replace placeholder image paths below with actual project thumbnails.
 const projects = [
   {
-    title: "Radar-Readable Sign for Autonomous Vehicles",
+    title: "RoutineOS Habit System",
+    image: "/images/projects/routineos-placeholder.jpg",
     bullets: [
-      "Engineered cavity geometry and materials to shape radar reflections for consistent multi-peak signatures.",
-      "Built and tested prototypes; compared measured radar responses vs. simulations to validate robustness in low-visibility conditions.",
-      "Iterated mounting, enclosure, and manufacturability details to improve durability and field readiness.",
+      "Daily habit engine with layered routines, sub-habits, and analytics.",
+      "Built with React / Next.js, Supabase, and Vercel auth for modern UX.",
+      "AI assistant surfaces coaching insights across accounts and dashboards.",
+    ],
+  },
+  {
+    title: "Radar-Readable Sign for Autonomous Vehicles",
+    image: "/images/projects/radar-placeholder.jpg",
+    bullets: [
+      "Shaped cavity geometries/materials so radar returns stay consistent in poor visibility.",
+      "Validated prototypes against simulation data to tune reflections before field tests.",
+      "Refined mounting + enclosure details for manufacturability and field durability.",
     ],
   },
   {
     title: "Temporal Capsule Recorder",
+    image: "/images/projects/temporal-placeholder.jpg",
     bullets: [
-      "Defined a sensor + sampling architecture prioritizing signal quality, privacy, and battery life.",
-      "Prototyped a capture pipeline with timestamped events and a minimal retrieval interface for fast recall.",
-      "Ran early user/bench tests to stress noise, memory usage, and synchronization, informing the provisional filing.",
+      "Designed low-noise sensing stack that prioritizes privacy and long-term battery life.",
+      "Built timestamped capture pipeline with fast retrieval interface for bench tests.",
+      "Stress-tested noise, memory, and sync behavior to support provisional filing.",
     ],
   },
   {
     title: "350Z Rebuild & Repairs",
+    image: "/images/projects/350z-placeholder.jpg",
     bullets: [
-      "Long-term hands-on project restoring and upgrading a Nissan 350Z - mechanical, electrical, and cosmetic.",
+      "Multi-year mechanical/electrical restoration of a Nissan 350Z platform.",
+      "Documented component tear-downs, upgrades, and cosmetic refinements.",
+      "Iterated maintenance workflows to keep the build road-ready.",
     ],
   },
 ];
 
+// Replace /images/life/... placeholders below with real travel photos when available.
 const lifeMoments = [
-  "Cusco, Peru",
-  "Ambergris Caye, Belize",
-  "Paris, France",
-  "Santorini, Greece",
-  "Amsterdam, Netherlands",
-  "Rome, Italy",
-  "Havana, Cuba",
-  "San Jose, Costa Rica",
-  "Whistler, Canada",
-  "29029 Everesting",
-  "Skiing / Snow",
-  "Running / Hiking",
-  "Volleyball",
+  { label: "Cusco, Peru", image: "/images/life/cusco.jpg" },
+  { label: "Ambergris Caye, Belize", image: "/images/life/belize.jpg" },
+  { label: "Paris, France", image: "/images/life/paris.jpg" },
+  { label: "Santorini, Greece", image: "/images/life/santorini.jpg" },
+  { label: "Amsterdam, Netherlands", image: "/images/life/amsterdam.jpg" },
+  { label: "Rome, Italy", image: "/images/life/rome.jpg" },
+  { label: "Havana, Cuba", image: "/images/life/havana.jpg" },
+  { label: "San Jose, Costa Rica", image: "/images/life/costarica.jpg" },
+  { label: "Whistler, Canada", image: "/images/life/whistler.jpg" },
+  { label: "29029 Everesting", image: "/images/life/29029.jpg" },
+  { label: "Skiing / Snow", image: "/images/life/skiing.jpg" },
+  { label: "Running / Hiking", image: "/images/life/running.jpg" },
+  { label: "Volleyball", image: "/images/life/volleyball.jpg" },
 ];
 
 const favorites = [
@@ -142,6 +168,7 @@ const favorites = [
   { label: "Favorite Music", value: "House Music" },
   { label: "Favorite TV Show", value: "Prison Break" },
   { label: "Favorite Movie", value: "21" },
+  { label: "Favorite Book", value: favoriteBook.description },
 ];
 
 const favoriteBook = {
@@ -194,11 +221,12 @@ const SplashScreen = () => (
 
 const Header = () => (
   <header className="fixed top-0 z-40 w-full border-b border-subtle bg-[#050507]/95 backdrop-blur">
-    <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-6">
+    <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-5 md:flex-row md:items-center md:justify-between md:px-6">
       <div className="flex items-center gap-4">
         <div className="relative h-12 w-12 overflow-hidden rounded-full border border-subtle bg-surface-soft">
+          {/* Replace /images/profile.jpg with your own headshot path */}
           <Image
-            src="/profile.jpg"
+            src="/images/profile.jpg"
             alt="Samantha Schmid"
             width={96}
             height={96}
@@ -209,10 +237,9 @@ const Header = () => (
           <h1 className="font-display text-xl font-semibold text-primary">
             Samantha Schmid
           </h1>
-          <p className="text-sm text-muted">Systems engineer & builder</p>
         </div>
       </div>
-      <nav className="flex flex-wrap items-center gap-3 text-xs font-medium text-primary md:text-sm">
+      <nav className={`${anton.className} flex flex-wrap items-center gap-4 text-sm uppercase text-primary md:text-base`}>
         {navItems.map((item) => (
           <Link
             key={item.href}
@@ -228,12 +255,9 @@ const Header = () => (
 );
 
 const Hero = () => (
-  <section id="hero" className="grid gap-10 pt-10 lg:grid-cols-[1.2fr_0.8fr]">
+  <section id="hero" className="grid gap-12 pt-16 lg:grid-cols-[1.2fr_0.8fr]">
     <div className="space-y-6">
-      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-        Samantha Schmid
-      </p>
-      <div className="rounded-3xl border border-subtle bg-surface p-8">
+      <div className="flex h-full flex-col rounded-3xl border border-subtle bg-surface p-8">
         <h2 className="font-display text-4xl font-semibold tracking-tight text-primary md:text-[3.25rem]">
           Samantha Schmid
         </h2>
@@ -247,7 +271,7 @@ const Hero = () => (
         </p>
       </div>
     </div>
-    <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
+    <div className="flex h-full flex-col rounded-[1.75rem] border border-subtle bg-surface p-6">
       <div className="flex items-center gap-3">
         <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-subtle bg-surface-soft">
           <Image
@@ -272,7 +296,7 @@ const Hero = () => (
         <SnapshotList label="Recent Roles" items={heroSnapshot.roles} />
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
-            Badges
+            Focus Areas
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {heroSnapshot.badges.map((badge) => (
@@ -292,7 +316,7 @@ const Hero = () => (
 
 const Employment = () => (
   <section id="employment" className="space-y-8">
-    <SectionTitle eyebrow="Professional Experience" title="Employment" />
+    <SectionTitle title="Employment" />
     <div className="grid gap-8 lg:grid-cols-2">
       {employmentHistory.map((job) => (
         <ExperienceCard key={job.role} job={job} />
@@ -304,14 +328,13 @@ const Employment = () => (
 const ExperienceCard = ({ job }) => (
   <details className="group rounded-[1.75rem] border border-subtle bg-surface p-6" open>
     <summary className="flex cursor-pointer list-none flex-col gap-2 text-left">
-      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.12em] text-soft">
-        <span>{job.dates}</span>
-        {job.company && <span className="text-soft">•</span>}
-        {job.company && <span className="text-muted">{job.company}</span>}
-      </div>
       <h3 className="font-display text-xl font-semibold tracking-tight text-primary">
         {job.role}
       </h3>
+      {job.company && (
+        <p className="text-base font-semibold text-muted">{job.company}</p>
+      )}
+      <p className="text-sm font-medium text-soft">{job.dates}</p>
     </summary>
     {job.bullets.length > 0 && (
       <ul className="mt-4 space-y-3 text-sm text-muted md:text-base">
@@ -325,7 +348,7 @@ const ExperienceCard = ({ job }) => (
 
 const Intelligence = () => (
   <section id="intelligence" className="space-y-12">
-    <SectionTitle eyebrow="Learning & Skills" title="Intelligence" />
+    <SectionTitle title="Intelligence" />
     <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
       <div className="space-y-6">
         {education.map((item) => (
@@ -375,10 +398,10 @@ const EducationCard = ({ item }) => (
         </span>
       </div>
       {item.program && (
-        <p className="text-sm text-muted">{item.program}</p>
+        <p className="text-base font-semibold text-primary">{item.program}</p>
       )}
     </summary>
-    {item.detail && <p className="mt-3 text-sm text-soft">{item.detail}</p>}
+    {item.gpa && <p className="mt-2 text-sm text-soft">{item.gpa}</p>}
     {item.detailLink && (
       <Link
         href={item.detailLink}
@@ -394,13 +417,25 @@ const EducationCard = ({ item }) => (
 
 const Projects = () => (
   <section id="projects" className="space-y-8">
-    <SectionTitle eyebrow="Builds In Progress" title="Projects" />
-    <div className="grid gap-8 md:grid-cols-3">
+    <SectionTitle title="Projects" />
+    <div className="grid gap-10 md:grid-cols-2">
       {projects.map((project) => (
         <article
           key={project.title}
           className="rounded-[1.6rem] border border-subtle bg-surface p-5"
         >
+          {project.image && (
+            <div className="mb-4 h-36 w-full overflow-hidden rounded-2xl bg-surface-soft">
+              {/* Swap the placeholder path with your project-specific image */}
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={640}
+                height={360}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          )}
           <h3 className="font-display text-xl font-semibold tracking-tight text-primary">
             {project.title}
           </h3>
@@ -418,15 +453,10 @@ const Projects = () => (
 const Resume = () => (
   <section id="resume" className="space-y-8">
     <SectionTitle
-      eyebrow="One Page"
       title="Resume"
-      description="This page expands on highlights; download my Resume for the full story."
+      description="This site highlights my work and projects. Download my one-page resume below for the full story."
     />
-    <div className="flex flex-col gap-6 md:flex-row md:items-start">
-      <p className="text-sm text-muted md:w-1/2">
-        This site expands on highlights and the full one-page resume can be
-        downloaded anytime.
-      </p>
+    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <Link
         href="/resume.pdf"
         className="inline-flex items-center justify-center rounded-full border border-subtle px-6 py-3 text-sm font-semibold text-primary transition hover:bg-surface-soft"
@@ -434,22 +464,19 @@ const Resume = () => (
         Download my Resume ⬇
       </Link>
     </div>
-    <div className="mt-2 rounded-[2rem] border-2 border-dashed border-subtle bg-surface p-12 text-center text-xs uppercase tracking-[0.1em] text-soft">
-      Resume preview placeholder
-    </div>
   </section>
 );
 
 const LifeResume = () => (
   <section id="life-resume" className="space-y-10">
-    <SectionTitle eyebrow="Beyond Work" title="Life Resume" />
+    <SectionTitle title="Life Resume" />
     <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
         Travel + Milestones
       </p>
       <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
         {lifeMoments.map((moment) => (
-          <LifeMoment key={moment} label={moment} />
+          <LifeMoment key={moment.label} {...moment} />
         ))}
       </div>
     </div>
@@ -462,9 +489,6 @@ const LifeResume = () => (
           {favoriteBook.title}
         </h3>
         <p className="text-sm text-soft">{favoriteBook.author}</p>
-        <p className="mt-3 max-readable text-sm leading-relaxed text-muted">
-          {favoriteBook.description}
-        </p>
       </article>
       <div className="rounded-[1.75rem] border border-subtle bg-surface p-6">
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
@@ -485,15 +509,27 @@ const LifeResume = () => (
   </section>
 );
 
-const LifeMoment = ({ label }) => (
-  <div className="group relative min-w-[180px] rounded-2xl border border-subtle bg-surface-soft p-4 text-center text-sm font-semibold tracking-wide text-primary transition hover:-translate-y-1 hover:bg-surface">
-    {label}
+const LifeMoment = ({ label, image }) => (
+  <div className="group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-subtle bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:bg-surface">
+    {image && (
+      <div className="h-24 w-full overflow-hidden rounded-xl bg-surface">
+        {/* Replace the placeholder path with your travel photo */}
+        <Image
+          src={image}
+          alt={label}
+          width={320}
+          height={180}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    )}
+    <p className="text-sm font-semibold text-primary">{label}</p>
   </div>
 );
 
 const Contact = () => (
   <section id="contact" className="space-y-6">
-    <SectionTitle eyebrow="Let's Connect" title="Contact" />
+    <SectionTitle title="Contact" />
     <p className="max-readable text-sm text-muted md:text-base">
       Reach out for roles that blend engineering, analytics, and product
       building.
@@ -501,7 +537,7 @@ const Contact = () => (
     <div className="flex flex-wrap gap-4">
       <Link
         href="mailto:sammieschmid22@gmail.com"
-        className="inline-flex items-center justify-center rounded-full border border-subtle bg-surface-soft px-6 py-3 text-sm font-semibold text-primary transition hover:bg-surface"
+        className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-6 py-3 text-sm font-semibold text-[#050507] transition hover:bg-accent/90"
       >
         Email me
       </Link>
@@ -509,7 +545,7 @@ const Contact = () => (
         href="https://www.linkedin.com/in/samantha-schmid/"
         target="_blank"
         rel="noreferrer"
-        className="inline-flex items-center justify-center rounded-full border border-subtle px-6 py-3 text-sm font-semibold text-primary transition hover:bg-surface-soft"
+        className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
       >
         View LinkedIn
       </Link>
@@ -517,14 +553,9 @@ const Contact = () => (
   </section>
 );
 
-const SectionTitle = ({ eyebrow, title, description }) => (
+const SectionTitle = ({ title, description }) => (
   <div className="space-y-2">
-    {eyebrow && (
-      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-        {eyebrow}
-      </p>
-    )}
-    <h2 className="font-display text-3xl font-semibold tracking-tight text-primary md:text-[2.1rem]">
+    <h2 className="font-display text-3xl font-semibold uppercase tracking-[0.08em] text-primary md:text-[2.1rem]">
       {title}
     </h2>
     {description && description.length > 0 && (
