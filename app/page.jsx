@@ -280,7 +280,7 @@ const Header = ({ activeSection }) => (
           />
         </div>
         <div>
-          <h1 className="font-display text-lg font-semibold uppercase tracking-[0.06em] text-primary md:text-xl">
+          <h1 className="font-display text-base font-semibold uppercase tracking-[0.06em] text-primary md:text-lg">
             Samantha Schmid
           </h1>
         </div>
