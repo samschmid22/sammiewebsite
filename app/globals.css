@@ -69,6 +69,13 @@ body {
   border-color: var(--color-accent);
 }
 
+.border-accent\/60,
+.border-accent\/40,
+.border-accent\/30,
+.border-accent\/25 {
+  border-color: #6b7280 !important;
+}
+
 .bg-accent {
   background-color: var(--color-accent);
 }
