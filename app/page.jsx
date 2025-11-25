@@ -110,7 +110,7 @@ const independentLearning = [
 const projects = [
   {
     title: "RoutineOS Habit System",
-    image: "/images/projects/routineos-placeholder.jpg",
+    image: "/images/routineos.png",
     bullets: [
       "Daily habit engine with layered routines, sub-habits, and analytics.",
       "Built with React / Next.js, Supabase, and Vercel auth for modern UX.",
@@ -121,7 +121,7 @@ const projects = [
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
-    image: "/images/projects/radar-placeholder.jpg",
+    image: "/images/radarsign.png",
     bullets: [
       "Shaped cavity geometries/materials so radar returns stay consistent in poor visibility.",
       "Validated prototypes against simulation data to tune reflections before field tests.",
@@ -129,17 +129,8 @@ const projects = [
     ],
   },
   {
-    title: "Temporal Capsule Recorder",
-    image: "/images/projects/temporal-placeholder.jpg",
-    bullets: [
-      "Designed low-noise sensing stack that prioritizes privacy and long-term battery life.",
-      "Built timestamped capture pipeline with fast retrieval interface for bench tests.",
-      "Stress-tested noise, memory, and sync behavior to support provisional filing.",
-    ],
-  },
-  {
     title: "350Z Rebuild & Repairs",
-    image: "/images/projects/350z-placeholder.jpg",
+    image: "/images/350z.jpeg",
     bullets: [
       "Multi-year mechanical/electrical restoration of a Nissan 350Z platform.",
       "Documented component tear-downs, upgrades, and cosmetic refinements.",
@@ -150,22 +141,22 @@ const projects = [
 
 // Replace /images/life/... placeholders below with real travel photos when available.
 const travelLocations = [
-  { label: "Cusco, Peru", image: "/images/life/cusco.jpg" },
-  { label: "Ambergris Caye, Belize", image: "/images/life/belize.jpg" },
-  { label: "Paris, France", image: "/images/life/paris.jpg" },
-  { label: "Santorini, Greece", image: "/images/life/santorini.jpg" },
-  { label: "Amsterdam, Netherlands", image: "/images/life/amsterdam.jpg" },
-  { label: "Rome, Italy", image: "/images/life/rome.jpg" },
-  { label: "Havana, Cuba", image: "/images/life/havana.jpg" },
-  { label: "San Jose, Costa Rica", image: "/images/life/costarica.jpg" },
-  { label: "Whistler, Canada", image: "/images/life/whistler.jpg" },
+  { label: "Cusco, Peru", image: "/images/peru.jpeg" },
+  { label: "Ambergris Caye, Belize", image: "/images/belize.jpeg" },
+  { label: "Paris, France", image: "/images/paris.jpeg" },
+  { label: "Santorini, Greece", image: "/images/greece.jpeg" },
+  { label: "Amsterdam, Netherlands", image: "/images/amsterdam.jpeg" },
+  { label: "Rome, Italy", image: "/images/rome.jpeg" },
+  { label: "Havana, Cuba", image: "/images/cuba.jpeg" },
+  { label: "San Jose, Costa Rica", image: "/images/costarica.JPG" },
+  { label: "Whistler, Canada", image: "/images/canada.JPG" },
 ];
 
 const lifeMilestones = [
-  { label: "29029 Everesting", image: "/images/life/29029.jpg" },
-  { label: "Skiing / Snow", image: "/images/life/skiing.jpg" },
-  { label: "Running / Hiking", image: "/images/life/running.jpg" },
-  { label: "Volleyball", image: "/images/life/volleyball.jpg" },
+  { label: "29029 Everesting", image: "/images/29029.jpg" },
+  { label: "Skiing / Snow", image: "/images/canada.JPG" },
+  { label: "Running / Hiking", image: "/images/peru.jpeg" },
+  { label: "Volleyball", image: "/images/vball.jpg" },
 ];
 
 const favoriteBook = {
@@ -512,7 +503,7 @@ const Resume = () => (
         Download my one-page resume for a concise view of my experience.
       </p>
       <Link
-        href="/resume.pdf"
+        href="/docs/resume.pdf"
         className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
       >
         Download my Resume ⬇
