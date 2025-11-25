@@ -236,17 +236,23 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-body text-primary">
       {showSplash && <SplashScreen fadeOut={fadeOutSplash} />}
-      <Header activeSection={activeSection} />
-      <main className="mx-auto max-w-5xl space-y-28 px-4 pb-24 pt-28 md:px-6 lg:pt-32">
-        <Hero />
-        <Employment />
-        <Intelligence />
-        <Projects />
-        <Resume />
-        <LifeResume />
-        <Contact />
-      </main>
-      <AIChatButton />
+      <div
+        className={`transition-opacity duration-700 ${
+          showSplash ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
+        <Header activeSection={activeSection} />
+        <main className="mx-auto max-w-5xl space-y-28 px-4 pb-24 pt-28 md:px-6 lg:pt-32">
+          <Hero />
+          <Employment />
+          <Intelligence />
+          <Projects />
+          <Resume />
+          <LifeResume />
+          <Contact />
+        </main>
+      </div>
+      <AIChatWidget />
     </div>
   );
 }
@@ -261,7 +267,9 @@ const SplashScreen = ({ fadeOut }) => (
       <h1 className="font-display text-5xl font-semibold uppercase tracking-[0.06em] text-accent drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] drop-shadow-[0_0_25px_rgba(56,189,248,0.45)] md:text-6xl">
         Samantha Schmid
       </h1>
-      <div className="h-0.5 w-24 rounded-full bg-accent/80 animate-pulse" />
+      <div className="line-track">
+        <span className="line-runner" />
+      </div>
     </div>
   </div>
 );
@@ -427,32 +435,35 @@ const Intelligence = () => (
           <EducationCard key={`${item.school}-${item.program}-${item.dates}`} item={item} />
         ))}
       </div>
-      <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
-          Independent Learning
-        </p>
-        <div className="mt-6 space-y-6">
-          {independentLearning.map((bucket) => (
-            <div key={bucket.label} className="rounded-2xl border border-accent/25 bg-surface-soft p-4 shadow-[0_0_18px_rgba(56,189,248,0.07)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.1em] text-primary">
-                {bucket.label}
-              </p>
-              <ul className="mt-3 space-y-1 text-sm text-muted">
-                {bucket.items.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+      <div className="space-y-6">
+        <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+            Independent Learning
+          </p>
+          <div className="mt-6 space-y-6">
+            {independentLearning.map((bucket) => (
+              <div key={bucket.label} className="rounded-2xl border border-accent/25 bg-surface-soft p-4 shadow-[0_0_18px_rgba(56,189,248,0.07)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.1em] text-primary">
+                  {bucket.label}
+                </p>
+                <ul className="mt-3 space-y-1 text-sm text-muted">
+                  {bucket.items.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <Link
+            href="https://drive.google.com/drive/folders/1OYvqiph0WnRPXoFnaMCaLXZ1WyeqElvf?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-accent px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent transition hover:bg-accent/10"
+          >
+            All Certifications
+          </Link>
         </div>
-        <Link
-          href="https://drive.google.com/drive/folders/1OYvqiph0WnRPXoFnaMCaLXZ1WyeqElvf?usp=sharing"
-          target="_blank"
-          rel="noreferrer"
-          className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-accent px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent transition hover:bg-accent/10"
-        >
-          All Certifications
-        </Link>
+        <FavoritesPanel />
       </div>
     </div>
   </section>
@@ -566,58 +577,62 @@ const Resume = () => (
   </section>
 );
 
-const LifeResume = () => {
+const LifeResume = () => (
+  <section id="life-resume" className="space-y-10">
+    <SectionTitle title="Life Resume" />
+    <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+        Travel
+      </p>
+      <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
+        {travelLocations.map((location) => (
+          <LifeMoment key={location.label} {...location} />
+        ))}
+      </div>
+      <p className="mt-8 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+        Milestones
+      </p>
+      <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
+        {lifeMilestones.map((moment) => (
+          <LifeMoment key={moment.label} {...moment} />
+        ))}
+      </div>
+    </div>
+    <article className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 text-sm text-muted shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+      Beyond work, I chase altitude, endurance, and stories worth retelling.
+    </article>
+  </section>
+);
+
+const FavoritesPanel = () => {
   const [openFavorite, setOpenFavorite] = useState(null);
 
   return (
-    <section id="life-resume" className="space-y-10">
-      <SectionTitle title="Life Resume" />
-      <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
-          Travel
-        </p>
-        <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
-          {travelLocations.map((location) => (
-            <LifeMoment key={location.label} {...location} />
-          ))}
-        </div>
-        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
-          Milestones
-        </p>
-        <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
-          {lifeMilestones.map((moment) => (
-            <LifeMoment key={moment.label} {...moment} />
-          ))}
-        </div>
-      </div>
-      <div className="space-y-6">
-        <article className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 text-sm text-muted shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-          Beyond work, I chase altitude, endurance, and stories worth retelling.
-        </article>
-        <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
-          Favorites
-        </p>
-          <div className="mt-4 space-y-3">
-            {favorites.map((fav, idx) => (
-              <div key={fav.label} className="rounded-xl border border-accent/25 bg-surface-soft px-4 py-3 shadow-[0_0_18px_rgba(56,189,248,0.07)]">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between text-left text-sm font-semibold text-primary"
-                  onClick={() => setOpenFavorite(openFavorite === idx ? null : idx)}
-                >
-                  <span>{fav.label}</span>
-                  <span className="text-accent">{openFavorite === idx ? "–" : "+"}</span>
-                </button>
-                {openFavorite === idx && (
-                  <p className="mt-3 text-sm text-muted">{fav.value}</p>
-                )}
-              </div>
-            ))}
+    <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+        Favorites
+      </p>
+      <div className="mt-4 space-y-3">
+        {favorites.map((fav, idx) => (
+          <div
+            key={fav.label}
+            className="rounded-xl border border-accent/25 bg-surface-soft px-4 py-3 shadow-[0_0_18px_rgba(56,189,248,0.07)]"
+          >
+            <button
+              type="button"
+              className="flex w-full items-center justify-between text-left text-sm font-semibold text-primary"
+              onClick={() => setOpenFavorite(openFavorite === idx ? null : idx)}
+            >
+              <span>{fav.label}</span>
+              <span className="text-accent">{openFavorite === idx ? "–" : "+"}</span>
+            </button>
+            {openFavorite === idx && (
+              <p className="mt-3 text-sm text-muted">{fav.value}</p>
+            )}
           </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -657,17 +672,123 @@ const LifeMoment = ({ label, image, href }) => {
   return <div className={baseClasses}>{content}</div>;
 };
 
-const AIChatButton = () => (
-  <Link
-    href="https://chat.openai.com/"
-    target="_blank"
-    rel="noreferrer"
-    className="fixed bottom-6 right-6 z-30 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-sm font-semibold uppercase tracking-[0.1em] text-[#050507] shadow-[0_12px_35px_rgba(94,209,255,0.45)] transition hover:translate-y-0.5 hover:bg-accent/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    aria-label="Chat with AI assistant"
-  >
-    AI
-  </Link>
-);
+const AIChatWidget = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const toggleWidget = () => setIsOpen((prev) => !prev);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!input.trim() || isLoading) return;
+
+    const userText = input.trim();
+    setMessages((prev) => [...prev, { from: "user", text: userText }]);
+    setInput("");
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userText }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to reach AI assistant.");
+      }
+
+      const data = await response.json();
+      setMessages((prev) => [
+        ...prev,
+        { from: "ai", text: data.reply ?? "I couldn't generate a response." },
+      ]);
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed bottom-6 right-6 z-30 flex flex-col items-end gap-3">
+      {isOpen && (
+        <div className="w-80 rounded-3xl border border-accent/30 bg-surface p-4 shadow-[0_14px_45px_rgba(94,209,255,0.25)]">
+          <div className="mb-3 flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+                AI Assistant
+              </p>
+              <p className="text-sm text-soft">Ask anything about Sammie</p>
+            </div>
+            <button
+              type="button"
+              className="rounded-full border border-accent/40 px-2 py-1 text-xs uppercase tracking-[0.1em] text-primary transition hover:border-accent hover:text-accent"
+              onClick={toggleWidget}
+            >
+              Close
+            </button>
+          </div>
+          <div className="mb-3 max-h-64 space-y-3 overflow-y-auto pr-2 text-sm">
+            {messages.length === 0 && !isLoading && (
+              <p className="text-muted">
+                Start a conversation to get tailored insights or summaries.
+              </p>
+            )}
+            {messages.map((msg, idx) => (
+              <div
+                key={`${msg.from}-${idx}`}
+                className={`rounded-2xl px-3 py-2 ${
+                  msg.from === "user"
+                    ? "ml-auto bg-accent text-[#050507]"
+                    : "mr-auto border border-accent/30 text-primary"
+                } max-w-[85%]`}
+              >
+                {msg.text}
+              </div>
+            ))}
+            {isLoading && (
+              <div className="mr-auto rounded-2xl border border-accent/30 px-3 py-2 text-muted">
+                Thinking...
+              </div>
+            )}
+          </div>
+          {error && <p className="mb-2 text-xs text-red-400">{error}</p>}
+          <form className="flex items-center gap-2" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="flex-1 rounded-full border border-accent/30 bg-surface-soft px-3 py-2 text-sm text-primary outline-none transition focus:border-accent"
+              placeholder="Ask Sammie's AI..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              disabled={isLoading}
+            />
+            <button
+              type="submit"
+              className="rounded-full bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#050507] transition hover:bg-accent/90 disabled:opacity-60"
+              disabled={isLoading}
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      )}
+      <button
+        type="button"
+        onClick={toggleWidget}
+        className="flex h-16 w-16 items-center justify-center rounded-full bg-accent text-sm font-semibold uppercase tracking-[0.1em] text-[#050507] shadow-[0_12px_35px_rgba(94,209,255,0.45)] transition hover:translate-y-0.5 hover:bg-accent/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        aria-label="Toggle AI assistant"
+      >
+        AI
+      </button>
+    </div>
+  );
+};
 
 const Contact = () => (
   <section id="contact" className="space-y-6">
@@ -684,7 +805,7 @@ const Contact = () => (
         Email me
       </Link>
       <Link
-        href="https://www.linkedin.com/in/samantha-schmid/"
+        href="https://www.linkedin.com/in/samanthaschmid2"
         target="_blank"
         rel="noreferrer"
         className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
