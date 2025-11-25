@@ -286,7 +286,7 @@ const Header = ({ activeSection }) => (
               href={item.href}
               className={`rounded-full px-3 py-1 transition ${
                 isActive ? "text-accent" : "text-primary/70"
-              } hover:bg-surface-soft hover:text-accent`}
+              } hover:bg-surface-soft hover:text-accent whitespace-nowrap`}
             >
               {item.label}
             </Link>
