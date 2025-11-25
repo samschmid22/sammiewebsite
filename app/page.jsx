@@ -265,47 +265,77 @@ const SplashScreen = ({ fadeOut }) => (
   </div>
 );
 
-const Header = ({ activeSection }) => (
-  <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
-    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
-      <div className="flex items-center gap-4">
-        <div className="relative h-24 w-24 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-28 md:w-28">
-          <Image
-            src="/images/profile.png"
-            alt="Samantha Schmid"
-            width={240}
-            height={240}
-            className="h-full w-full origin-[50%_52%] scale-[1.95] object-cover object-[50%_52%]"
-          />
-        </div>
-        <div>
-          <h1 className="font-display text-base font-semibold uppercase tracking-[0.06em] text-primary md:text-lg">
-            Samantha Schmid
-          </h1>
-        </div>
-      </div>
-      <nav
-        className={`${anton.className} flex w-full flex-wrap items-center gap-5 px-2 text-lg uppercase text-primary md:text-xl`}
+const Header = ({ activeSection }) => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const toggleMobileNav = () => setMobileNavOpen((prev) => !prev);
+  const closeMobileNav = () => setMobileNavOpen(false);
+
+  const renderNavLink = (item, extraClasses = "", onClick) => {
+    const sectionId = item.href.replace("#", "");
+    const isActive = activeSection === sectionId;
+    return (
+      <Link
+        key={`${item.href}-${extraClasses}`}
+        href={item.href}
+        onClick={onClick}
+        className={`rounded-full px-3 py-1 transition ${
+          isActive ? "text-accent" : "text-primary/70"
+        } hover:bg-surface-soft hover:text-accent whitespace-nowrap ${extraClasses}`}
       >
-        {navItems.map((item) => {
-          const sectionId = item.href.replace("#", "");
-          const isActive = activeSection === sectionId;
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`rounded-full px-3 py-1 transition ${
-                isActive ? "text-accent" : "text-primary/70"
-              } hover:bg-surface-soft hover:text-accent whitespace-nowrap`}
+        {item.label}
+      </Link>
+    );
+  };
+
+  return (
+    <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
+        <div className="flex w-full items-center gap-4">
+          <div className="relative h-24 w-24 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-28 md:w-28">
+            <Image
+              src="/images/profile.png"
+              alt="Samantha Schmid"
+              width={240}
+              height={240}
+              className="h-full w-full origin-[50%_52%] scale-[1.95] object-cover object-[50%_52%]"
+            />
+          </div>
+          <div>
+            <h1 className="font-display text-base font-semibold uppercase tracking-[0.06em] text-primary md:text-lg">
+              Samantha Schmid
+            </h1>
+          </div>
+          <button
+            type="button"
+            className="ml-auto inline-flex items-center rounded-full border border-accent/40 px-3 py-2 text-sm uppercase tracking-[0.1em] text-primary transition hover:border-accent hover:text-accent md:hidden"
+            onClick={toggleMobileNav}
+            aria-expanded={mobileNavOpen}
+            aria-label="Toggle navigation"
+          >
+            {mobileNavOpen ? "Close" : "Menu"}
+          </button>
+        </div>
+        <nav
+          className={`${anton.className} hidden w-full flex-wrap items-center gap-5 px-2 text-lg uppercase text-primary md:flex md:flex-nowrap md:text-xl`}
+        >
+          {navItems.map((item) => renderNavLink(item))}
+        </nav>
+        {mobileNavOpen && (
+          <div className="w-full md:hidden">
+            <nav
+              className={`${anton.className} flex w-full flex-col gap-3 rounded-2xl border border-accent/30 bg-surface-soft px-4 py-4 text-base uppercase text-primary`}
             >
-              {item.label}
-            </Link>
-          );
-        })}
-      </nav>
-    </div>
-  </header>
-);
+              {navItems.map((item) =>
+                renderNavLink(item, "w-full text-center", closeMobileNav)
+              )}
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
 
 const Hero = () => (
   <section id="hero" className="grid gap-10 pt-16 lg:grid-cols-2">
