@@ -276,7 +276,7 @@ const Header = ({ activeSection }) => (
           </h1>
         </div>
       </div>
-      <nav className={`${anton.className} flex flex-nowrap items-center gap-5 overflow-x-auto px-2 text-lg uppercase text-primary md:text-xl`}>
+      <nav className={`${anton.className} flex flex-nowrap items-center gap-5 px-2 text-lg uppercase text-primary md:text-xl`}>
         {navItems.map((item) => {
           const sectionId = item.href.replace("#", "");
           const isActive = activeSection === sectionId;
