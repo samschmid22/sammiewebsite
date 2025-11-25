@@ -111,21 +111,34 @@ const projects = [
   {
     title: "RoutineOS Habit System",
     image: "/images/routineos.png",
+    imageFit: "cover",
     bullets: [
       "Daily habit engine with layered routines, sub-habits, and analytics.",
       "Built with React / Next.js, Supabase, and Vercel auth for modern UX.",
       "AI assistant surfaces coaching insights across accounts and dashboards.",
     ],
-    link: "https://routineos.vercel.app/",
-    linkLabel: "Launch RoutineOS",
+    links: [
+      {
+        href: "https://routineos.vercel.app/",
+        label: "Launch RoutineOS",
+        external: true,
+      },
+    ],
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
     image: "/images/radarsign.png",
+    imageFit: "contain",
     bullets: [
       "Shaped cavity geometries/materials so radar returns stay consistent in poor visibility.",
       "Validated prototypes against simulation data to tune reflections before field tests.",
       "Refined mounting + enclosure details for manufacturability and field durability.",
+    ],
+    links: [
+      {
+        href: "/docs/capstone-final-report.pdf",
+        label: "View Capstone Report",
+      },
     ],
   },
   {
@@ -153,7 +166,11 @@ const travelLocations = [
 ];
 
 const lifeMilestones = [
-  { label: "29029 Everesting", image: "/images/29029.jpg" },
+  {
+    label: "29029 Everesting",
+    image: "/images/29029.jpg",
+    href: "https://29029everesting.com/?srsltid=AfmBOooOYDLGMXVFOuWrCgwgLr3e3LD8Gg9w7HsU8tsfllLsszOiPIjH",
+  },
   { label: "Skiing / Snow", image: "/images/canada.JPG" },
   { label: "Volleyball", image: "/images/vball.jpg" },
 ];
@@ -259,7 +276,7 @@ const Header = ({ activeSection }) => (
             alt="Samantha Schmid"
             width={96}
             height={96}
-            className="h-full w-full object-cover"
+            className="h-full w-full origin-center scale-125 object-cover object-top"
           />
         </div>
         <div>
@@ -311,7 +328,7 @@ const Hero = () => (
             alt="Samantha Schmid"
             width={88}
             height={88}
-            className="h-full w-full object-cover"
+            className="h-full w-full origin-center scale-125 object-cover object-top"
           />
         </div>
         <div>
@@ -457,14 +474,21 @@ const Projects = () => (
           className="rounded-[1.6rem] border border-accent/30 bg-surface p-5 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent"
         >
           {project.image && (
-            <div className="mb-4 h-36 w-full overflow-hidden rounded-2xl bg-surface-soft">
-              {/* Swap the placeholder path with your project-specific image */}
+            <div
+              className={`mb-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-surface-soft ${
+                project.imageFit === "contain" ? "p-4" : ""
+              }`}
+            >
               <Image
                 src={project.image}
                 alt={project.title}
                 width={640}
                 height={360}
-                className="h-full w-full object-cover"
+                className={
+                  project.imageFit === "contain"
+                    ? "h-full w-full object-contain"
+                    : "h-full w-full object-cover"
+                }
               />
             </div>
           )}
@@ -476,16 +500,27 @@ const Projects = () => (
               <li key={bullet}>• {bullet}</li>
             ))}
           </ul>
-          {project.link && (
-            <Link
-              href={project.link}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
-            >
-              {project.linkLabel || "View Project"}
-              <span aria-hidden="true">↗</span>
-            </Link>
+          {project.links && project.links.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-3">
+              {project.links.map((projectLink) => {
+                const isExternal =
+                  projectLink.external ||
+                  projectLink.href.startsWith("http://") ||
+                  projectLink.href.startsWith("https://");
+                return (
+                  <Link
+                    key={`${project.title}-${projectLink.href}`}
+                    href={projectLink.href}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    className="inline-flex items-center gap-2 rounded-full border border-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
+                  >
+                    {projectLink.label}
+                    <span aria-hidden="true">↗</span>
+                  </Link>
+                );
+              })}
+            </div>
           )}
         </article>
       ))}
@@ -565,23 +600,41 @@ const LifeResume = () => {
   );
 };
 
-const LifeMoment = ({ label, image }) => (
-  <div className="group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-accent/25 bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface">
-    {image && (
-      <div className="h-24 w-full overflow-hidden rounded-xl bg-surface">
-        {/* Replace the placeholder path with your travel photo */}
-        <Image
-          src={image}
-          alt={label}
-          width={320}
-          height={180}
-          className="h-full w-full object-cover"
-        />
-      </div>
-    )}
-    <p className="text-sm font-semibold text-primary">{label}</p>
-  </div>
-);
+const LifeMoment = ({ label, image, href }) => {
+  const baseClasses =
+    "group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-accent/25 bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface";
+  const content = (
+    <>
+      {image && (
+        <div className="h-24 w-full overflow-hidden rounded-xl bg-surface">
+          <Image
+            src={image}
+            alt={label}
+            width={320}
+            height={180}
+            className="h-full w-full object-cover"
+          />
+        </div>
+      )}
+      <p className="text-sm font-semibold text-primary">{label}</p>
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={`${baseClasses} hover:text-accent`}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return <div className={baseClasses}>{content}</div>;
+};
 
 const Contact = () => (
   <section id="contact" className="space-y-6">
