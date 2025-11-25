@@ -280,7 +280,7 @@ const Header = ({ activeSection }) => (
         </div>
       </div>
       <nav
-        className={`${anton.className} flex w-full flex-wrap items-center gap-5 overflow-x-auto px-2 text-lg uppercase text-primary md:mr-6 md:w-auto md:flex-nowrap md:text-xl`}
+        className={`${anton.className} flex w-full flex-wrap items-center gap-5 px-2 text-lg uppercase text-primary md:text-xl`}
       >
         {navItems.map((item) => {
           const sectionId = item.href.replace("#", "");
