@@ -155,7 +155,6 @@ const travelLocations = [
 const lifeMilestones = [
   { label: "29029 Everesting", image: "/images/29029.jpg" },
   { label: "Skiing / Snow", image: "/images/canada.JPG" },
-  { label: "Running / Hiking", image: "/images/peru.jpeg" },
   { label: "Volleyball", image: "/images/vball.jpg" },
 ];
 
@@ -255,9 +254,8 @@ const Header = ({ activeSection }) => (
     <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
       <div className="flex items-center gap-4">
         <div className="relative h-16 w-16 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
-          {/* Replace /images/profile.jpg with your own headshot path */}
           <Image
-            src="/images/profile.jpg"
+            src="/images/profile.png"
             alt="Samantha Schmid"
             width={96}
             height={96}
@@ -309,7 +307,7 @@ const Hero = () => (
       <div className="flex items-center gap-3">
         <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-subtle bg-surface-soft">
           <Image
-            src="/profile.jpg"
+            src="/images/profile.png"
             alt="Samantha Schmid"
             width={88}
             height={88}
