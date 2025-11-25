@@ -276,7 +276,7 @@ const Header = ({ activeSection }) => (
             alt="Samantha Schmid"
             width={200}
             height={200}
-            className="h-full w-full origin-[50%_35%] scale-[1.7] object-cover object-[50%_35%]"
+            className="h-full w-full origin-[50%_42%] scale-[1.6] object-cover object-[50%_42%]"
           />
         </div>
         <div>
