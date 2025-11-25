@@ -270,13 +270,13 @@ const Header = ({ activeSection }) => (
   <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
     <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
       <div className="flex items-center gap-4">
-        <div className="relative h-20 w-20 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
+        <div className="relative h-24 w-24 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
           <Image
             src="/images/profile.png"
             alt="Samantha Schmid"
-            width={160}
-            height={160}
-            className="h-full w-full origin-center scale-[1.55] object-cover object-top"
+            width={200}
+            height={200}
+            className="h-full w-full origin-center scale-[1.75] object-cover object-top"
           />
         </div>
         <div>
