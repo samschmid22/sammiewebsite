@@ -28,7 +28,6 @@ const heroSnapshot = {
   roles: [
     "General Dynamics Mission Systems",
     "Nissan Motor Co.",
-    "Arizona Real Estate Salesperson",
   ],
   badges: ["Engineering", "Data & Analytics", "Process Design"],
 };
