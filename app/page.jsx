@@ -270,13 +270,13 @@ const Header = ({ activeSection }) => (
   <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
     <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
       <div className="flex items-center gap-4">
-        <div className="relative h-16 w-16 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
+        <div className="relative h-20 w-20 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
           <Image
             src="/images/profile.png"
             alt="Samantha Schmid"
-            width={96}
-            height={96}
-            className="h-full w-full origin-center scale-125 object-cover object-top"
+            width={160}
+            height={160}
+            className="h-full w-full origin-center scale-[1.55] object-cover object-top"
           />
         </div>
         <div>
@@ -309,27 +309,18 @@ const Header = ({ activeSection }) => (
 );
 
 const Hero = () => (
-  <section id="hero" className="grid gap-12 pt-16 lg:grid-cols-[1.2fr_0.8fr]">
+  <section id="hero" className="grid gap-10 pt-16 lg:grid-cols-2">
     <div className="space-y-6">
       <div className="flex h-full flex-col rounded-3xl border border-accent/30 bg-surface p-8 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
-        <h2 className="font-display text-[2.5rem] font-semibold uppercase tracking-[0.06em] text-accent md:text-[3rem]">
-          Samantha Schmid
-        </h2>
-        <p className="mt-6 max-readable text-sm leading-relaxed text-muted md:text-base">
+        <p className="max-readable text-sm leading-relaxed text-muted md:text-base">
           {introParagraph}
         </p>
       </div>
     </div>
     <div className="flex h-full flex-col rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
       <div className="flex items-center gap-3">
-        <div className="relative h-14 w-14 overflow-hidden rounded-2xl border border-subtle bg-surface-soft">
-          <Image
-            src="/images/profile.png"
-            alt="Samantha Schmid"
-            width={88}
-            height={88}
-            className="h-full w-full origin-center scale-125 object-cover object-top"
-          />
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-subtle bg-surface-soft text-2xl text-accent">
+          ✦
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
@@ -555,7 +546,7 @@ const LifeResume = () => {
         <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
           Travel
         </p>
-        <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
+        <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
           {travelLocations.map((location) => (
             <LifeMoment key={location.label} {...location} />
           ))}
@@ -563,7 +554,7 @@ const LifeResume = () => {
         <p className="mt-8 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
           Milestones
         </p>
-        <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
+        <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
           {lifeMilestones.map((moment) => (
             <LifeMoment key={moment.label} {...moment} />
           ))}
