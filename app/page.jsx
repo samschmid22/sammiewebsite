@@ -116,6 +116,8 @@ const projects = [
       "Built with React / Next.js, Supabase, and Vercel auth for modern UX.",
       "AI assistant surfaces coaching insights across accounts and dashboards.",
     ],
+    link: "https://routineos.vercel.app/",
+    linkLabel: "Launch RoutineOS",
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
@@ -168,9 +170,7 @@ const lifeMilestones = [
 
 const favoriteBook = {
   title: "I Will Teach You To Be Rich",
-  author: "by Ramit Sethi",
-  description:
-    "I love I Will Teach You to Be Rich because it treats money like a system with automation, checklists and simple scripts, so you can set it once and focus on life. It's practical, with clear psychology, high leverage moves like negotiation and conscious spending, and a plan you can actually execute.",
+  author: "Ramit Sethi",
 };
 
 const favorites = [
@@ -178,7 +178,10 @@ const favorites = [
   { label: "Favorite Music", value: "House Music" },
   { label: "Favorite TV Show", value: "Prison Break" },
   { label: "Favorite Movie", value: "21" },
-  { label: "Favorite Book", value: favoriteBook.description },
+  {
+    label: "Favorite Book",
+    value: `${favoriteBook.title} by ${favoriteBook.author}`,
+  },
 ];
 
 const introParagraph =
@@ -276,7 +279,9 @@ const Header = ({ activeSection }) => (
           </h1>
         </div>
       </div>
-      <nav className={`${anton.className} flex flex-nowrap items-center gap-5 px-2 text-lg uppercase text-primary md:text-xl`}>
+      <nav
+        className={`${anton.className} flex w-full flex-wrap items-center gap-5 overflow-x-auto px-2 text-lg uppercase text-primary md:mr-6 md:w-auto md:flex-nowrap md:text-xl`}
+      >
         {navItems.map((item) => {
           const sectionId = item.href.replace("#", "");
           const isActive = activeSection === sectionId;
@@ -482,6 +487,17 @@ const Projects = () => (
               <li key={bullet}>• {bullet}</li>
             ))}
           </ul>
+          {project.link && (
+            <Link
+              href={project.link}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
+            >
+              {project.linkLabel || "View Project"}
+              <span aria-hidden="true">↗</span>
+            </Link>
+          )}
         </article>
       ))}
     </div>
