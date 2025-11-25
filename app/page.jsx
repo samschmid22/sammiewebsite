@@ -36,7 +36,7 @@ const heroSnapshot = {
 const employmentHistory = [
   {
     role: "Manufacturing Engineer Intern",
-    company: "General Dynamics Mission Systems - AMDR",
+    company: "General Dynamics Mission Systems",
     dates: "09/2025 - 11/2025",
     bullets: [
       "Supported manufacturing engineering for the Air and Missile Defense Radar (AMDR) program.",
@@ -147,7 +147,7 @@ const projects = [
 ];
 
 // Replace /images/life/... placeholders below with real travel photos when available.
-const lifeMoments = [
+const travelLocations = [
   { label: "Cusco, Peru", image: "/images/life/cusco.jpg" },
   { label: "Ambergris Caye, Belize", image: "/images/life/belize.jpg" },
   { label: "Paris, France", image: "/images/life/paris.jpg" },
@@ -157,6 +157,9 @@ const lifeMoments = [
   { label: "Havana, Cuba", image: "/images/life/havana.jpg" },
   { label: "San Jose, Costa Rica", image: "/images/life/costarica.jpg" },
   { label: "Whistler, Canada", image: "/images/life/whistler.jpg" },
+];
+
+const lifeMilestones = [
   { label: "29029 Everesting", image: "/images/life/29029.jpg" },
   { label: "Skiing / Snow", image: "/images/life/skiing.jpg" },
   { label: "Running / Hiking", image: "/images/life/running.jpg" },
@@ -183,16 +186,48 @@ const introParagraph =
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
+  const [fadeOutSplash, setFadeOutSplash] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 1800);
-    return () => clearTimeout(timer);
+    const fadeTimer = setTimeout(() => setFadeOutSplash(true), 1200);
+    const hideTimer = setTimeout(() => setShowSplash(false), 1800);
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navItems.map((item) => item.href.replace("#", ""));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.35, rootMargin: "-20% 0px -20% 0px" }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-body text-primary">
-      {showSplash && <SplashScreen />}
-      <Header />
+      {showSplash && <SplashScreen fadeOut={fadeOutSplash} />}
+      <Header activeSection={activeSection} />
       <main className="mx-auto max-w-5xl space-y-28 px-4 pb-24 pt-28 md:px-6 lg:pt-32">
         <Hero />
         <Employment />
@@ -206,10 +241,14 @@ export default function Home() {
   );
 }
 
-const SplashScreen = () => (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-body">
+const SplashScreen = ({ fadeOut }) => (
+  <div
+    className={`fixed inset-0 z-50 flex items-center justify-center bg-body transition-opacity duration-500 ${
+      fadeOut ? "opacity-0" : "opacity-100"
+    }`}
+  >
     <div className="flex flex-col items-center gap-4">
-      <h1 className="font-display text-5xl font-semibold uppercase tracking-[0.06em] text-accent drop-shadow-[0_0_25px_rgba(56,189,248,0.45)] md:text-6xl">
+      <h1 className="font-display text-5xl font-semibold uppercase tracking-[0.06em] text-accent drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] drop-shadow-[0_0_25px_rgba(56,189,248,0.45)] md:text-6xl">
         Samantha Schmid
       </h1>
       <div className="h-0.5 w-24 rounded-full bg-accent/80 animate-pulse" />
@@ -217,11 +256,11 @@ const SplashScreen = () => (
   </div>
 );
 
-const Header = () => (
+const Header = ({ activeSection }) => (
   <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
-    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
+    <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
       <div className="flex items-center gap-4">
-        <div className="relative h-12 w-12 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
+        <div className="relative h-16 w-16 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)]">
           {/* Replace /images/profile.jpg with your own headshot path */}
           <Image
             src="/images/profile.jpg"
@@ -232,21 +271,27 @@ const Header = () => (
           />
         </div>
         <div>
-          <h1 className="font-display text-2xl font-semibold uppercase tracking-[0.06em] text-primary">
+          <h1 className="font-display text-xl font-semibold uppercase tracking-[0.06em] text-primary md:text-2xl">
             Samantha Schmid
           </h1>
         </div>
       </div>
-      <nav className={`${anton.className} flex flex-wrap items-center gap-4 text-base uppercase text-primary md:text-lg`}>
-        {navItems.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="rounded-full px-3 py-1 transition hover:bg-surface-soft hover:text-primary"
-          >
-            {item.label}
-          </Link>
-        ))}
+      <nav className={`${anton.className} flex flex-wrap items-center gap-4 text-lg uppercase text-primary md:text-xl`}>
+        {navItems.map((item) => {
+          const sectionId = item.href.replace("#", "");
+          const isActive = activeSection === sectionId;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`rounded-full px-3 py-1 transition ${
+                isActive ? "text-accent" : "text-primary/70"
+              } hover:bg-surface-soft hover:text-accent`}
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
     </div>
   </header>
@@ -256,7 +301,7 @@ const Hero = () => (
   <section id="hero" className="grid gap-12 pt-16 lg:grid-cols-[1.2fr_0.8fr]">
     <div className="space-y-6">
       <div className="flex h-full flex-col rounded-3xl border border-accent/30 bg-surface p-8 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
-        <h2 className="font-display text-4xl font-semibold uppercase tracking-[0.06em] text-primary md:text-[3.25rem]">
+        <h2 className="font-display text-[2.5rem] font-semibold uppercase tracking-[0.06em] text-accent md:text-[3rem]">
           Samantha Schmid
         </h2>
         <p className="mt-6 max-readable text-sm leading-relaxed text-muted md:text-base">
@@ -369,7 +414,7 @@ const Intelligence = () => (
           ))}
         </div>
         <Link
-          href="https://www.samanthaschmid.info/intelligence"
+          href="https://drive.google.com/drive/folders/1OYvqiph0WnRPXoFnaMCaLXZ1WyeqElvf?usp=sharing"
           target="_blank"
           rel="noreferrer"
           className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-accent px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent transition hover:bg-accent/10"
@@ -384,17 +429,15 @@ const Intelligence = () => (
 const EducationCard = ({ item }) => (
   <details className="group rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
-          {item.school}
-        </h3>
-        <span className="text-xs font-medium uppercase tracking-[0.12em] text-soft">
-          {item.dates}
-        </span>
-      </div>
+      <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
+        {item.school}
+      </h3>
       {item.program && (
         <p className="text-base font-semibold text-primary">{item.program}</p>
       )}
+      <p className="text-xs font-medium uppercase tracking-[0.12em] text-soft">
+        {item.dates}
+      </p>
     </summary>
     {item.gpa && <p className="mt-2 text-sm text-soft">{item.gpa}</p>}
     {item.detailLink && (
@@ -468,12 +511,20 @@ const LifeResume = () => {
   return (
     <section id="life-resume" className="space-y-10">
       <SectionTitle title="Life Resume" />
-    <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
-            Travel + Milestones
-          </p>
+      <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          Travel
+        </p>
         <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
-          {lifeMoments.map((moment) => (
+          {travelLocations.map((location) => (
+            <LifeMoment key={location.label} {...location} />
+          ))}
+        </div>
+        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          Milestones
+        </p>
+        <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
+          {lifeMilestones.map((moment) => (
             <LifeMoment key={moment.label} {...moment} />
           ))}
         </div>
@@ -555,7 +606,7 @@ const Contact = () => (
 
 const SectionTitle = ({ title, description }) => (
   <div className="space-y-3">
-    <h2 className="font-display text-3xl font-semibold uppercase tracking-[0.06em] text-primary md:text-[2.1rem]">
+    <h2 className="font-display text-3xl font-semibold uppercase tracking-[0.06em] text-accent md:text-[2.1rem]">
       {title}
     </h2>
     <div className="h-px w-12 bg-accent" />
