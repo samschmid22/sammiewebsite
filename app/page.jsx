@@ -276,7 +276,7 @@ const Header = ({ activeSection }) => (
             alt="Samantha Schmid"
             width={200}
             height={200}
-            className="h-full w-full origin-center scale-[1.75] object-cover object-top"
+            className="h-full w-full origin-[50%_40%] scale-[1.85] object-cover"
           />
         </div>
         <div>
@@ -312,7 +312,7 @@ const Hero = () => (
   <section id="hero" className="grid gap-10 pt-16 lg:grid-cols-2">
     <div className="space-y-6">
       <div className="flex h-full flex-col rounded-3xl border border-accent/30 bg-surface p-8 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
-        <p className="max-readable text-sm leading-relaxed text-muted md:text-base">
+        <p className="max-readable text-base leading-relaxed text-muted md:text-lg">
           {introParagraph}
         </p>
       </div>
