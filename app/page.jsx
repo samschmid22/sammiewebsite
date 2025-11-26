@@ -14,7 +14,7 @@ import {
   travelLocations,
   lifeMilestones,
   favorites,
-} from "../data/siteContent";
+} from "@/data/siteContent";
 
 const anton = Anton({
   subsets: ["latin"],
