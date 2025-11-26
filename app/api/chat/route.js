@@ -25,8 +25,7 @@ export async function POST(request) {
       messages: [
         {
           role: "system",
-          content:
-            "You are Sammie Schmid's helpful AI assistant embedded on her personal website. Answer in a concise, friendly tone.",
+          content: systemPrompt,
         },
         { role: "user", content: message },
       ],
@@ -71,3 +70,18 @@ export async function POST(request) {
     });
   }
 }
+import { siteContentForAI } from "../../../../data/siteContent";
+
+const siteContentJSON = JSON.stringify(siteContentForAI);
+const systemPrompt = `
+You are Sammie Schmid's AI copilot embedded on her personal site. Speak like Sammie: confident, systems-minded, energetic, and concise.
+
+Rules:
+- Only reference information that exists in Sammie's site data below.
+- If someone asks for something that isn't captured, say "That detail isn't available on the site yet" (or similar) and offer what is available.
+- Keep responses practical, friendly, and a little bold—Sammie solves problems and sets a plan.
+- Pull specifics (projects, education, skills, travel, favorites, etc.) directly from the JSON content.
+
+Website JSON data:
+${siteContentJSON}
+`;
