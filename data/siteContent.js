@@ -123,22 +123,20 @@ export const projects = [
   {
     title: "The Human Reset",
     subtitle:
-      "A self-designed framework for rebuilding health, clarity, and discipline from the ground up.",
+      "A grounded reset system for rebuilding health, clarity, and discipline.",
     image: null,
-    tags: ["Writing", "Health", "Systems", "Self-Improvement"],
+    tags: ["Writing", "Systems", "Health", "Self-Improvement"],
     description:
-      "The Human Reset is a structured reset system I built to help people rebuild their mind, body, habits, and environments—without overwhelm or fake wellness culture. It’s built from real research, trial, and personal experience. The book breaks down health, daily discipline, environment design, mindset, and self-care into clear steps that anyone can follow.",
+      "The Human Reset is a simple, structured framework I created to help people rebuild their health, habits, and mental clarity—without the overwhelm of modern wellness culture. It distills the fundamentals into clean, actionable steps anyone can follow.",
     includes: [
-      "a complete reset framework",
-      "daily rituals and checklists",
-      "non-toxic living and environment design",
-      "habit systems and routines",
-      "nutrition + health basics",
-      "mental clarity practices",
-      "long-term maintenance strategy",
+      "reset framework",
+      "daily rituals",
+      "environment design",
+      "habit and routine systems",
+      "nutrition + clarity basics",
     ],
     purpose:
-      "To give people a grounded, science-backed, step-by-step way to rebuild their life—physically, mentally, and environmentally.",
+      "To give people a clear, science-grounded way to reset their life and keep it that way.",
     bullets: [],
     links: [
       {
