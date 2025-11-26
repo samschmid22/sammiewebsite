@@ -150,9 +150,11 @@ const Header = ({ activeSection }) => {
             />
           </div>
           <div>
-            <h1 className="font-display text-base font-semibold uppercase tracking-[0.06em] text-primary md:text-lg">
-              Samantha Schmid
-            </h1>
+            <p className="font-display text-base font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-lg">
+              Samantha
+              <br />
+              Schmid
+            </p>
           </div>
           <button
             type="button"
