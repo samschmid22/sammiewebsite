@@ -139,7 +139,7 @@ export const projects = [
     bullets: [],
     links: [
       {
-        href: "/docs/the-human-reset.pdf",
+        href: "/docs/thehumanreset.pdf",
         label: "Download PDF",
       },
     ],
