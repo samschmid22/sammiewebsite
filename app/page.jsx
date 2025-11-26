@@ -573,7 +573,7 @@ const AIChatWidget = () => {
               Close
             </button>
           </div>
-          <div className="mb-3 max-h-64 space-y-3 overflow-y-auto pr-2 text-sm">
+          <div className="mb-3 flex max-h-64 flex-col space-y-3 overflow-y-auto pr-2 text-sm">
             {messages.length === 0 && !isLoading && (
               <p className="text-muted">
                 Start a conversation to get tailored insights or summaries.
@@ -582,10 +582,10 @@ const AIChatWidget = () => {
             {messages.map((msg, idx) => (
               <div
                 key={`${msg.from}-${idx}`}
-                className={`max-w-[85%] rounded-2xl px-3 py-2 text-left ${
+                className={`max-w-[85%] w-fit rounded-2xl px-3 py-2 text-left ${
                   msg.from === "user"
-                    ? "ml-auto bg-accent text-[#050507]"
-                    : "mr-auto border border-accent/30 text-primary"
+                    ? "self-end bg-accent text-[#050507]"
+                    : "self-start border border-accent/30 text-primary"
                 }`}
               >
                 {msg.text}
