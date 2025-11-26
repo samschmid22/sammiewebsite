@@ -243,8 +243,8 @@ const Employment = () => (
 );
 
 const ExperienceCard = ({ job }) => (
-  <details className="group rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent" open>
-    <summary className="flex cursor-pointer list-none flex-col gap-2 text-left">
+  <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent">
+    <div className="flex flex-col gap-2 text-left">
       <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
         {job.role}
       </h3>
@@ -254,7 +254,7 @@ const ExperienceCard = ({ job }) => (
         </p>
       )}
       <p className="text-sm font-medium text-soft">{job.dates}</p>
-    </summary>
+    </div>
     {job.bullets.length > 0 && (
       <ul className="mt-4 space-y-3 text-sm text-muted md:text-base">
         {job.bullets.map((bullet) => (
@@ -262,7 +262,7 @@ const ExperienceCard = ({ job }) => (
         ))}
       </ul>
     )}
-  </details>
+  </div>
 );
 
 const Intelligence = () => (
