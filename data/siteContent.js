@@ -121,6 +121,33 @@ export const projects = [
     ],
   },
   {
+    title: "The Human Reset",
+    subtitle:
+      "A self-designed framework for rebuilding health, clarity, and discipline from the ground up.",
+    image: null,
+    tags: ["Writing", "Health", "Systems", "Self-Improvement"],
+    description:
+      "The Human Reset is a structured reset system I built to help people rebuild their mind, body, habits, and environments—without overwhelm or fake wellness culture. It’s built from real research, trial, and personal experience. The book breaks down health, daily discipline, environment design, mindset, and self-care into clear steps that anyone can follow.",
+    includes: [
+      "a complete reset framework",
+      "daily rituals and checklists",
+      "non-toxic living and environment design",
+      "habit systems and routines",
+      "nutrition + health basics",
+      "mental clarity practices",
+      "long-term maintenance strategy",
+    ],
+    purpose:
+      "To give people a grounded, science-backed, step-by-step way to rebuild their life—physically, mentally, and environmentally.",
+    bullets: [],
+    links: [
+      {
+        href: "#",
+        label: "Download PDF",
+      },
+    ],
+  },
+  {
     title: "350Z Rebuild & Repairs",
     image: "/images/350z.jpeg",
     bullets: [

@@ -346,12 +346,12 @@ const Projects = () => (
           key={project.title}
           className="rounded-[1.6rem] border border-accent/30 bg-surface p-5 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent"
         >
-          {project.image && (
-            <div
-              className={`mb-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-surface-soft ${
-                project.imageFit === "contain" ? "p-4" : ""
-              }`}
-            >
+          <div
+            className={`mb-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-surface-soft ${
+              project.imageFit === "contain" ? "p-4" : ""
+            }`}
+          >
+            {project.image ? (
               <Image
                 src={project.image}
                 alt={project.title}
@@ -363,16 +363,57 @@ const Projects = () => (
                     : "h-full w-full object-cover"
                 }
               />
-            </div>
-          )}
+            ) : (
+              <div className="flex h-full w-full items-center justify-center text-sm uppercase tracking-[0.15em] text-soft">
+                Image coming soon
+              </div>
+            )}
+          </div>
           <h3 className="font-display text-lg font-semibold uppercase tracking-[0.08em] text-primary">
             {project.title}
           </h3>
-          <ul className="mt-4 space-y-3 text-sm text-muted md:text-base">
-            {project.bullets.map((bullet) => (
-              <li key={bullet}>• {bullet}</li>
-            ))}
-          </ul>
+          {project.subtitle && (
+            <p className="mt-2 text-sm font-medium text-accent">{project.subtitle}</p>
+          )}
+          {project.tags && project.tags.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-accent/40 px-3 py-1 text-xs uppercase tracking-[0.08em] text-soft"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+          {project.description && (
+            <p className="mt-4 text-sm text-muted md:text-base">{project.description}</p>
+          )}
+          {project.bullets.length > 0 && (
+            <ul className="mt-4 space-y-3 text-sm text-muted md:text-base">
+              {project.bullets.map((bullet) => (
+                <li key={bullet}>• {bullet}</li>
+              ))}
+            </ul>
+          )}
+          {project.includes && project.includes.length > 0 && (
+            <div className="mt-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
+                What it includes
+              </p>
+              <ul className="mt-2 space-y-2 text-sm text-muted md:text-base">
+                {project.includes.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {project.purpose && (
+            <p className="mt-4 text-sm font-medium text-primary">
+              <span className="text-accent">Purpose:</span> {project.purpose}
+            </p>
+          )}
           {project.links && project.links.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-3">
               {project.links.map((projectLink) => {
