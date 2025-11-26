@@ -138,9 +138,9 @@ const Header = ({ activeSection }) => {
 
   return (
     <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
         <div className="flex w-full items-center gap-4">
-          <div className="relative h-24 w-24 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-28 md:w-28">
+          <div className="relative h-20 w-20 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-24 md:w-24">
             <Image
               src="/images/profile.png"
               alt="Samantha Schmid"
