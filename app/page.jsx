@@ -582,11 +582,11 @@ const AIChatWidget = () => {
             {messages.map((msg, idx) => (
               <div
                 key={`${msg.from}-${idx}`}
-                className={`rounded-2xl px-3 py-2 ${
+                className={`max-w-[85%] rounded-2xl px-3 py-2 text-left ${
                   msg.from === "user"
                     ? "ml-auto bg-accent text-[#050507]"
                     : "mr-auto border border-accent/30 text-primary"
-                } max-w-[85%]`}
+                }`}
               >
                 {msg.text}
               </div>
@@ -598,10 +598,10 @@ const AIChatWidget = () => {
             )}
           </div>
           {error && <p className="mb-2 text-xs text-red-400">{error}</p>}
-          <form className="flex items-center gap-2" onSubmit={handleSubmit}>
+          <form className="flex items-end gap-2" onSubmit={handleSubmit}>
             <input
               type="text"
-              className="flex-1 rounded-full border border-accent/30 bg-surface-soft px-3 py-2 text-sm text-primary outline-none transition focus:border-accent"
+              className="flex-1 rounded-2xl border border-accent/30 bg-surface-soft px-3 py-2 text-sm text-primary outline-none transition focus:border-accent"
               placeholder="Ask Sammie's AI..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
