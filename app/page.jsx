@@ -188,7 +188,7 @@ const Header = ({ activeSection }) => {
 };
 
 const Hero = () => (
-  <section id="hero" className="grid gap-10 pt-16 lg:grid-cols-2">
+  <section id="hero" className="grid gap-10 scroll-mt-32 pt-16 lg:grid-cols-2">
     <div className="space-y-6">
       <div className="flex h-full flex-col rounded-3xl border border-accent/30 bg-surface p-8 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
         <p className="max-readable text-base leading-relaxed text-muted md:text-lg">
@@ -234,7 +234,7 @@ const Hero = () => (
 );
 
 const Employment = () => (
-  <section id="employment" className="space-y-8">
+  <section id="employment" className="space-y-8 scroll-mt-32">
     <SectionTitle title="Employment" />
     <div className="grid gap-8 lg:grid-cols-2">
       {employmentHistory.map((job) => (
@@ -268,7 +268,7 @@ const ExperienceCard = ({ job }) => (
 );
 
 const Intelligence = () => (
-  <section id="intelligence" className="space-y-12">
+  <section id="intelligence" className="space-y-12 scroll-mt-32">
     <SectionTitle title="Intelligence" />
     <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
       <div className="space-y-6">
@@ -338,7 +338,7 @@ const EducationCard = ({ item }) => (
 );
 
 const Projects = () => (
-  <section id="projects" className="space-y-8">
+  <section id="projects" className="space-y-8 scroll-mt-32">
     <SectionTitle title="Projects" />
     <div className="grid gap-10 md:grid-cols-2">
       {projects.map((project) => (
@@ -443,7 +443,7 @@ const Projects = () => (
 );
 
 const Resume = () => (
-  <section id="resume" className="space-y-8">
+  <section id="resume" className="space-y-8 scroll-mt-32">
     <SectionTitle title="Resume" />
     <div className="flex flex-col gap-3 text-sm text-muted md:flex-row md:items-center md:gap-6 md:text-base">
       <p className="max-readable">
@@ -460,7 +460,7 @@ const Resume = () => (
 );
 
 const LifeResume = () => (
-  <section id="life-resume" className="space-y-10">
+  <section id="life-resume" className="space-y-10 scroll-mt-32">
     <SectionTitle title="Life Resume" />
     <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
       <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
@@ -673,7 +673,7 @@ const AIChatWidget = () => {
 };
 
 const Contact = () => (
-  <section id="contact" className="space-y-6">
+  <section id="contact" className="space-y-6 scroll-mt-32">
     <SectionTitle title="Contact" />
     <p className="max-readable text-sm text-muted md:text-base">
       Reach out for roles that blend engineering, analytics, and product
