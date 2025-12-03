@@ -13,7 +13,7 @@ const syncopate = Syncopate({
 });
 
 export const metadata = {
-  title: "Sammie Schmid",
+  title: "Samantha Schmid",
   description: "Portfolio for Samantha Schmid",
 };
 
