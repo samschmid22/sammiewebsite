@@ -103,7 +103,7 @@ const SplashScreen = ({ fadeOut }) => (
     }`}
   >
     <div className="flex flex-col items-center gap-4">
-      <h1 className="font-display text-5xl font-semibold uppercase tracking-[0.06em] text-accent drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] drop-shadow-[0_0_25px_rgba(56,189,248,0.45)] md:text-6xl">
+      <h1 className="text-center font-display text-5xl font-semibold uppercase tracking-[0.06em] text-accent drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] drop-shadow-[0_0_25px_rgba(56,189,248,0.45)] md:text-6xl">
         Samantha Schmid
       </h1>
       <div className="line-track">

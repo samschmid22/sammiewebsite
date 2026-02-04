@@ -1,5 +1,5 @@
 export const introParagraph =
-  "I am Sammie Schmid. I see patterns where others see problems, and I build order that lasts. Chaos has its beauty. It's the invitation to fix things. I learn fast, think in systems, and create processes that make life safer, smarter, and more efficient. Order isn't found; it's made.";
+  "Sammie Schmid brings clarity to complex systems by seeing patterns where others see problems. With a focus on building lasting structure, her work transforms chaos into opportunity. Known for fast learning and systems thinking, she designs processes that make life safer, smarter, and more efficient. Order isn't found; it's built.";
 
 export const heroSnapshot = {
   degrees: [
