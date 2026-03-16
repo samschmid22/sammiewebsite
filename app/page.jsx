@@ -136,7 +136,7 @@ const Header = ({ activeSection }) => {
         key={`${item.href}-${extraClasses}`}
         href={item.href}
         onClick={onClick}
-        className={`whitespace-nowrap rounded-full border px-3.5 py-2 text-[0.98rem] font-semibold uppercase tracking-[0.09em] transition md:text-[1.04rem] ${
+        className={`whitespace-nowrap rounded-full border px-3 py-2 text-[1rem] font-semibold uppercase tracking-[0.08em] transition md:text-[1.08rem] lg:text-[1.14rem] ${
           isActive
             ? "border-accent/70 bg-accent/15 text-accent shadow-[0_0_20px_rgba(94,209,255,0.18)]"
             : "border-transparent text-primary/80 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
