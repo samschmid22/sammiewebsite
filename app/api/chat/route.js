@@ -1,35 +1,20 @@
 import { siteContentForAI } from "@/data/siteContent";
+import {
+  enforceRateLimit,
+  isSameOriginRequest,
+  normalizeAiReply,
+  parseAndValidateMessage,
+  validateRequestEnvelope,
+} from "@/lib/chatSecurity.mjs";
 
-export async function POST(request) {
-  try {
-    const { message } = await request.json();
+export const runtime = "nodejs";
 
-    if (!message || message.trim().length === 0) {
-      return new Response(JSON.stringify({ error: "Message is required." }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
+const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
+const OPENAI_MODEL = "gpt-4o-mini";
+const OPENAI_TIMEOUT_MS = 15_000;
+const OPENAI_MAX_TOKENS = 220;
 
-    const apiKey = process.env.OPENAI_API_KEY;
-    if (!apiKey) {
-      return new Response(
-        JSON.stringify({ error: "OpenAI API key is not configured." }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-    }
-
-    const websiteData = siteContentForAI;
-
-    const payload = {
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: `
+const SYSTEM_PROMPT = `
 You are "Sammie's AI Assistant" — a confident, clear, slightly bold but warm voice that speaks like a real person, not a corporate bio.
 
 Your job:
@@ -60,58 +45,166 @@ Absolutely avoid:
 - Placeholder text like [insert job title] or [insert company name].
 - Copying full sentences from the website content.
 - Over-explaining; keep it tight and focused.
-`,
-        },
-        {
-          role: "system",
-          content:
-            "Here is structured data about Sammie's website. Use it as factual context, not as phrasing to copy.",
-        },
-        {
-          role: "system",
-          content: JSON.stringify(websiteData),
-        },
-        { role: "user", content: message },
-      ],
-      temperature: 0.7,
-      top_p: 0.9,
-    };
+`;
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+const WEBSITE_DATA_PROMPT =
+  "Here is structured data about Sammie's website. Use it as factual context, not as phrasing to copy.";
+
+const WEBSITE_DATA_JSON = JSON.stringify(siteContentForAI);
+
+function jsonResponse(body, status, headers = {}) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+      ...headers,
+    },
+  });
+}
+
+function rateLimitHeaders(rateLimit) {
+  return {
+    "X-RateLimit-Limit": String(rateLimit.limit),
+    "X-RateLimit-Remaining": String(rateLimit.remaining),
+    "X-RateLimit-Reset": String(rateLimit.resetSeconds),
+  };
+}
+
+async function fetchOpenAI(apiKey, payload) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), OPENAI_TIMEOUT_MS);
+
+  try {
+    return await fetch(OPENAI_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify(payload),
+      signal: controller.signal,
     });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
 
-    if (!response.ok) {
-      const errorBody = await response.text();
-      console.error("OpenAI API error:", response.status, errorBody);
-      return new Response(
-        JSON.stringify({ error: "Failed to fetch AI response." }),
+export async function POST(request) {
+  let headers = {};
+
+  try {
+    if (!isSameOriginRequest(request.headers)) {
+      return jsonResponse({ error: "Cross-origin requests are not allowed." }, 403);
+    }
+
+    const rateLimit = enforceRateLimit(request.headers);
+    headers = rateLimitHeaders(rateLimit);
+
+    if (!rateLimit.allowed) {
+      return jsonResponse(
+        { error: "Too many requests. Please wait before trying again." },
+        429,
         {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
+          ...headers,
+          "Retry-After": String(rateLimit.retryAfterSeconds),
         }
       );
     }
 
-    const data = await response.json();
-    const aiMessage =
-      data?.choices?.[0]?.message?.content?.trim() ??
-      "I'm sorry, I couldn't generate a response.";
+    const envelopeError = validateRequestEnvelope(request.headers);
+    if (envelopeError) {
+      return jsonResponse({ error: envelopeError.error }, envelopeError.status, headers);
+    }
 
-    return new Response(JSON.stringify({ reply: aiMessage }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    let rawBody = "";
+    try {
+      rawBody = await request.text();
+    } catch {
+      return jsonResponse({ error: "Unable to read request body." }, 400, headers);
+    }
+
+    const parsed = parseAndValidateMessage(rawBody);
+    if (!parsed.ok) {
+      return jsonResponse({ error: parsed.error }, parsed.status, headers);
+    }
+
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      console.error("OPENAI_API_KEY is not configured on the server.");
+      return jsonResponse({ error: "AI assistant is not configured." }, 500, headers);
+    }
+
+    const payload = {
+      model: OPENAI_MODEL,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "system", content: WEBSITE_DATA_PROMPT },
+        { role: "system", content: WEBSITE_DATA_JSON },
+        { role: "user", content: parsed.message },
+      ],
+      temperature: 0.7,
+      top_p: 0.9,
+      max_tokens: OPENAI_MAX_TOKENS,
+    };
+
+    let response;
+    try {
+      response = await fetchOpenAI(apiKey, payload);
+    } catch (error) {
+      if (error && typeof error === "object" && error.name === "AbortError") {
+        return jsonResponse(
+          { error: "The assistant timed out. Please try again." },
+          504,
+          headers
+        );
+      }
+
+      console.error("OpenAI network failure.", {
+        errorName: error instanceof Error ? error.name : "UnknownError",
+      });
+      return jsonResponse(
+        { error: "AI service is temporarily unavailable." },
+        503,
+        headers
+      );
+    }
+
+    if (!response.ok) {
+      console.error("OpenAI API error.", {
+        status: response.status,
+        requestId: response.headers.get("x-request-id") ?? "n/a",
+      });
+
+      if (response.status === 429) {
+        return jsonResponse(
+          { error: "Assistant is busy. Please retry shortly." },
+          503,
+          { ...headers, "Retry-After": "20" }
+        );
+      }
+
+      if (response.status === 401 || response.status === 403) {
+        return jsonResponse({ error: "AI assistant is unavailable." }, 503, headers);
+      }
+
+      return jsonResponse({ error: "Failed to fetch AI response." }, 502, headers);
+    }
+
+    let data;
+    try {
+      data = await response.json();
+    } catch {
+      console.error("OpenAI response JSON parse failed.");
+      return jsonResponse({ error: "Invalid AI service response." }, 502, headers);
+    }
+
+    const aiMessage = normalizeAiReply(data?.choices?.[0]?.message?.content);
+    return jsonResponse({ reply: aiMessage }, 200, headers);
   } catch (error) {
-    console.error("Chat endpoint error:", error);
-    return new Response(JSON.stringify({ error: "Unexpected server error." }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
+    console.error("Chat endpoint error.", {
+      errorName: error instanceof Error ? error.name : "UnknownError",
     });
+    return jsonResponse({ error: "Unexpected server error." }, 500, headers);
   }
 }

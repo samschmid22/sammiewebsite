@@ -31,6 +31,8 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
+const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260316";
+
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -450,7 +452,7 @@ const Resume = () => (
         Download my one-page resume for a concise view of my experience.
       </p>
       <Link
-        href="/docs/resume.pdf"
+        href={RESUME_FILE_HREF}
         className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
       >
         Download my Resume ⬇
@@ -580,18 +582,25 @@ const AIChatWidget = () => {
         body: JSON.stringify({ message: userText }),
       });
 
+      const data = await response.json().catch(() => null);
+
       if (!response.ok) {
-        throw new Error("Failed to reach AI assistant.");
+        const serverMessage =
+          data && typeof data.error === "string"
+            ? data.error
+            : "Failed to reach AI assistant.";
+        throw new Error(serverMessage);
       }
 
-      const data = await response.json();
       setMessages((prev) => [
         ...prev,
         { from: "ai", text: data.reply ?? "I couldn't generate a response." },
       ]);
     } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Please try again.");
+      console.error("Chat widget error:", err);
+      setError(
+        err instanceof Error ? err.message : "Something went wrong. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -648,6 +657,7 @@ const AIChatWidget = () => {
               placeholder="Ask Sammie's AI..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              maxLength={600}
               disabled={isLoading}
             />
             <button
