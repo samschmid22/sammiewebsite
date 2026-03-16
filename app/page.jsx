@@ -257,7 +257,7 @@ const Employment = () => (
 const ExperienceCard = ({ job }) => (
   <div className="glass-panel glass-panel-hover p-6 md:p-7">
     <div className="flex flex-col gap-2 text-left">
-      <h3 className="font-display text-[0.9rem] font-semibold leading-tight tracking-[0.03em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1.02rem] lg:text-[1.08rem]">
+      <h3 className="font-display text-[0.84rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.9rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[0.94rem] lg:text-[0.98rem]">
         {job.role}
       </h3>
       {job.company && (
@@ -323,7 +323,7 @@ const Intelligence = () => (
 const EducationCard = ({ item }) => (
   <details className="glass-panel glass-panel-hover group p-6" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
-      <h3 className="font-display text-[0.96rem] font-semibold leading-tight tracking-[0.04em] text-primary md:text-[1.05rem]">
+      <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[0.98rem]">
         {item.school}
       </h3>
       {item.program && <p className="text-base font-semibold text-primary">{item.program}</p>}
@@ -377,7 +377,7 @@ const Projects = () => (
               </div>
             )}
           </div>
-          <h3 className="font-display text-[1.02rem] font-semibold leading-tight tracking-[0.04em] text-primary md:text-[1.1rem]">
+          <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.03rem]">
             {project.title}
           </h3>
           {project.subtitle && (
