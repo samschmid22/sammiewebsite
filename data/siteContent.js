@@ -89,13 +89,18 @@ export const independentLearning = [
 export const projects = [
   {
     title: "RoutineOS Habit System",
+    subtitle: "Turning consistency into a system you can actually stick to.",
     image: "/images/routineos.png",
     imageFit: "cover",
-    bullets: [
-      "Daily habit engine with layered routines, sub-habits, and analytics.",
-      "Built with React / Next.js, Supabase, and Vercel auth for modern UX.",
-      "AI assistant surfaces coaching insights across accounts and dashboards.",
-    ],
+    summary:
+      "RoutineOS helps people build momentum with routines that adapt to real life instead of breaking when a day gets messy.",
+    relevance: {
+      society:
+        "Better daily systems improve health, focus, and follow-through at scale.",
+      self: "It represents how I think: structure first, then iterate fast.",
+      technology:
+        "Built with Next.js, Supabase, and AI-driven coaching from real usage data.",
+    },
     links: [
       {
         href: "https://routineos.vercel.app/",
@@ -106,13 +111,18 @@ export const projects = [
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
+    subtitle: "Safer machine vision when weather and visibility fight back.",
     image: "/images/radarsign.png",
     imageFit: "contain",
-    bullets: [
-      "Shaped cavity geometries/materials so radar returns stay consistent in poor visibility.",
-      "Validated prototypes against simulation data to tune reflections before field tests.",
-      "Refined mounting + enclosure details for manufacturability and field durability.",
-    ],
+    summary:
+      "I engineered a sign concept that keeps radar returns consistent in low-visibility conditions so autonomous systems can make safer decisions sooner.",
+    relevance: {
+      society:
+        "More reliable sensing helps reduce edge-case road failures and accidents.",
+      self: "This project blends my mechanical design background with field reality.",
+      technology:
+        "Uses geometry, materials, and simulation to turn physics into reliable signal behavior.",
+    },
     links: [
       {
         href: "/docs/capstone-final-report.pdf",
@@ -122,21 +132,17 @@ export const projects = [
   },
   {
     title: "The Human Reset",
-    subtitle:
-      "A grounded reset system for rebuilding health, clarity, and discipline.",
+    subtitle: "A practical reset for health, clarity, and discipline.",
     image: "/images/humanresetimage.png",
-    tags: [],
-    description:
-      "The Human Reset is a simple, structured framework I created to help people rebuild their health, habits, and mental clarity—without the overwhelm of modern wellness culture. It distills the fundamentals into clean, actionable steps anyone can follow.",
-    includes: [
-      "reset framework",
-      "daily rituals",
-      "environment design",
-      "habit and routine systems",
-      "nutrition + clarity basics",
-    ],
-    purpose: null,
-    bullets: [],
+    summary:
+      "The Human Reset strips wellness back to fundamentals so people can rebuild strong habits without noise, hype, or overcomplication.",
+    relevance: {
+      society:
+        "Simple frameworks make healthier routines more accessible to more people.",
+      self: "It mirrors my own lifestyle: disciplined, intentional, and repeatable.",
+      technology:
+        "Structured content system designed to evolve into guided digital coaching.",
+    },
     links: [
       {
         href: "/docs/thehumanreset.pdf",
@@ -146,12 +152,17 @@ export const projects = [
   },
   {
     title: "350Z Rebuild & Repairs",
+    subtitle: "A long-term rebuild that sharpened systems-level problem solving.",
     image: "/images/350z.jpeg",
-    bullets: [
-      "Multi-year mechanical/electrical restoration of a Nissan 350Z platform.",
-      "Documented component tear-downs, upgrades, and cosmetic refinements.",
-      "Iterated maintenance workflows to keep the build road-ready.",
-    ],
+    summary:
+      "This rebuild turned diagnostics, failure analysis, and repair planning into a repeatable system from teardown to road-ready execution.",
+    relevance: {
+      society:
+        "Repair-first thinking extends product life and reduces unnecessary waste.",
+      self: "It taught me patience, precision, and execution under real constraints.",
+      technology:
+        "Hands-on mechanical and electrical debugging strengthened my technical instincts.",
+    },
   },
 ];
 

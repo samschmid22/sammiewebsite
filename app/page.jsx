@@ -348,14 +348,14 @@ const EducationCard = ({ item }) => (
 const Projects = () => (
   <section id="projects" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Projects" />
-    <div className="grid gap-8 md:grid-cols-2">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
         <article
           key={project.title}
-          className="glass-panel glass-panel-hover group p-5 md:p-6"
+          className="glass-panel glass-panel-hover group flex h-full flex-col p-4 md:p-5"
         >
           <div
-            className={`mb-5 flex h-52 w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
+            className={`mb-4 flex h-36 w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
               project.imageFit === "contain" ? "p-4" : ""
             }`}
           >
@@ -367,8 +367,8 @@ const Projects = () => (
                 height={360}
                 className={
                   project.imageFit === "contain"
-                    ? "h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]"
-                    : "h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                    ? "h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+                    : "h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                 }
               />
             ) : (
@@ -377,53 +377,35 @@ const Projects = () => (
               </div>
             )}
           </div>
-          <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.03rem]">
+          <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[0.95rem]">
             {project.title}
           </h3>
           {project.subtitle && (
-            <p className="mt-2 text-sm font-medium text-accent">{project.subtitle}</p>
-          )}
-          {project.tags && project.tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-accent/40 px-3 py-1 text-xs uppercase tracking-[0.08em] text-soft"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-          {project.description && (
-            <p className="mt-4 text-sm text-muted md:text-base">{project.description}</p>
-          )}
-          {project.bullets.length > 0 && (
-            <ul className="mt-4 space-y-3 text-sm text-muted md:text-base">
-              {project.bullets.map((bullet) => (
-                <li key={bullet}>• {bullet}</li>
-              ))}
-            </ul>
-          )}
-          {project.includes && project.includes.length > 0 && (
-            <div className="mt-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
-                What it includes
-              </p>
-              <ul className="mt-2 space-y-2 text-sm text-muted md:text-base">
-                {project.includes.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {project.purpose && (
-            <p className="mt-4 text-sm font-medium text-primary">
-              <span className="text-accent">Purpose:</span> {project.purpose}
+            <p className="mt-2 text-[0.8rem] font-medium leading-relaxed text-accent">
+              {project.subtitle}
             </p>
           )}
+          {project.summary && (
+            <p className="mt-3 text-[0.9rem] leading-relaxed text-muted">{project.summary}</p>
+          )}
+          {project.relevance && (
+            <div className="mt-4 grid gap-2 text-[0.78rem] leading-relaxed text-muted">
+              <p className="rounded-xl border border-accent/20 bg-surface-soft px-3 py-2">
+                <span className="font-semibold text-accent">Society:</span>{" "}
+                {project.relevance.society}
+              </p>
+              <p className="rounded-xl border border-accent/20 bg-surface-soft px-3 py-2">
+                <span className="font-semibold text-accent">Me:</span>{" "}
+                {project.relevance.self}
+              </p>
+              <p className="rounded-xl border border-accent/20 bg-surface-soft px-3 py-2">
+                <span className="font-semibold text-accent">Tech:</span>{" "}
+                {project.relevance.technology}
+              </p>
+            </div>
+          )}
           {project.links && project.links.length > 0 && (
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-auto flex flex-wrap gap-2 pt-5">
               {project.links.map((projectLink) => {
                 const isExternal =
                   projectLink.external ||
@@ -435,7 +417,7 @@ const Projects = () => (
                     href={projectLink.href}
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noreferrer" : undefined}
-                    className="inline-flex items-center gap-2 rounded-full border border-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
+                    className="inline-flex items-center gap-2 rounded-full border border-accent px-3.5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
                   >
                     {projectLink.label}
                     <span aria-hidden="true">↗</span>
