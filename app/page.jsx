@@ -136,10 +136,10 @@ const Header = ({ activeSection }) => {
         key={`${item.href}-${extraClasses}`}
         href={item.href}
         onClick={onClick}
-        className={`whitespace-nowrap rounded-full border px-4 py-2 text-[0.9rem] font-semibold uppercase tracking-[0.06em] transition md:text-[0.98rem] ${
+        className={`whitespace-nowrap rounded-full border px-3.5 py-2 text-[0.98rem] font-semibold uppercase tracking-[0.09em] transition md:text-[1.04rem] ${
           isActive
             ? "border-accent/70 bg-accent/15 text-accent shadow-[0_0_20px_rgba(94,209,255,0.18)]"
-            : "border-transparent text-primary/70 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
+            : "border-transparent text-primary/80 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
         } ${extraClasses}`}
       >
         {item.label}
@@ -149,7 +149,7 @@ const Header = ({ activeSection }) => {
 
   return (
     <header className="fixed inset-x-0 top-3 z-40 px-3 md:top-4 md:px-6">
-      <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-accent/30 bg-[rgba(16,16,21,0.82)] shadow-[0_24px_60px_rgba(5,7,12,0.65)] backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl rounded-[1.8rem] border border-accent/30 bg-[rgba(16,16,21,0.82)] shadow-[0_24px_60px_rgba(5,7,12,0.65)] backdrop-blur-xl">
         <div className="flex flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-5 md:py-4">
           <div className="flex w-full items-center gap-4 md:w-auto">
             <div className="relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-24 md:w-24">
@@ -178,7 +178,7 @@ const Header = ({ activeSection }) => {
               {mobileNavOpen ? "Close" : "Menu"}
             </button>
           </div>
-          <nav className={`${anton.className} hidden w-full flex-wrap items-center justify-end gap-2 md:flex lg:flex-nowrap`}>
+          <nav className={`${anton.className} hidden w-full items-center justify-end gap-1.5 md:flex md:flex-nowrap`}>
             {navItems.map((item) => renderNavLink(item))}
           </nav>
           {mobileNavOpen && (
@@ -355,7 +355,7 @@ const Projects = () => (
           className="glass-panel glass-panel-hover group flex h-full flex-col p-4 md:p-5"
         >
           <div
-            className={`mb-4 flex h-36 w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
+            className={`mb-4 flex h-32 w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
               project.imageFit === "contain" ? "p-4" : ""
             }`}
           >
@@ -380,32 +380,23 @@ const Projects = () => (
           <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[0.95rem]">
             {project.title}
           </h3>
-          {project.subtitle && (
+          {project.hook && (
             <p className="mt-2 text-[0.8rem] font-medium leading-relaxed text-accent">
-              {project.subtitle}
+              {project.hook}
             </p>
           )}
-          {project.summary && (
-            <p className="mt-3 text-[0.9rem] leading-relaxed text-muted">{project.summary}</p>
-          )}
-          {project.relevance && (
-            <div className="mt-4 grid gap-2 text-[0.78rem] leading-relaxed text-muted">
-              <p className="rounded-xl border border-accent/20 bg-surface-soft px-3 py-2">
-                <span className="font-semibold text-accent">Society:</span>{" "}
-                {project.relevance.society}
-              </p>
-              <p className="rounded-xl border border-accent/20 bg-surface-soft px-3 py-2">
-                <span className="font-semibold text-accent">Me:</span>{" "}
-                {project.relevance.self}
-              </p>
-              <p className="rounded-xl border border-accent/20 bg-surface-soft px-3 py-2">
-                <span className="font-semibold text-accent">Tech:</span>{" "}
-                {project.relevance.technology}
-              </p>
-            </div>
+          {project.bullets && project.bullets.length > 0 && (
+            <ul className="mt-3 space-y-1.5 text-[0.78rem] leading-relaxed text-muted">
+              {project.bullets.map((bullet) => (
+                <li key={bullet} className="flex items-start gap-2">
+                  <span className="pt-[0.2rem] text-[0.5rem] text-accent">●</span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
           )}
           {project.links && project.links.length > 0 && (
-            <div className="mt-auto flex flex-wrap gap-2 pt-5">
+            <div className="mt-auto flex flex-wrap gap-2 pt-4">
               {project.links.map((projectLink) => {
                 const isExternal =
                   projectLink.external ||

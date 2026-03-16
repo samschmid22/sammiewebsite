@@ -89,18 +89,14 @@ export const independentLearning = [
 export const projects = [
   {
     title: "RoutineOS Habit System",
-    subtitle: "Turning consistency into a system you can actually stick to.",
+    hook: "Turning discipline into a system that works in real life.",
     image: "/images/routineos.png",
     imageFit: "cover",
-    summary:
-      "RoutineOS helps people build momentum with routines that adapt to real life instead of breaking when a day gets messy.",
-    relevance: {
-      society:
-        "Better daily systems improve health, focus, and follow-through at scale.",
-      self: "It represents how I think: structure first, then iterate fast.",
-      technology:
-        "Built with Next.js, Supabase, and AI-driven coaching from real usage data.",
-    },
+    bullets: [
+      "Flexible routines built for real, messy days",
+      "Designed from personal systems and daily use",
+      "Built with Next.js, Supabase, and AI features",
+    ],
     links: [
       {
         href: "https://routineos.vercel.app/",
@@ -111,18 +107,14 @@ export const projects = [
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
-    subtitle: "Safer machine vision when weather and visibility fight back.",
+    hook: "A safer infrastructure concept for low-visibility conditions.",
     image: "/images/radarsign.png",
     imageFit: "contain",
-    summary:
-      "I engineered a sign concept that keeps radar returns consistent in low-visibility conditions so autonomous systems can make safer decisions sooner.",
-    relevance: {
-      society:
-        "More reliable sensing helps reduce edge-case road failures and accidents.",
-      self: "This project blends my mechanical design background with field reality.",
-      technology:
-        "Uses geometry, materials, and simulation to turn physics into reliable signal behavior.",
-    },
+    bullets: [
+      "Designed to stay radar-readable in poor weather",
+      "Combines mechanics, materials, and simulation",
+      "Focused on safer autonomous decision-making",
+    ],
     links: [
       {
         href: "/docs/capstone-final-report.pdf",
@@ -132,37 +124,19 @@ export const projects = [
   },
   {
     title: "The Human Reset",
-    subtitle: "A practical reset for health, clarity, and discipline.",
+    hook: "A practical framework for health, clarity, and discipline.",
     image: "/images/humanresetimage.png",
-    summary:
-      "The Human Reset strips wellness back to fundamentals so people can rebuild strong habits without noise, hype, or overcomplication.",
-    relevance: {
-      society:
-        "Simple frameworks make healthier routines more accessible to more people.",
-      self: "It mirrors my own lifestyle: disciplined, intentional, and repeatable.",
-      technology:
-        "Structured content system designed to evolve into guided digital coaching.",
-    },
+    bullets: [
+      "Simplifies wellness into habits that actually stick",
+      "Built from real routines, standards, and lived experience",
+      "Structured to evolve into a digital product",
+    ],
     links: [
       {
         href: "/docs/thehumanreset.pdf",
         label: "Download PDF",
       },
     ],
-  },
-  {
-    title: "350Z Rebuild & Repairs",
-    subtitle: "A long-term rebuild that sharpened systems-level problem solving.",
-    image: "/images/350z.jpeg",
-    summary:
-      "This rebuild turned diagnostics, failure analysis, and repair planning into a repeatable system from teardown to road-ready execution.",
-    relevance: {
-      society:
-        "Repair-first thinking extends product life and reduces unnecessary waste.",
-      self: "It taught me patience, precision, and execution under real constraints.",
-      technology:
-        "Hands-on mechanical and electrical debugging strengthened my technical instincts.",
-    },
   },
 ];
 
