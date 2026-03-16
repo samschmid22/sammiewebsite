@@ -138,6 +138,16 @@ export const projects = [
       },
     ],
   },
+  {
+    title: "350Z Rebuild & Repairs",
+    hook: "A long-term rebuild that sharpened systems-level problem solving.",
+    image: "/images/350z.jpeg",
+    bullets: [
+      "Hands-on mechanical and electrical diagnostics",
+      "Multi-year rebuild from teardown to reliable daily use",
+      "Built repeatable repair workflows under real constraints",
+    ],
+  },
 ];
 
 export const travelLocations = [
