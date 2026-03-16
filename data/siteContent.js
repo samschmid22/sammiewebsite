@@ -110,6 +110,7 @@ export const projects = [
     hook: "A safer infrastructure concept for low-visibility conditions.",
     image: "/images/radarsign.png",
     imageFit: "contain",
+    imageMode: "portrait",
     bullets: [
       "Designed to stay radar-readable in poor weather",
       "Combines mechanics, materials, and simulation",

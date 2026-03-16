@@ -349,76 +349,83 @@ const Projects = () => (
   <section id="projects" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Projects" />
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((project) => (
-        <article
-          key={project.title}
-          className="glass-panel glass-panel-hover group flex h-full flex-col p-4 md:p-5"
-        >
-          <div
-            className={`mb-4 flex h-32 w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
-              project.imageFit === "contain" ? "p-4" : ""
-            }`}
+      {projects.map((project) => {
+        const isPortrait = project.imageMode === "portrait";
+        return (
+          <article
+            key={project.title}
+            className="glass-panel glass-panel-hover group flex h-full flex-col p-4 md:p-5"
           >
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={640}
-                height={360}
-                className={
-                  project.imageFit === "contain"
-                    ? "h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
-                    : "h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                }
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-sm uppercase tracking-[0.15em] text-soft">
-                Image coming soon
+            <div
+              className={`mb-4 flex w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
+                isPortrait ? "h-40" : "h-32"
+              } ${
+                project.imageFit === "contain" ? (isPortrait ? "p-0" : "p-4") : ""
+              }`}
+            >
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={640}
+                  height={360}
+                  className={
+                    isPortrait
+                      ? "h-full w-auto max-w-none scale-[1.35] object-contain transition duration-500 group-hover:scale-[1.42]"
+                      : project.imageFit === "contain"
+                        ? "h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+                        : "h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  }
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-sm uppercase tracking-[0.15em] text-soft">
+                  Image coming soon
+                </div>
+              )}
+            </div>
+            <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[0.95rem]">
+              {project.title}
+            </h3>
+            {project.hook && (
+              <p className="mt-2 text-[0.8rem] font-medium leading-relaxed text-accent">
+                {project.hook}
+              </p>
+            )}
+            {project.bullets && project.bullets.length > 0 && (
+              <ul className="mt-3 space-y-1.5 text-[0.78rem] leading-relaxed text-muted">
+                {project.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2">
+                    <span className="pt-[0.2rem] text-[0.5rem] text-accent">●</span>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {project.links && project.links.length > 0 && (
+              <div className="mt-auto flex flex-wrap gap-2 pt-4">
+                {project.links.map((projectLink) => {
+                  const isExternal =
+                    projectLink.external ||
+                    projectLink.href.startsWith("http://") ||
+                    projectLink.href.startsWith("https://");
+                  return (
+                    <Link
+                      key={`${project.title}-${projectLink.href}`}
+                      href={projectLink.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noreferrer" : undefined}
+                      className="inline-flex items-center gap-2 rounded-full border border-accent px-3.5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
+                    >
+                      {projectLink.label}
+                      <span aria-hidden="true">↗</span>
+                    </Link>
+                  );
+                })}
               </div>
             )}
-          </div>
-          <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[0.95rem]">
-            {project.title}
-          </h3>
-          {project.hook && (
-            <p className="mt-2 text-[0.8rem] font-medium leading-relaxed text-accent">
-              {project.hook}
-            </p>
-          )}
-          {project.bullets && project.bullets.length > 0 && (
-            <ul className="mt-3 space-y-1.5 text-[0.78rem] leading-relaxed text-muted">
-              {project.bullets.map((bullet) => (
-                <li key={bullet} className="flex items-start gap-2">
-                  <span className="pt-[0.2rem] text-[0.5rem] text-accent">●</span>
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-          {project.links && project.links.length > 0 && (
-            <div className="mt-auto flex flex-wrap gap-2 pt-4">
-              {project.links.map((projectLink) => {
-                const isExternal =
-                  projectLink.external ||
-                  projectLink.href.startsWith("http://") ||
-                  projectLink.href.startsWith("https://");
-                return (
-                  <Link
-                    key={`${project.title}-${projectLink.href}`}
-                    href={projectLink.href}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noreferrer" : undefined}
-                    className="inline-flex items-center gap-2 rounded-full border border-accent px-3.5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
-                  >
-                    {projectLink.label}
-                    <span aria-hidden="true">↗</span>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-        </article>
-      ))}
+          </article>
+        );
+      })}
     </div>
   </section>
 );
