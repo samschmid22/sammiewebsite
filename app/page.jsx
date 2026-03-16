@@ -33,7 +33,6 @@ const navItems = [
 
 const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260316";
 
-
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
   const [fadeOutSplash, setFadeOutSplash] = useState(false);
@@ -75,15 +74,23 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-body text-primary">
+    <div className="page-shell min-h-screen bg-body text-primary">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      >
+        <span className="ambient-orb ambient-orb-left" />
+        <span className="ambient-orb ambient-orb-right" />
+        <span className="ambient-orb ambient-orb-bottom" />
+      </div>
       {showSplash && <SplashScreen fadeOut={fadeOutSplash} />}
       <div
         className={`transition-opacity duration-700 ${
-          showSplash ? "opacity-0 pointer-events-none" : "opacity-100"
+          showSplash ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       >
         <Header activeSection={activeSection} />
-        <main className="mx-auto max-w-5xl space-y-28 px-4 pb-24 pt-28 md:px-6 lg:pt-32">
+        <main className="mx-auto max-w-6xl space-y-32 px-4 pb-28 pt-36 md:px-6 lg:pt-44">
           <Hero />
           <Employment />
           <Intelligence />
@@ -129,9 +136,11 @@ const Header = ({ activeSection }) => {
         key={`${item.href}-${extraClasses}`}
         href={item.href}
         onClick={onClick}
-        className={`rounded-full px-3 py-1 transition ${
-          isActive ? "text-accent" : "text-primary/70"
-        } hover:bg-surface-soft hover:text-accent whitespace-nowrap ${extraClasses}`}
+        className={`whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] transition ${
+          isActive
+            ? "border-accent/70 bg-accent/15 text-accent shadow-[0_0_20px_rgba(94,209,255,0.18)]"
+            : "border-transparent text-primary/70 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
+        } ${extraClasses}`}
       >
         {item.label}
       </Link>
@@ -139,77 +148,76 @@ const Header = ({ activeSection }) => {
   };
 
   return (
-    <header className="fixed top-0 z-40 w-full border-b border-accent/40 bg-[#050507]/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-6 lg:max-w-7xl">
-        <div className="flex w-full items-center gap-4">
-          <div className="relative h-20 w-20 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-24 md:w-24">
-            <Image
-              src="/images/profile.png"
-              alt="Samantha Schmid"
-              width={240}
-              height={240}
-              className="h-full w-full origin-[50%_34%] scale-[1.55] object-cover object-[50%_34%]"
-            />
-          </div>
-          <div>
-            <p className="font-display text-base font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-lg">
-              Samantha
-              <br />
-              Schmid
-            </p>
-          </div>
-          <button
-            type="button"
-            className="ml-auto inline-flex items-center rounded-full border border-accent/40 px-3 py-2 text-sm uppercase tracking-[0.1em] text-primary transition hover:border-accent hover:text-accent md:hidden"
-            onClick={toggleMobileNav}
-            aria-expanded={mobileNavOpen}
-            aria-label="Toggle navigation"
-          >
-            {mobileNavOpen ? "Close" : "Menu"}
-          </button>
-        </div>
-        <nav
-          className={`${anton.className} hidden w-full flex-wrap items-center gap-5 px-2 text-lg uppercase text-primary md:flex md:flex-nowrap md:text-xl`}
-        >
-          {navItems.map((item) => renderNavLink(item))}
-        </nav>
-        {mobileNavOpen && (
-          <div className="w-full md:hidden">
-            <nav
-              className={`${anton.className} flex w-full flex-col gap-3 rounded-2xl border border-accent/30 bg-surface-soft px-4 py-4 text-base uppercase text-primary`}
+    <header className="fixed inset-x-0 top-3 z-40 px-3 md:top-5 md:px-6">
+      <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-accent/30 bg-[rgba(16,16,21,0.82)] shadow-[0_24px_60px_rgba(5,7,12,0.65)] backdrop-blur-xl">
+        <div className="flex flex-col gap-3 px-3 py-3 md:flex-row md:items-center md:justify-between md:px-5 md:py-4">
+          <div className="flex w-full items-center gap-4 md:w-auto">
+            <div className="relative h-16 w-16 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-20 md:w-20">
+              <Image
+                src="/images/profile.png"
+                alt="Samantha Schmid"
+                width={240}
+                height={240}
+                className="h-full w-full origin-[50%_34%] scale-[1.55] object-cover object-[50%_34%]"
+              />
+            </div>
+            <div>
+              <p className="font-display text-[0.82rem] font-semibold uppercase leading-tight tracking-[0.1em] text-primary md:text-base">
+                Samantha
+                <br />
+                Schmid
+              </p>
+            </div>
+            <button
+              type="button"
+              className="ml-auto inline-flex items-center rounded-full border border-accent/40 px-3 py-2 text-sm uppercase tracking-[0.1em] text-primary transition hover:border-accent hover:text-accent md:hidden"
+              onClick={toggleMobileNav}
+              aria-expanded={mobileNavOpen}
+              aria-label="Toggle navigation"
             >
-              {navItems.map((item) =>
-                renderNavLink(item, "w-full text-center", closeMobileNav)
-              )}
-            </nav>
+              {mobileNavOpen ? "Close" : "Menu"}
+            </button>
           </div>
-        )}
+          <nav className={`${anton.className} hidden w-full items-center justify-end gap-2 md:flex`}>
+            {navItems.map((item) => renderNavLink(item))}
+          </nav>
+          {mobileNavOpen && (
+            <div className="w-full md:hidden">
+              <nav
+                className={`${anton.className} glass-panel-soft flex w-full flex-col gap-2 px-4 py-4 text-base uppercase text-primary`}
+              >
+                {navItems.map((item) =>
+                  renderNavLink(item, "w-full text-center text-sm", closeMobileNav)
+                )}
+              </nav>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
 };
 
 const Hero = () => (
-  <section id="hero" className="grid gap-10 scroll-mt-32 pt-16 lg:grid-cols-2">
-    <div className="space-y-6">
-      <div className="flex h-full flex-col rounded-3xl border border-accent/30 bg-surface p-8 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
-        <p className="max-readable text-base leading-relaxed text-muted md:text-lg">
-          {introParagraph}
-        </p>
-      </div>
+  <section
+    id="hero"
+    className="grid gap-8 scroll-mt-40 pt-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch"
+  >
+    <div className="glass-panel flex h-full flex-col justify-center p-8 md:p-10">
+      <p className="max-readable text-base leading-relaxed text-muted md:text-lg">
+        {introParagraph}
+      </p>
     </div>
-    <div className="flex h-full flex-col rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_25px_rgba(56,189,248,0.12)]">
+    <div className="glass-panel flex h-full flex-col p-6 md:p-7">
       <div className="flex items-center gap-3">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-subtle bg-surface-soft text-2xl text-accent">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-subtle bg-surface-soft text-2xl text-accent shadow-[0_0_20px_rgba(56,189,248,0.2)]">
           ✦
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
             Snapshot
           </p>
-          <p className="text-base font-semibold text-accent">
-            Systems Builder
-          </p>
+          <p className="text-base font-semibold text-accent">Systems Builder</p>
         </div>
       </div>
       <div className="mt-6 space-y-5">
@@ -236,9 +244,9 @@ const Hero = () => (
 );
 
 const Employment = () => (
-  <section id="employment" className="space-y-8 scroll-mt-32">
+  <section id="employment" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Employment" />
-    <div className="grid gap-8 lg:grid-cols-2">
+    <div className="grid gap-6 lg:grid-cols-2">
       {employmentHistory.map((job) => (
         <ExperienceCard key={job.role} job={job} />
       ))}
@@ -247,7 +255,7 @@ const Employment = () => (
 );
 
 const ExperienceCard = ({ job }) => (
-  <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent">
+  <div className="glass-panel glass-panel-hover p-6 md:p-7">
     <div className="flex flex-col gap-2 text-left">
       <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
         {job.role}
@@ -270,22 +278,22 @@ const ExperienceCard = ({ job }) => (
 );
 
 const Intelligence = () => (
-  <section id="intelligence" className="space-y-12 scroll-mt-32">
+  <section id="intelligence" className="space-y-10 scroll-mt-40">
     <SectionTitle title="Intelligence" />
-    <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-      <div className="space-y-6">
+    <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className="space-y-5">
         {education.map((item) => (
           <EducationCard key={`${item.school}-${item.program}-${item.dates}`} item={item} />
         ))}
       </div>
-      <div className="space-y-6">
-        <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+      <div className="space-y-5">
+        <div className="glass-panel p-6">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
             Independent Learning
           </p>
-          <div className="mt-6 space-y-6">
+          <div className="mt-6 space-y-5">
             {independentLearning.map((bucket) => (
-              <div key={bucket.label} className="rounded-2xl border border-accent/25 bg-surface-soft p-4 shadow-[0_0_18px_rgba(56,189,248,0.07)]">
+              <div key={bucket.label} className="glass-panel-soft p-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.1em] text-primary">
                   {bucket.label}
                 </p>
@@ -313,14 +321,12 @@ const Intelligence = () => (
 );
 
 const EducationCard = ({ item }) => (
-  <details className="group rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent" open>
+  <details className="glass-panel glass-panel-hover group p-6" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
       <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
         {item.school}
       </h3>
-      {item.program && (
-        <p className="text-base font-semibold text-primary">{item.program}</p>
-      )}
+      {item.program && <p className="text-base font-semibold text-primary">{item.program}</p>}
       <p className="text-xs font-medium uppercase tracking-[0.12em] text-soft">
         {item.dates}
       </p>
@@ -340,16 +346,16 @@ const EducationCard = ({ item }) => (
 );
 
 const Projects = () => (
-  <section id="projects" className="space-y-8 scroll-mt-32">
+  <section id="projects" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Projects" />
-    <div className="grid gap-10 md:grid-cols-2">
+    <div className="grid gap-8 md:grid-cols-2">
       {projects.map((project) => (
         <article
           key={project.title}
-          className="rounded-[1.6rem] border border-accent/30 bg-surface p-5 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-accent"
+          className="glass-panel glass-panel-hover group p-5 md:p-6"
         >
           <div
-            className={`mb-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-surface-soft ${
+            className={`mb-5 flex h-52 w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
               project.imageFit === "contain" ? "p-4" : ""
             }`}
           >
@@ -361,8 +367,8 @@ const Projects = () => (
                 height={360}
                 className={
                   project.imageFit === "contain"
-                    ? "h-full w-full object-contain"
-                    : "h-full w-full object-cover"
+                    ? "h-full w-full object-contain transition duration-500 group-hover:scale-[1.04]"
+                    : "h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
                 }
               />
             ) : (
@@ -445,9 +451,9 @@ const Projects = () => (
 );
 
 const Resume = () => (
-  <section id="resume" className="space-y-8 scroll-mt-32">
+  <section id="resume" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Resume" />
-    <div className="flex flex-col gap-3 text-sm text-muted md:flex-row md:items-center md:gap-6 md:text-base">
+    <div className="glass-panel flex flex-col gap-4 p-6 text-sm text-muted md:flex-row md:items-center md:justify-between md:gap-6 md:text-base">
       <p className="max-readable">
         Download my one-page resume for a concise view of my experience.
       </p>
@@ -462,12 +468,10 @@ const Resume = () => (
 );
 
 const LifeResume = () => (
-  <section id="life-resume" className="space-y-10 scroll-mt-32">
+  <section id="life-resume" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Life Resume" />
-    <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
-      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
-        Travel
-      </p>
+    <div className="glass-panel p-6">
+      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">Travel</p>
       <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
         {travelLocations.map((location) => (
           <LifeMoment key={location.label} {...location} />
@@ -482,7 +486,7 @@ const LifeResume = () => (
         ))}
       </div>
     </div>
-    <article className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 text-sm text-muted shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+    <article className="glass-panel p-6 text-sm text-muted">
       Beyond work, I chase altitude, endurance, and stories worth retelling.
     </article>
   </section>
@@ -492,16 +496,13 @@ const FavoritesPanel = () => {
   const [openFavorite, setOpenFavorite] = useState(null);
 
   return (
-    <div className="rounded-[1.75rem] border border-accent/30 bg-surface p-6 shadow-[0_0_22px_rgba(56,189,248,0.08)]">
+    <div className="glass-panel p-6">
       <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
         Favorites
       </p>
       <div className="mt-4 space-y-3">
         {favorites.map((fav, idx) => (
-          <div
-            key={fav.label}
-            className="rounded-xl border border-accent/25 bg-surface-soft px-4 py-3 shadow-[0_0_18px_rgba(56,189,248,0.07)]"
-          >
+          <div key={fav.label} className="glass-panel-soft px-4 py-3">
             <button
               type="button"
               className="flex w-full items-center justify-between text-left text-sm font-semibold text-primary"
@@ -522,17 +523,18 @@ const FavoritesPanel = () => {
 
 const LifeMoment = ({ label, image, href }) => {
   const baseClasses =
-    "group flex min-w-[190px] flex-col gap-3 rounded-2xl border border-accent/25 bg-surface-soft p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface";
+    "glass-panel-soft group flex min-w-[190px] flex-col gap-3 p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface";
+
   const content = (
     <>
       {image && (
-        <div className="h-24 w-full overflow-hidden rounded-xl bg-surface">
+        <div className="h-24 w-full overflow-hidden rounded-xl border border-accent/20 bg-surface">
           <Image
             src={image}
             alt={label}
             width={320}
             height={180}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
           />
         </div>
       )}
@@ -609,7 +611,7 @@ const AIChatWidget = () => {
   return (
     <div className="fixed bottom-6 right-6 z-30 flex flex-col items-end gap-3">
       {isOpen && (
-        <div className="w-80 rounded-3xl border border-accent/30 bg-surface p-4 shadow-[0_14px_45px_rgba(94,209,255,0.25)]">
+        <div className="glass-panel w-[22rem] p-4 shadow-[0_18px_50px_rgba(4,8,20,0.62),0_0_28px_rgba(94,209,255,0.12)]">
           <div className="mb-3 flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
@@ -683,37 +685,41 @@ const AIChatWidget = () => {
 };
 
 const Contact = () => (
-  <section id="contact" className="space-y-6 scroll-mt-32">
+  <section id="contact" className="space-y-6 scroll-mt-40">
     <SectionTitle title="Contact" />
-    <p className="max-readable text-sm text-muted md:text-base">
-      Reach out for roles that blend engineering, analytics, and product
-      building.
-    </p>
-    <div className="flex flex-wrap gap-4">
-      <Link
-        href="mailto:sammieschmid22@gmail.com"
-        className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-6 py-3 text-sm font-semibold text-[#050507] transition hover:bg-accent/90"
-      >
-        Email me
-      </Link>
-      <Link
-        href="https://www.linkedin.com/in/samanthaschmid2"
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
-      >
-        View LinkedIn
-      </Link>
+    <div className="glass-panel p-6 md:p-7">
+      <p className="max-readable text-sm text-muted md:text-base">
+        Reach out for roles that blend engineering, analytics, and product
+        building.
+      </p>
+      <div className="mt-6 flex flex-wrap gap-4">
+        <Link
+          href="mailto:sammieschmid22@gmail.com"
+          className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-6 py-3 text-sm font-semibold text-[#050507] transition hover:bg-accent/90"
+        >
+          Email me
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/samanthaschmid2"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
+        >
+          View LinkedIn
+        </Link>
+      </div>
     </div>
   </section>
 );
 
 const SectionTitle = ({ title, description }) => (
   <div className="space-y-3">
-    <h2 className="font-display text-3xl font-semibold uppercase tracking-[0.06em] text-accent md:text-[2.1rem]">
-      {title}
-    </h2>
-    <div className="h-px w-12 bg-accent" />
+    <div className="flex items-center gap-4">
+      <h2 className="font-display text-3xl font-semibold uppercase tracking-[0.06em] text-accent md:text-[2.1rem]">
+        {title}
+      </h2>
+      <div className="h-px flex-1 bg-gradient-to-r from-accent/80 via-accent/20 to-transparent" />
+    </div>
     {description && description.length > 0 && (
       <p className="max-readable text-sm text-muted md:text-base">{description}</p>
     )}
@@ -722,9 +728,7 @@ const SectionTitle = ({ title, description }) => (
 
 const SnapshotList = ({ label, items }) => (
   <div>
-    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">
-      {label}
-    </p>
+    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">{label}</p>
     <ul className="mt-2 space-y-1 text-sm text-muted">
       {items.map((item) => (
         <li key={item}>• {item}</li>
