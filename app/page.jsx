@@ -90,7 +90,7 @@ export default function Home() {
         }`}
       >
         <Header activeSection={activeSection} />
-        <main className="mx-auto max-w-6xl space-y-32 px-4 pb-28 pt-36 md:px-6 lg:pt-44">
+        <main className="mx-auto max-w-6xl space-y-32 px-4 pb-28 pt-40 md:px-6 md:pt-44 lg:pt-48">
           <Hero />
           <Employment />
           <Intelligence />
@@ -136,7 +136,7 @@ const Header = ({ activeSection }) => {
         key={`${item.href}-${extraClasses}`}
         href={item.href}
         onClick={onClick}
-        className={`whitespace-nowrap rounded-full border px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.08em] transition ${
+        className={`whitespace-nowrap rounded-full border px-4 py-2 text-[0.9rem] font-semibold uppercase tracking-[0.06em] transition md:text-[0.98rem] ${
           isActive
             ? "border-accent/70 bg-accent/15 text-accent shadow-[0_0_20px_rgba(94,209,255,0.18)]"
             : "border-transparent text-primary/70 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
@@ -148,11 +148,11 @@ const Header = ({ activeSection }) => {
   };
 
   return (
-    <header className="fixed inset-x-0 top-3 z-40 px-3 md:top-5 md:px-6">
+    <header className="fixed inset-x-0 top-3 z-40 px-3 md:top-4 md:px-6">
       <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-accent/30 bg-[rgba(16,16,21,0.82)] shadow-[0_24px_60px_rgba(5,7,12,0.65)] backdrop-blur-xl">
-        <div className="flex flex-col gap-3 px-3 py-3 md:flex-row md:items-center md:justify-between md:px-5 md:py-4">
+        <div className="flex flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-5 md:py-4">
           <div className="flex w-full items-center gap-4 md:w-auto">
-            <div className="relative h-16 w-16 overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-20 md:w-20">
+            <div className="relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-24 md:w-24">
               <Image
                 src="/images/profile.png"
                 alt="Samantha Schmid"
@@ -162,7 +162,7 @@ const Header = ({ activeSection }) => {
               />
             </div>
             <div>
-              <p className="font-display text-[0.82rem] font-semibold uppercase leading-tight tracking-[0.1em] text-primary md:text-base">
+              <p className="font-display text-[0.95rem] font-semibold uppercase leading-tight tracking-[0.1em] text-primary md:text-[1.12rem]">
                 Samantha
                 <br />
                 Schmid
@@ -170,7 +170,7 @@ const Header = ({ activeSection }) => {
             </div>
             <button
               type="button"
-              className="ml-auto inline-flex items-center rounded-full border border-accent/40 px-3 py-2 text-sm uppercase tracking-[0.1em] text-primary transition hover:border-accent hover:text-accent md:hidden"
+              className="ml-auto inline-flex items-center rounded-full border border-accent/40 px-3.5 py-2 text-sm uppercase tracking-[0.1em] text-primary transition hover:border-accent hover:text-accent md:hidden"
               onClick={toggleMobileNav}
               aria-expanded={mobileNavOpen}
               aria-label="Toggle navigation"
@@ -178,7 +178,7 @@ const Header = ({ activeSection }) => {
               {mobileNavOpen ? "Close" : "Menu"}
             </button>
           </div>
-          <nav className={`${anton.className} hidden w-full items-center justify-end gap-2 md:flex`}>
+          <nav className={`${anton.className} hidden w-full flex-wrap items-center justify-end gap-2 md:flex lg:flex-nowrap`}>
             {navItems.map((item) => renderNavLink(item))}
           </nav>
           {mobileNavOpen && (
@@ -187,7 +187,7 @@ const Header = ({ activeSection }) => {
                 className={`${anton.className} glass-panel-soft flex w-full flex-col gap-2 px-4 py-4 text-base uppercase text-primary`}
               >
                 {navItems.map((item) =>
-                  renderNavLink(item, "w-full text-center text-sm", closeMobileNav)
+                  renderNavLink(item, "w-full text-center text-base", closeMobileNav)
                 )}
               </nav>
             </div>
@@ -201,10 +201,10 @@ const Header = ({ activeSection }) => {
 const Hero = () => (
   <section
     id="hero"
-    className="grid gap-8 scroll-mt-40 pt-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch"
+    className="grid gap-8 scroll-mt-40 pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch"
   >
-    <div className="glass-panel flex h-full flex-col justify-center p-8 md:p-10">
-      <p className="max-readable text-base leading-relaxed text-muted md:text-lg">
+    <div className="glass-panel flex h-full flex-col p-8 md:p-10">
+      <p className="max-w-[58ch] text-[1.03rem] leading-[1.9] text-muted md:text-[1.12rem]">
         {introParagraph}
       </p>
     </div>
@@ -257,11 +257,11 @@ const Employment = () => (
 const ExperienceCard = ({ job }) => (
   <div className="glass-panel glass-panel-hover p-6 md:p-7">
     <div className="flex flex-col gap-2 text-left">
-      <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
+      <h3 className="font-display text-[0.9rem] font-semibold leading-tight tracking-[0.03em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1.02rem] lg:text-[1.08rem]">
         {job.role}
       </h3>
       {job.company && (
-        <p className="font-display text-sm uppercase tracking-[0.08em] text-accent">
+        <p className="font-display text-[0.76rem] uppercase tracking-[0.07em] text-accent sm:text-[0.8rem]">
           {job.company}
         </p>
       )}
@@ -323,7 +323,7 @@ const Intelligence = () => (
 const EducationCard = ({ item }) => (
   <details className="glass-panel glass-panel-hover group p-6" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
-      <h3 className="font-display text-base font-semibold uppercase tracking-[0.08em] text-primary md:text-lg">
+      <h3 className="font-display text-[0.96rem] font-semibold leading-tight tracking-[0.04em] text-primary md:text-[1.05rem]">
         {item.school}
       </h3>
       {item.program && <p className="text-base font-semibold text-primary">{item.program}</p>}
@@ -377,7 +377,7 @@ const Projects = () => (
               </div>
             )}
           </div>
-          <h3 className="font-display text-lg font-semibold uppercase tracking-[0.08em] text-primary">
+          <h3 className="font-display text-[1.02rem] font-semibold leading-tight tracking-[0.04em] text-primary md:text-[1.1rem]">
             {project.title}
           </h3>
           {project.subtitle && (
