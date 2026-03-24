@@ -136,7 +136,7 @@ const Header = ({ activeSection }) => {
         key={`${item.href}-${extraClasses}`}
         href={item.href}
         onClick={onClick}
-        className={`whitespace-nowrap rounded-full border px-3 py-2 text-[1rem] font-semibold uppercase tracking-[0.08em] transition md:text-[1.08rem] lg:text-[1.14rem] ${
+        className={`whitespace-nowrap rounded-full border px-3 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.1em] transition md:text-[0.82rem] lg:text-[0.84rem] ${
           isActive
             ? "border-accent/70 bg-accent/15 text-accent shadow-[0_0_20px_rgba(94,209,255,0.18)]"
             : "border-transparent text-primary/80 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
@@ -149,7 +149,7 @@ const Header = ({ activeSection }) => {
 
   return (
     <header className="fixed inset-x-0 top-3 z-40 px-3 md:top-4 md:px-6">
-      <div className="mx-auto max-w-7xl rounded-[1.8rem] border border-accent/30 bg-[rgba(16,16,21,0.82)] shadow-[0_24px_60px_rgba(5,7,12,0.65)] backdrop-blur-xl">
+      <div className="mx-auto max-w-7xl rounded-[1.8rem] border border-accent/30 bg-[rgba(16,16,21,0.82)] shadow-[0_24px_60px_rgba(5,7,12,0.65)] backdrop-blur-xl will-change-transform">
         <div className="flex flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-5 md:py-4">
           <div className="flex w-full items-center gap-4 md:w-auto">
             <div className="relative h-[4.5rem] w-[4.5rem] overflow-hidden rounded-full border border-accent/60 bg-surface-soft shadow-[0_0_18px_rgba(56,189,248,0.25)] md:h-24 md:w-24">
