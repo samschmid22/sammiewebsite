@@ -31,7 +31,7 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260316";
+const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260324";
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
