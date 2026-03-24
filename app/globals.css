@@ -231,4 +231,8 @@ body {
   .glass-panel-hover:hover {
     transform: none;
   }
+
+  .group img {
+    transition: none !important;
+  }
 }

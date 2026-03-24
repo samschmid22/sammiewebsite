@@ -90,7 +90,7 @@ export const projects = [
   {
     title: "RoutineOS Habit System",
     hook: "Turning discipline into a system that works in real life.",
-    image: "/images/routineos.png",
+    image: "/docs/routineosimage.png",
     imageFit: "cover",
     bullets: [
       "Flexible routines built for real, messy days",
@@ -124,6 +124,24 @@ export const projects = [
     ],
   },
   {
+    title: "Been There. Done That.",
+    hook: "An interactive travel scrapbook for visual memory-keeping.",
+    image: "/docs/travelimage.png",
+    imageFit: "cover",
+    bullets: [
+      "Built with map-based location tracking and trip history",
+      "Makes travel memories visual, organized, and shareable",
+      "Designed for the way real travel actually feels",
+    ],
+    links: [
+      {
+        href: "https://travel-scrapbook.vercel.app",
+        label: "Launch Been There.",
+        external: true,
+      },
+    ],
+  },
+  {
     title: "The Human Reset",
     hook: "A practical framework for health, clarity, and discipline.",
     image: "/images/humanresetimage.png",
@@ -137,16 +155,6 @@ export const projects = [
         href: "/docs/thehumanreset.pdf",
         label: "Download PDF",
       },
-    ],
-  },
-  {
-    title: "350Z Rebuild & Repairs",
-    hook: "A long-term rebuild that sharpened systems-level problem solving.",
-    image: "/images/350z.jpeg",
-    bullets: [
-      "Hands-on mechanical and electrical diagnostics",
-      "Multi-year rebuild from teardown to reliable daily use",
-      "Built repeatable repair workflows under real constraints",
     ],
   },
 ];

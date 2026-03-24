@@ -357,9 +357,7 @@ const Projects = () => (
             className="glass-panel glass-panel-hover group flex h-full flex-col p-4 md:p-5"
           >
             <div
-              className={`mb-4 flex w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft ${
-                isPortrait ? "h-40" : "h-32"
-              } ${
+              className={`mb-4 flex w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft h-40 ${
                 project.imageFit === "contain" ? (isPortrait ? "p-0" : "p-4") : ""
               }`}
             >
