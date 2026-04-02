@@ -309,7 +309,7 @@ const Intelligence = () => (
             href="https://drive.google.com/drive/folders/1OYvqiph0WnRPXoFnaMCaLXZ1WyeqElvf?usp=sharing"
             target="_blank"
             rel="noreferrer"
-            className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-accent px-5 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-accent transition hover:bg-accent/10"
+            className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-accent px-5 py-3 text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-accent transition hover:bg-accent/10"
           >
             All Certifications
           </Link>
@@ -381,16 +381,16 @@ const Projects = () => (
                 </div>
               )}
             </div>
-            <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[0.95rem]">
+            <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.01rem]">
               {project.title}
             </h3>
             {project.hook && (
-              <p className="mt-2 text-[0.8rem] font-medium leading-relaxed text-accent">
+              <p className="mt-2 text-[0.86rem] font-medium leading-relaxed text-accent">
                 {project.hook}
               </p>
             )}
             {project.bullets && project.bullets.length > 0 && (
-              <ul className="mt-3 space-y-1.5 text-[0.78rem] leading-relaxed text-muted">
+              <ul className="mt-3 space-y-1.5 text-[0.84rem] leading-relaxed text-muted">
                 {project.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-2">
                     <span className="pt-[0.2rem] text-[0.5rem] text-accent">●</span>
@@ -412,7 +412,7 @@ const Projects = () => (
                       href={projectLink.href}
                       target={isExternal ? "_blank" : undefined}
                       rel={isExternal ? "noreferrer" : undefined}
-                      className="inline-flex items-center gap-2 rounded-full border border-accent px-3.5 py-2 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
+                      className="inline-flex items-center gap-2 rounded-full border border-accent px-3.5 py-2 text-[0.74rem] font-semibold uppercase tracking-[0.1em] text-accent transition hover:bg-accent/10"
                     >
                       {projectLink.label}
                       <span aria-hidden="true">↗</span>
@@ -431,13 +431,13 @@ const Projects = () => (
 const Resume = () => (
   <section id="resume" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Resume" />
-    <div className="glass-panel flex flex-col gap-4 p-6 text-sm text-muted md:flex-row md:items-center md:justify-between md:gap-6 md:text-base">
+    <div className="glass-panel flex flex-col gap-4 p-6 text-[0.94rem] text-muted md:flex-row md:items-center md:justify-between md:gap-6 md:text-[1.06rem]">
       <p className="max-readable">
         Download my one-page resume for a concise view of my experience.
       </p>
       <Link
         href={RESUME_FILE_HREF}
-        className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
+        className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-[0.94rem] font-semibold text-primary transition hover:bg-accent/10"
       >
         Download my Resume ⬇
       </Link>
@@ -449,13 +449,13 @@ const LifeResume = () => (
   <section id="life-resume" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Life Resume" />
     <div className="glass-panel p-6">
-      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">Travel</p>
+      <p className="text-[0.82rem] font-semibold uppercase tracking-[0.15em] text-accent">Travel</p>
       <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
         {travelLocations.map((location) => (
           <LifeMoment key={location.label} {...location} />
         ))}
       </div>
-      <p className="mt-8 text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+      <p className="mt-8 text-[0.82rem] font-semibold uppercase tracking-[0.15em] text-accent">
         Milestones
       </p>
       <div className="mt-4 flex gap-4 overflow-x-auto pb-2 pt-4">
@@ -464,7 +464,7 @@ const LifeResume = () => (
         ))}
       </div>
     </div>
-    <article className="glass-panel p-6 text-sm text-muted">
+    <article className="glass-panel p-6 text-[0.94rem] text-muted">
       Beyond work, I chase altitude, endurance, and stories worth retelling.
     </article>
   </section>
@@ -475,7 +475,7 @@ const FavoritesPanel = () => {
 
   return (
     <div className="glass-panel p-6">
-      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+      <p className="text-[0.82rem] font-semibold uppercase tracking-[0.15em] text-accent">
         Favorites
       </p>
       <div className="mt-4 space-y-3">
@@ -483,14 +483,14 @@ const FavoritesPanel = () => {
           <div key={fav.label} className="glass-panel-soft px-4 py-3">
             <button
               type="button"
-              className="flex w-full items-center justify-between text-left text-sm font-semibold text-primary"
+              className="flex w-full items-center justify-between text-left text-[0.94rem] font-semibold text-primary"
               onClick={() => setOpenFavorite(openFavorite === idx ? null : idx)}
             >
               <span>{fav.label}</span>
               <span className="text-accent">{openFavorite === idx ? "–" : "+"}</span>
             </button>
             {openFavorite === idx && (
-              <p className="mt-3 text-sm text-muted">{fav.value}</p>
+              <p className="mt-3 text-[0.94rem] text-muted">{fav.value}</p>
             )}
           </div>
         ))}
@@ -501,7 +501,7 @@ const FavoritesPanel = () => {
 
 const LifeMoment = ({ label, image, href }) => {
   const baseClasses =
-    "glass-panel-soft group flex min-w-[190px] flex-col gap-3 p-4 text-center text-sm font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface";
+    "glass-panel-soft group flex min-w-[190px] flex-col gap-3 p-4 text-center text-[0.94rem] font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface";
 
   const content = (
     <>
@@ -516,7 +516,7 @@ const LifeMoment = ({ label, image, href }) => {
           />
         </div>
       )}
-      <p className="text-sm font-semibold text-primary">{label}</p>
+      <p className="text-[0.94rem] font-semibold text-primary">{label}</p>
     </>
   );
 
@@ -592,10 +592,10 @@ const AIChatWidget = () => {
         <div className="glass-panel w-[22rem] p-4 shadow-[0_18px_50px_rgba(4,8,20,0.62),0_0_28px_rgba(94,209,255,0.12)]">
           <div className="mb-3 flex items-center justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+              <p className="text-[0.82rem] font-semibold uppercase tracking-[0.15em] text-accent">
                 AI Assistant
               </p>
-              <p className="text-sm text-soft">Ask anything about Sammie</p>
+              <p className="text-[0.94rem] text-soft">Ask anything about Sammie</p>
             </div>
             <button
               type="button"
@@ -605,7 +605,7 @@ const AIChatWidget = () => {
               Close
             </button>
           </div>
-          <div className="mb-3 flex max-h-64 flex-col space-y-3 overflow-y-auto pr-2 text-sm">
+          <div className="mb-3 flex max-h-64 flex-col space-y-3 overflow-y-auto pr-2 text-[0.94rem]">
             {messages.length === 0 && !isLoading && (
               <p className="text-muted">
                 Start a conversation to get tailored insights or summaries.
@@ -629,11 +629,11 @@ const AIChatWidget = () => {
               </div>
             )}
           </div>
-          {error && <p className="mb-2 text-xs text-red-400">{error}</p>}
+          {error && <p className="mb-2 text-[0.82rem] text-red-400">{error}</p>}
           <form className="flex items-end gap-2" onSubmit={handleSubmit}>
             <input
               type="text"
-              className="flex-1 rounded-2xl border border-accent/30 bg-surface-soft px-3 py-2 text-sm text-primary outline-none transition focus:border-accent"
+              className="flex-1 rounded-2xl border border-accent/30 bg-surface-soft px-3 py-2 text-[0.94rem] text-primary outline-none transition focus:border-accent"
               placeholder="Ask Sammie's AI..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -642,7 +642,7 @@ const AIChatWidget = () => {
             />
             <button
               type="submit"
-              className="rounded-full bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-[0.1em] text-[#050507] transition hover:bg-accent/90 disabled:opacity-60"
+              className="rounded-full bg-accent px-4 py-2 text-[0.82rem] font-semibold uppercase tracking-[0.1em] text-[#050507] transition hover:bg-accent/90 disabled:opacity-60"
               disabled={isLoading}
             >
               Send
@@ -666,14 +666,14 @@ const Contact = () => (
   <section id="contact" className="space-y-6 scroll-mt-40">
     <SectionTitle title="Contact" />
     <div className="glass-panel p-6 md:p-7">
-      <p className="max-readable text-sm text-muted md:text-base">
+      <p className="max-readable text-[0.94rem] text-muted md:text-[1.06rem]">
         Reach out for roles that blend engineering, analytics, and product
         building.
       </p>
       <div className="mt-6 flex flex-wrap gap-4">
         <Link
           href="mailto:sammieschmid22@gmail.com"
-          className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-6 py-3 text-sm font-semibold text-[#050507] transition hover:bg-accent/90"
+          className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-6 py-3 text-[0.94rem] font-semibold text-[#050507] transition hover:bg-accent/90"
         >
           Email me
         </Link>
@@ -681,7 +681,7 @@ const Contact = () => (
           href="https://www.linkedin.com/in/samanthaschmid2"
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-sm font-semibold text-primary transition hover:bg-accent/10"
+          className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-[0.94rem] font-semibold text-primary transition hover:bg-accent/10"
         >
           View LinkedIn
         </Link>
