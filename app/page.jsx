@@ -90,7 +90,7 @@ export default function Home() {
         }`}
       >
         <Header activeSection={activeSection} />
-        <main className="mx-auto max-w-6xl space-y-32 px-4 pb-28 pt-40 md:px-6 md:pt-44 lg:pt-48">
+        <main className="mx-auto max-w-6xl space-y-20 px-4 pb-28 pt-40 md:px-6 md:pt-44 lg:pt-48">
           <Hero />
           <Employment />
           <Intelligence />
@@ -214,24 +214,24 @@ const Hero = () => (
           ✦
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
+          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-soft">
             Snapshot
           </p>
-          <p className="text-base font-semibold text-accent">Systems Builder</p>
+          <p className="text-[1.06rem] font-semibold text-accent">Systems Builder</p>
         </div>
       </div>
       <div className="mt-6 space-y-5">
         <SnapshotList label="Degrees" items={heroSnapshot.degrees} />
         <SnapshotList label="Recent Roles" items={heroSnapshot.roles} />
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-soft">
+          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-soft">
             Focus Areas
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {heroSnapshot.badges.map((badge) => (
               <span
                 key={badge}
-                className="rounded-full border border-accent bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-accent"
+                className="rounded-full border border-accent bg-accent/10 px-3 py-1 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-accent"
               >
                 {badge}
               </span>
@@ -257,18 +257,18 @@ const Employment = () => (
 const ExperienceCard = ({ job }) => (
   <div className="glass-panel glass-panel-hover p-6 md:p-7">
     <div className="flex flex-col gap-2 text-left">
-      <h3 className="font-display text-[0.84rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.9rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[0.94rem] lg:text-[0.98rem]">
+      <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1rem] lg:text-[1.04rem]">
         {job.role}
       </h3>
       {job.company && (
-        <p className="font-display text-[0.76rem] uppercase tracking-[0.07em] text-accent sm:text-[0.8rem]">
+        <p className="font-display text-[0.82rem] uppercase tracking-[0.07em] text-accent sm:text-[0.86rem]">
           {job.company}
         </p>
       )}
-      <p className="text-sm font-medium text-soft">{job.dates}</p>
+      <p className="text-[0.94rem] font-medium text-soft">{job.dates}</p>
     </div>
     {job.bullets.length > 0 && (
-      <ul className="mt-4 space-y-3 text-sm text-muted md:text-base">
+      <ul className="mt-4 space-y-3 text-[0.94rem] text-muted md:text-[1.06rem]">
         {job.bullets.map((bullet) => (
           <li key={bullet}>• {bullet}</li>
         ))}
@@ -288,16 +288,16 @@ const Intelligence = () => (
       </div>
       <div className="space-y-5">
         <div className="glass-panel p-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.15em] text-accent">
             Independent Learning
           </p>
           <div className="mt-6 space-y-5">
             {independentLearning.map((bucket) => (
               <div key={bucket.label} className="glass-panel-soft p-4">
-                <p className="text-sm font-semibold uppercase tracking-[0.1em] text-primary">
+                <p className="text-[0.94rem] font-semibold uppercase tracking-[0.1em] text-primary">
                   {bucket.label}
                 </p>
-                <ul className="mt-3 space-y-1 text-sm text-muted">
+                <ul className="mt-3 space-y-1 text-[0.94rem] text-muted">
                   {bucket.items.map((item) => (
                     <li key={item}>• {item}</li>
                   ))}
@@ -323,15 +323,15 @@ const Intelligence = () => (
 const EducationCard = ({ item }) => (
   <details className="glass-panel glass-panel-hover group p-6" open>
     <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
-      <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[0.98rem]">
+      <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.04rem]">
         {item.school}
       </h3>
-      {item.program && <p className="text-base font-semibold text-primary">{item.program}</p>}
-      <p className="text-xs font-medium uppercase tracking-[0.12em] text-soft">
+      {item.program && <p className="text-[1.06rem] font-semibold text-primary">{item.program}</p>}
+      <p className="text-[0.82rem] font-medium uppercase tracking-[0.12em] text-soft">
         {item.dates}
       </p>
     </summary>
-    {item.gpa && <p className="mt-2 text-sm text-soft">{item.gpa}</p>}
+    {item.gpa && <p className="mt-2 text-[0.94rem] text-soft">{item.gpa}</p>}
     {item.detailLink && (
       <Link
         href={item.detailLink}
@@ -706,8 +706,8 @@ const SectionTitle = ({ title, description }) => (
 
 const SnapshotList = ({ label, items }) => (
   <div>
-    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-soft">{label}</p>
-    <ul className="mt-2 space-y-1 text-sm text-muted">
+    <p className="text-[0.82rem] font-semibold uppercase tracking-[0.15em] text-soft">{label}</p>
+    <ul className="mt-2 space-y-1 text-[0.94rem] text-muted">
       {items.map((item) => (
         <li key={item}>• {item}</li>
       ))}
