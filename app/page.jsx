@@ -685,6 +685,14 @@ const Contact = () => (
         >
           View LinkedIn
         </Link>
+        <Link
+          href="https://github.com/samschmid22"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-[0.94rem] font-semibold text-primary transition hover:bg-accent/10"
+        >
+          View GitHub
+        </Link>
       </div>
     </div>
   </section>
