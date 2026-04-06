@@ -501,7 +501,7 @@ const FavoritesPanel = () => {
 
 const LifeMoment = ({ label, image, href }) => {
   const baseClasses =
-    "glass-panel-soft group flex min-w-[190px] flex-col gap-3 p-4 text-center text-[0.94rem] font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface";
+    "glass-panel-soft group flex w-[190px] flex-shrink-0 flex-col gap-3 p-4 text-center text-[0.94rem] font-semibold text-primary transition hover:-translate-y-1 hover:border-accent hover:bg-surface";
 
   const content = (
     <>
