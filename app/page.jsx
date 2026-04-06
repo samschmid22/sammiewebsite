@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Anton } from "next/font/google";
@@ -93,7 +92,6 @@ export default function Home() {
         <Header activeSection={activeSection} />
         <main className="mx-auto max-w-6xl space-y-20 px-4 pb-28 pt-40 md:px-6 md:pt-44 lg:pt-48">
           <Hero />
-          <HeroMarquee />
           <Employment />
           <Intelligence />
           <Projects />
@@ -200,117 +198,50 @@ const Header = ({ activeSection }) => {
   );
 };
 
-const Hero = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-
-  return (
-    <section
-      ref={ref}
-      id="hero"
-      className="relative flex min-h-[88vh] flex-col justify-center scroll-mt-40 overflow-hidden pt-10"
-    >
-      <motion.div style={{ y, opacity }} className="relative z-10 flex flex-col gap-10">
-        <div className="flex flex-col">
-          {["Samantha", "Schmid"].map((word, i) => (
-            <div key={word} className="overflow-hidden leading-none">
-              <motion.span
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 1, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="block font-display text-[4.5rem] font-semibold uppercase leading-[0.92] tracking-tight md:text-[7rem] lg:text-[9.5rem] hero-name-gradient"
-              >
-                {word}
-              </motion.span>
-            </div>
-          ))}
-        </div>
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          style={{ originX: 0 }}
-          className="h-px w-full bg-gradient-to-r from-[#5ed1ff] via-[#f9a8d4]/50 to-transparent"
-        />
-        <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-[58ch] text-[1.03rem] leading-[1.9] text-muted md:text-[1.15rem]"
-          >
-            {introParagraph}
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-4"
-          >
-            <SnapshotList label="Degrees" items={heroSnapshot.degrees} />
-            <SnapshotList label="Recent Roles" items={heroSnapshot.roles} />
-            <div className="mt-1 flex flex-wrap gap-2">
-              {heroSnapshot.badges.map((badge) => (
-                <span
-                  key={badge}
-                  className="rounded-full border border-accent bg-accent/10 px-3 py-1 text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-accent"
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[0.65rem] uppercase tracking-[0.25em] text-soft">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-          className="h-6 w-px bg-gradient-to-b from-accent to-transparent"
-        />
-      </motion.div>
-    </section>
-  );
-};
-
-const HeroMarquee = () => {
-  const items = [
-    "Systems Builder", "Data Analytics", "Mechanical Engineering",
-    "Process Design", "Business Analytics", "Product Development",
-    "ASU · 2025", "Clean Systems",
-  ];
-  const doubled = [...items, ...items];
-  return (
-    <div className="relative overflow-hidden border-y border-accent/20 py-4">
-      <motion.div
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-        className="flex gap-10 whitespace-nowrap"
-      >
-        {doubled.map((item, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-10 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-soft"
-          >
-            {item}
-            <span className="text-accent/40">✦</span>
-          </span>
-        ))}
-      </motion.div>
+const Hero = () => (
+  <section
+    id="hero"
+    className="grid gap-8 scroll-mt-40 pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch"
+  >
+    <div className="glass-panel flex h-full flex-col p-8 md:p-10">
+      <p className="max-w-[58ch] text-[1.03rem] leading-[1.9] text-muted md:text-[1.12rem]">
+        {introParagraph}
+      </p>
     </div>
-  );
-};
+    <div className="glass-panel flex h-full flex-col p-6 md:p-7">
+      <div className="flex items-center gap-3">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-subtle bg-surface-soft text-2xl text-accent shadow-[0_0_20px_rgba(56,189,248,0.2)]">
+          ✦
+        </div>
+        <div>
+          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-soft">
+            Snapshot
+          </p>
+          <p className="text-[1.06rem] font-semibold text-accent">Systems Builder</p>
+        </div>
+      </div>
+      <div className="mt-6 space-y-5">
+        <SnapshotList label="Degrees" items={heroSnapshot.degrees} />
+        <SnapshotList label="Recent Roles" items={heroSnapshot.roles} />
+        <div>
+          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-soft">
+            Focus Areas
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {heroSnapshot.badges.map((badge) => (
+              <span
+                key={badge}
+                className="rounded-full border border-accent bg-accent/10 px-3 py-1 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-accent"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 const Employment = () => (
   <section id="employment" className="space-y-8 scroll-mt-40">
