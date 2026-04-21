@@ -91,14 +91,28 @@ export const independentLearning = [
 
 export const projects = [
   {
+    title: "The Human Reset",
+    hook: "AI-assisted wellness app and companion manuscript for reducing everyday environmental exposures.",
+    image: "/images/humanresetimage.png",
+    bullets: [
+      "Uses guided quizzes, prioritization logic, and action-based planning.",
+      "Built with AI-assisted product ideation, feature definition, content structuring, and UX refinement.",
+    ],
+    links: [
+      {
+        href: "/docs/thehumanreset.pdf",
+        label: "Download PDF",
+      },
+    ],
+  },
+  {
     title: "RoutineOS Habit System",
-    hook: "Designed a habit system app prototype with layered routines, sub-habits, and progress logic.",
+    hook: "Habit system app prototype designed to make daily planning more structured, actionable, and sustainable.",
     image: "/docs/routineosimage.png",
     imageFit: "cover",
     bullets: [
-      "Made daily planning more structured, actionable, and sustainable.",
-      "Organized routines into layered flows with clear progress tracking.",
-      "Focused on turning planning into repeatable day-to-day execution.",
+      "Built around layered routines, sub-habits, and progress logic.",
+      "Turns messy real-life planning into repeatable day-to-day execution.",
     ],
     links: [
       {
@@ -110,14 +124,13 @@ export const projects = [
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
-    hook: "Designed and tested radar-readable sign geometry for autonomous vehicle applications.",
+    hook: "Engineering capstone focused on radar-readable sign geometry for autonomous vehicle applications.",
     image: "/images/radarsign.png",
     imageFit: "contain",
     imageMode: "portrait",
     bullets: [
-      "Focused on improved signal return consistency.",
-      "Evaluated performance in poor weather conditions.",
-      "Prioritized readability in low-visibility environments.",
+      "Designed to improve signal return consistency in poor weather and low-visibility conditions.",
+      "Combines engineering design, testing, and performance evaluation.",
     ],
     links: [
       {
@@ -128,35 +141,18 @@ export const projects = [
   },
   {
     title: "Been There. Done That.",
-    hook: "Developed an interactive travel app with map-based tracking and trip history.",
+    hook: "Interactive travel app with map-based tracking, trip history, and visual organization.",
     image: "/docs/travelimage.png",
     imageFit: "cover",
     bullets: [
-      "Added visual organization features for easy exploration.",
-      "Made travel records engaging and simple to navigate.",
-      "Structured the experience for clear, map-first storytelling.",
+      "Makes travel records engaging, searchable, and easy to explore.",
+      "Designed around a clear map-first experience and visual storytelling.",
     ],
     links: [
       {
         href: "https://travel-scrapbook.vercel.app",
         label: "Launch Been There.",
         external: true,
-      },
-    ],
-  },
-  {
-    title: "The Human Reset",
-    hook: "Designed an AI-assisted wellness app and companion manuscript to reduce everyday environmental exposures.",
-    image: "/images/humanresetimage.png",
-    bullets: [
-      "Used guided quizzes, prioritization logic, and action-based planning.",
-      "Used AI tools for product ideation and feature definition.",
-      "Applied AI for content structuring and iterative UX refinement.",
-    ],
-    links: [
-      {
-        href: "/docs/thehumanreset.pdf",
-        label: "Download PDF",
       },
     ],
   },

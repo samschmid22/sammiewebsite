@@ -348,49 +348,75 @@ const EducationCard = ({ item }) => (
 const Projects = () => (
   <section id="projects" className="space-y-8 scroll-mt-40">
     <SectionTitle title="Projects" />
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-2">
       {projects.map((project) => {
-        const isPortrait = project.imageMode === "portrait";
+        const mediaAssets =
+          Array.isArray(project.media) && project.media.length > 0
+            ? project.media
+            : project.image
+              ? [{ src: project.image, alt: project.title }]
+              : [];
+
+        const renderMedia = () => {
+          if (mediaAssets.length === 0) {
+            return (
+              <div className="col-span-2 flex h-full w-full items-center justify-center rounded-xl border border-accent/15 text-sm uppercase tracking-[0.15em] text-soft">
+                Image coming soon
+              </div>
+            );
+          }
+
+          if (mediaAssets.length === 1) {
+            const onlyMedia = mediaAssets[0];
+            return (
+              <div className="relative col-span-2 overflow-hidden rounded-xl">
+                <Image
+                  src={onlyMedia.src}
+                  alt={onlyMedia.alt ?? project.title}
+                  width={960}
+                  height={480}
+                  className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+            );
+          }
+
+          return mediaAssets.slice(0, 2).map((media, index) => (
+            <div
+              key={`${project.title}-media-${media.src}-${index}`}
+              className="flex h-full items-center justify-center overflow-hidden rounded-xl border border-accent/15 bg-surface"
+            >
+              <div className="relative h-full aspect-[9/19.5] overflow-hidden rounded-[0.8rem]">
+                <Image
+                  src={media.src}
+                  alt={media.alt ?? `${project.title} screenshot ${index + 1}`}
+                  width={360}
+                  height={780}
+                  className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                />
+              </div>
+            </div>
+          ));
+        };
+
         return (
           <article
             key={project.title}
-            className="glass-panel glass-panel-hover group flex h-full flex-col p-4 md:p-5"
+            className="glass-panel glass-panel-hover group flex h-full flex-col p-5 md:p-6"
           >
-            <div
-              className={`mb-4 flex w-full items-center justify-center overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft h-40 ${
-                project.imageFit === "contain" ? (isPortrait ? "p-0" : "p-4") : ""
-              }`}
-            >
-              {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={640}
-                  height={360}
-                  className={
-                    isPortrait
-                      ? "h-full w-auto max-w-none scale-[1.35] object-contain transition duration-500 group-hover:scale-[1.42]"
-                      : project.imageFit === "contain"
-                        ? "h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
-                        : "h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                  }
-                />
-              ) : (
-                <div className="flex h-full w-full items-center justify-center text-sm uppercase tracking-[0.15em] text-soft">
-                  Image coming soon
-                </div>
-              )}
+            <div className="mb-4 w-full overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft shadow-[inset_0_0_26px_rgba(56,189,248,0.08)]">
+              <div className="grid aspect-[2/1] grid-cols-2 gap-2 p-2">{renderMedia()}</div>
             </div>
             <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.01rem]">
               {project.title}
             </h3>
             {project.hook && (
-              <p className="mt-2 text-[0.86rem] font-medium leading-relaxed text-accent">
+              <p className="mt-1.5 text-[0.84rem] font-medium leading-relaxed text-accent">
                 {project.hook}
               </p>
             )}
             {project.bullets && project.bullets.length > 0 && (
-              <ul className="mt-3 space-y-1.5 text-[0.84rem] leading-relaxed text-muted">
+              <ul className="mt-2.5 space-y-1 text-[0.84rem] leading-relaxed text-muted">
                 {project.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-2">
                     <span className="pt-[0.2rem] text-[0.5rem] text-accent">●</span>
@@ -400,7 +426,7 @@ const Projects = () => (
               </ul>
             )}
             {project.links && project.links.length > 0 && (
-              <div className="mt-auto flex flex-wrap gap-2 pt-4">
+              <div className="mt-auto flex flex-wrap gap-2 pt-3.5">
                 {project.links.map((projectLink) => {
                   const isExternal =
                     projectLink.external ||
