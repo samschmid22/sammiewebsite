@@ -3,8 +3,8 @@ export const introParagraph =
 
 export const heroSnapshot = {
   degrees: [
-    "Master of Science in Business Analytics (2026 - 2027)",
-    "Bachelor of Science in Mechanical Engineering (2022 - 2025)",
+    "MS in Business Analytics (2026 - 2027)",
+    "BSE in Mechanical Engineering (2022 - 2025)",
   ],
   roles: [
     "General Dynamics Mission Systems",
@@ -67,7 +67,7 @@ export const education = [
   },
   {
     school: "Casteel High School",
-    program: "",
+    program: "High School Diploma",
     dates: "July 2018 - May 2022",
     gpa: "GPA: 4.0 / 4.0",
   },

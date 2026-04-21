@@ -261,7 +261,7 @@ const ExperienceCard = ({ job }) => (
         {job.role}
       </h3>
       {job.company && (
-        <p className="font-display text-[0.82rem] uppercase tracking-[0.07em] text-accent sm:text-[0.86rem]">
+        <p className="font-display text-[0.82rem] font-semibold uppercase tracking-[0.07em] text-accent sm:text-[0.86rem]">
           {job.company}
         </p>
       )}
@@ -326,7 +326,7 @@ const EducationCard = ({ item }) => (
       <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.04rem]">
         {item.school}
       </h3>
-      {item.program && <p className="text-[1.06rem] font-semibold text-primary">{item.program}</p>}
+      {item.program && <p className="text-[1.06rem] font-semibold text-accent">{item.program}</p>}
       <p className="text-[0.82rem] font-medium uppercase tracking-[0.12em] text-soft">
         {item.dates}
       </p>
