@@ -1,25 +1,27 @@
 export const introParagraph =
-  "Sammie Schmid brings clarity to complex systems by seeing patterns where others see problems. With a focus on building lasting structure, her work transforms chaos into opportunity. Known for fast learning and systems thinking, she designs processes that make life safer, smarter, and more efficient. Order isn't found; it's built.";
+  "Engineering-trained analyst and M.S. in Business Analytics student with internship experience in manufacturing and powertrain testing. Skilled in SQL, Python, Excel, Power BI, and AI-assisted product development. Strong background in structured problem-solving, data analysis, process improvement, and building user-focused digital products from concept to prototype.";
 
 export const heroSnapshot = {
   degrees: [
-    "MS in Business Analytics (2026 - 2027)",
-    "BSE in Mechanical Engineering (2022 - 2025)",
+    "Master of Science in Business Analytics (2026 - 2027)",
+    "Bachelor of Science in Mechanical Engineering (2022 - 2025)",
   ],
   roles: [
     "General Dynamics Mission Systems",
     "Nissan Motor Co.",
   ],
-  badges: ["Engineering", "Data & Analytics", "Process Design"],
+  badges: ["Engineering", "Data & Analytics", "Product Development"],
 };
 
 export const employmentHistory = [
   {
     role: "Manufacturing Engineer Intern",
     company: "General Dynamics Mission Systems",
-    dates: "09/2025 - 11/2025",
+    dates: "09/2025 - 12/2025",
     bullets: [
-      "Supported manufacturing engineering for the Air and Missile Defense Radar (AMDR) program.",
+      "Supported manufacturing engineering activities for the Air and Missile Defense Radar (AMDR) program in a high-reliability defense environment.",
+      "Assisted with process documentation, cross-functional coordination, and production support to improve manufacturing execution.",
+      "Contributed to engineering work tied to complex system build quality, readiness, and workflow efficiency.",
     ],
   },
   {
@@ -27,9 +29,9 @@ export const employmentHistory = [
     company: "Nissan Motor Co.",
     dates: "05/2024 - 08/2024",
     bullets: [
-      "Executed powertrain test runs and aggregated measurements; organized/cleaned datasets for reliable analysis.",
-      "Built quick analyses and visuals (Excel/MATLAB) to surface signals and compare calibrations; documented findings.",
-      "Recommended test/tuning adjustments that reduced iteration time and improved test workflow consistency.",
+      "Executed powertrain test runs and collected measurement data to support engine calibration and performance evaluation.",
+      "Organized, cleaned, and analyzed test data to identify trends, compare calibrations, and support engineering decisions.",
+      "Built clear visuals and summaries to communicate findings and recommend adjustments for more efficient, consistent test workflows.",
     ],
   },
 ];
@@ -37,16 +39,17 @@ export const employmentHistory = [
 export const education = [
   {
     school: "Arizona State University",
-    program: "MS in Business Analytics",
-    dates: "January 2026 - December 2026",
+    program: "Master of Science in Business Analytics",
+    dates: "January 2026 - May 2027",
+    gpa: "GPA: 4.0",
     detailLink:
       "https://docs.google.com/spreadsheets/u/1/d/1rlqH7lqekrtDR9860hvZxFQkvML7DMlj5u8sPoMORZ8/edit?usp=sharing",
   },
   {
     school: "Arizona State University",
-    program: "BSE in Mechanical Engineering",
+    program: "Bachelor of Science in Mechanical Engineering",
     dates: "August 2022 - December 2025",
-    gpa: "GPA: 3.4 / 4.0",
+    gpa: "GPA: 3.3 / 4.0",
     detailLink:
       "https://docs.google.com/spreadsheets/d/1n6-t9dWnLEzUf3ewTaFjRiUsAYlM25JsBRmEFdhw6gY/edit",
   },
@@ -71,17 +74,17 @@ export const education = [
 ];
 
 export const independentLearning = [
-  { label: "Data", items: ["SQL", "Python", "Excel", "Power BI"] },
-  { label: "Engineering", items: ["SolidWorks", "MATLAB", "ANSYS"] },
+  { label: "Analytics & Data", items: ["SQL", "Python", "Excel", "Power BI", "MATLAB"] },
+  { label: "Engineering", items: ["SolidWorks", "ANSYS"] },
   {
-    label: "Other",
+    label: "Product & Development",
     items: [
-      "Chat GPT Advanced / Power User",
-      "Wix Studio",
-      "Visual Studio Code",
-      "Vercel",
-      "React / Next.js",
+      "React",
+      "Next.js",
       "Supabase",
+      "Vercel",
+      "Visual Studio Code",
+      "Wix Studio",
     ],
   },
 ];
@@ -89,13 +92,13 @@ export const independentLearning = [
 export const projects = [
   {
     title: "RoutineOS Habit System",
-    hook: "Turning discipline into a system that works in real life.",
+    hook: "Designed a habit system app prototype with layered routines, sub-habits, and progress logic.",
     image: "/docs/routineosimage.png",
     imageFit: "cover",
     bullets: [
-      "Flexible routines built for real, messy days",
-      "Designed from personal systems and daily use",
-      "Built with Next.js, Supabase, and AI features",
+      "Made daily planning more structured, actionable, and sustainable.",
+      "Organized routines into layered flows with clear progress tracking.",
+      "Focused on turning planning into repeatable day-to-day execution.",
     ],
     links: [
       {
@@ -107,14 +110,14 @@ export const projects = [
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
-    hook: "A safer infrastructure concept for low-visibility conditions.",
+    hook: "Designed and tested radar-readable sign geometry for autonomous vehicle applications.",
     image: "/images/radarsign.png",
     imageFit: "contain",
     imageMode: "portrait",
     bullets: [
-      "Designed to stay radar-readable in poor weather",
-      "Combines mechanics, materials, and simulation",
-      "Focused on safer autonomous decision-making",
+      "Focused on improved signal return consistency.",
+      "Evaluated performance in poor weather conditions.",
+      "Prioritized readability in low-visibility environments.",
     ],
     links: [
       {
@@ -125,13 +128,13 @@ export const projects = [
   },
   {
     title: "Been There. Done That.",
-    hook: "An interactive travel scrapbook for visual memory-keeping.",
+    hook: "Developed an interactive travel app with map-based tracking and trip history.",
     image: "/docs/travelimage.png",
     imageFit: "cover",
     bullets: [
-      "Built with map-based location tracking and trip history",
-      "Makes travel memories visual, organized, and shareable",
-      "Designed for the way real travel actually feels",
+      "Added visual organization features for easy exploration.",
+      "Made travel records engaging and simple to navigate.",
+      "Structured the experience for clear, map-first storytelling.",
     ],
     links: [
       {
@@ -143,12 +146,12 @@ export const projects = [
   },
   {
     title: "The Human Reset",
-    hook: "A practical framework for health, clarity, and discipline.",
+    hook: "Designed an AI-assisted wellness app and companion manuscript to reduce everyday environmental exposures.",
     image: "/images/humanresetimage.png",
     bullets: [
-      "Simplifies wellness into habits that actually stick",
-      "Built from real routines, standards, and lived experience",
-      "Structured to evolve into a digital product",
+      "Used guided quizzes, prioritization logic, and action-based planning.",
+      "Used AI tools for product ideation and feature definition.",
+      "Applied AI for content structuring and iterative UX refinement.",
     ],
     links: [
       {
