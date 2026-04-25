@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Anton } from "next/font/google";
 import {
-  introParagraph,
   heroSnapshot,
   employmentHistory,
   education,
@@ -30,6 +29,10 @@ const navItems = [
 ];
 
 const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260415";
+const HERO_FEATURED_STATEMENT =
+  "I build like an engineer, analyze like a strategist, and move like a founder.";
+const HERO_SUPPORTING_PARAGRAPH =
+  "B.S.E. in Mechanical Engineering and M.S. in Business Analytics student working across data, operations, product, and AI-assisted development. My experience spans manufacturing, vehicle testing, and defense systems, but my real edge is connecting technical depth with fast execution: understanding the system, finding the friction, and building what should exist next.";
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -199,9 +202,12 @@ const Hero = () => (
     id="hero"
     className="grid gap-8 scroll-mt-40 pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch"
   >
-    <div className="glass-panel flex h-full flex-col p-8 md:p-10">
-      <p className="max-w-[58ch] text-[1.03rem] leading-[1.9] text-muted md:text-[1.12rem]">
-        {introParagraph}
+    <div className="glass-panel flex h-full flex-col justify-center gap-5 p-8 md:gap-6 md:p-10">
+      <p className="max-w-[28ch] text-[1.5rem] font-semibold leading-[1.25] tracking-[-0.01em] text-primary md:text-[1.95rem]">
+        {HERO_FEATURED_STATEMENT}
+      </p>
+      <p className="max-w-[62ch] text-[0.96rem] leading-[1.78] text-muted md:text-[1.06rem]">
+        {HERO_SUPPORTING_PARAGRAPH}
       </p>
     </div>
     <div className="glass-panel flex h-full flex-col p-6 md:p-7">
