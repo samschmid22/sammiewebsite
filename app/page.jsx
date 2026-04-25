@@ -203,7 +203,7 @@ const Hero = () => (
     className="grid gap-8 scroll-mt-40 pt-10 max-[480px]:gap-5 max-[480px]:scroll-mt-32 max-[480px]:pt-5 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch"
   >
     <div className="glass-panel hero-intro-card flex h-full flex-col justify-center gap-5 p-8 max-[480px]:gap-3.5 md:gap-6 md:p-10">
-      <p className="hero-featured max-w-[28ch] text-[1.5rem] font-semibold leading-[1.25] tracking-[-0.01em] text-primary max-[480px]:max-w-[24ch] max-[480px]:text-[1.18rem] max-[480px]:leading-[1.28] md:text-[1.95rem]">
+      <p className="hero-featured max-w-[28ch] text-[1.42rem] font-semibold leading-[1.25] tracking-[-0.01em] text-primary max-[480px]:max-w-[24ch] max-[480px]:text-[1.13rem] max-[480px]:leading-[1.28] md:text-[1.85rem]">
         {HERO_FEATURED_STATEMENT}
       </p>
       <p className="hero-support max-w-[62ch] text-[0.96rem] leading-[1.78] text-muted max-[480px]:max-w-[48ch] max-[480px]:text-[0.86rem] max-[480px]:leading-[1.58] md:text-[1.06rem]">
