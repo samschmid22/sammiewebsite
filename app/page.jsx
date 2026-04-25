@@ -250,12 +250,6 @@ const Hero = () => (
         Download Resume
       </Link>
       <Link
-        href="mailto:sammieschmid22@gmail.com"
-        className="inline-flex items-center justify-center rounded-full border border-accent bg-surface-soft px-7 py-3.5 text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-primary shadow-[0_10px_30px_rgba(5,7,12,0.45)] transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      >
-        Email Me
-      </Link>
-      <Link
         href="https://www.linkedin.com/in/samanthaschmid2/"
         target="_blank"
         rel="noreferrer"
