@@ -15,6 +15,18 @@ const syncopate = Syncopate({
 export const metadata = {
   title: "Samantha Schmid",
   description: "Portfolio for Samantha Schmid",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }) {
