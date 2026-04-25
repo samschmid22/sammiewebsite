@@ -17,7 +17,7 @@ export const metadata = {
   description: "Portfolio for Samantha Schmid",
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "default",
   },
 };
 
@@ -25,7 +25,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#000000",
+  themeColor: "#0d0f14",
   colorScheme: "dark",
 };
 
