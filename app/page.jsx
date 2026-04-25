@@ -26,9 +26,7 @@ const navItems = [
   { label: "Employment", href: "#employment" },
   { label: "Intelligence", href: "#intelligence" },
   { label: "Projects", href: "#projects" },
-  { label: "Resume", href: "#resume" },
   { label: "Life Resume", href: "#life-resume" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260415";
@@ -95,9 +93,7 @@ export default function Home() {
           <Employment />
           <Intelligence />
           <Projects />
-          <Resume />
           <LifeResume />
-          <Contact />
         </main>
       </div>
       <AIChatWidget />
@@ -238,6 +234,49 @@ const Hero = () => (
             ))}
           </div>
         </div>
+      </div>
+    </div>
+    <div className="glass-panel-soft lg:col-span-2 p-5 md:p-6">
+      <p className="text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-accent">
+        Quick Links
+      </p>
+      <div className="mt-4 flex flex-wrap gap-3">
+        <Link
+          href="#projects"
+          className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-[#050507] transition hover:bg-accent/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          See Projects
+        </Link>
+        <Link
+          href={RESUME_FILE_HREF}
+          className="inline-flex items-center justify-center rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Download Resume
+        </Link>
+        <Link
+          href="mailto:sammieschmid22@gmail.com"
+          className="inline-flex items-center justify-center rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Email Me
+        </Link>
+        <Link
+          href="https://www.linkedin.com/in/samanthaschmid2/"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          LinkedIn
+          <span aria-hidden="true">↗</span>
+        </Link>
+        <Link
+          href="https://github.com/samschmid22"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          GitHub
+          <span aria-hidden="true">↗</span>
+        </Link>
       </div>
     </div>
   </section>
@@ -450,23 +489,6 @@ const Projects = () => (
           </article>
         );
       })}
-    </div>
-  </section>
-);
-
-const Resume = () => (
-  <section id="resume" className="space-y-8 scroll-mt-40">
-    <SectionTitle title="Resume" />
-    <div className="glass-panel flex flex-col gap-4 p-6 text-[0.94rem] text-muted md:flex-row md:items-center md:justify-between md:gap-6 md:text-[1.06rem]">
-      <p className="max-readable">
-        Download my one-page resume for a concise view of my experience.
-      </p>
-      <Link
-        href={RESUME_FILE_HREF}
-        className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-[0.94rem] font-semibold text-primary transition hover:bg-accent/10"
-      >
-        Download my Resume ⬇
-      </Link>
     </div>
   </section>
 );
@@ -687,42 +709,6 @@ const AIChatWidget = () => {
     </div>
   );
 };
-
-const Contact = () => (
-  <section id="contact" className="space-y-6 scroll-mt-40">
-    <SectionTitle title="Contact" />
-    <div className="glass-panel p-6 md:p-7">
-      <p className="max-readable text-[0.94rem] text-muted md:text-[1.06rem]">
-        Reach out for roles that blend engineering, analytics, and product
-        building.
-      </p>
-      <div className="mt-6 flex flex-wrap gap-4">
-        <Link
-          href="mailto:sammieschmid22@gmail.com"
-          className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-6 py-3 text-[0.94rem] font-semibold text-[#050507] transition hover:bg-accent/90"
-        >
-          Email me
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/samanthaschmid2/"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-[0.94rem] font-semibold text-primary transition hover:bg-accent/10"
-        >
-          View LinkedIn
-        </Link>
-        <Link
-          href="https://github.com/samschmid22"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center rounded-full border border-accent px-6 py-3 text-[0.94rem] font-semibold text-primary transition hover:bg-accent/10"
-        >
-          View GitHub
-        </Link>
-      </div>
-    </div>
-  </section>
-);
 
 const SectionTitle = ({ title, description }) => (
   <div className="space-y-3">
