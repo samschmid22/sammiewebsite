@@ -236,48 +236,43 @@ const Hero = () => (
         </div>
       </div>
     </div>
-    <div className="glass-panel-soft lg:col-span-2 p-5 md:p-6">
-      <p className="text-[0.82rem] font-semibold uppercase tracking-[0.14em] text-accent">
-        Quick Links
-      </p>
-      <div className="mt-4 flex flex-wrap gap-3">
-        <Link
-          href="#projects"
-          className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-[#050507] transition hover:bg-accent/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          See Projects
-        </Link>
-        <Link
-          href={RESUME_FILE_HREF}
-          className="inline-flex items-center justify-center rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          Download Resume
-        </Link>
-        <Link
-          href="mailto:sammieschmid22@gmail.com"
-          className="inline-flex items-center justify-center rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          Email Me
-        </Link>
-        <Link
-          href="https://www.linkedin.com/in/samanthaschmid2/"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          LinkedIn
-          <span aria-hidden="true">↗</span>
-        </Link>
-        <Link
-          href="https://github.com/samschmid22"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-accent px-5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.11em] text-primary transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          GitHub
-          <span aria-hidden="true">↗</span>
-        </Link>
-      </div>
+    <div className="lg:col-span-2 flex flex-wrap justify-center gap-3 md:gap-4">
+      <Link
+        href="#projects"
+        className="inline-flex items-center justify-center rounded-full border border-accent bg-accent px-7 py-3.5 text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-[#050507] shadow-[0_10px_30px_rgba(5,7,12,0.45)] transition hover:bg-accent/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        See Projects
+      </Link>
+      <Link
+        href={RESUME_FILE_HREF}
+        className="inline-flex items-center justify-center rounded-full border border-accent bg-surface-soft px-7 py-3.5 text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-primary shadow-[0_10px_30px_rgba(5,7,12,0.45)] transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Download Resume
+      </Link>
+      <Link
+        href="mailto:sammieschmid22@gmail.com"
+        className="inline-flex items-center justify-center rounded-full border border-accent bg-surface-soft px-7 py-3.5 text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-primary shadow-[0_10px_30px_rgba(5,7,12,0.45)] transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Email Me
+      </Link>
+      <Link
+        href="https://www.linkedin.com/in/samanthaschmid2/"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-accent bg-surface-soft px-7 py-3.5 text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-primary shadow-[0_10px_30px_rgba(5,7,12,0.45)] transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        LinkedIn
+        <span aria-hidden="true">↗</span>
+      </Link>
+      <Link
+        href="https://github.com/samschmid22"
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-accent bg-surface-soft px-7 py-3.5 text-[0.82rem] font-semibold uppercase tracking-[0.11em] text-primary shadow-[0_10px_30px_rgba(5,7,12,0.45)] transition hover:bg-accent/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        GitHub
+        <span aria-hidden="true">↗</span>
+      </Link>
     </div>
   </section>
 );
