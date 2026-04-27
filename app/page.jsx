@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -216,14 +216,7 @@ const Hero = () => (
     </div>
     <div className="glass-panel flex h-full flex-col justify-center p-6 md:p-7">
       <div className="mx-auto flex h-36 w-full max-w-[18rem] items-center justify-center overflow-hidden rounded-2xl border border-accent/25 bg-[rgba(13,15,20,0.58)] shadow-[inset_0_0_24px_rgba(94,209,255,0.06),0_0_28px_rgba(94,209,255,0.08)] max-[480px]:h-28 max-[480px]:max-w-[15rem]">
-        <Lottie
-          animationData={snapshotAnimation}
-          autoplay
-          loop
-          aria-hidden="true"
-          className="h-40 w-40 max-[480px]:h-32 max-[480px]:w-32"
-          rendererSettings={{ preserveAspectRatio: "xMidYMid meet" }}
-        />
+        <SnapshotAnimation />
       </div>
       <div className="mt-5 space-y-5 max-[480px]:mt-4 max-[480px]:space-y-4">
         <SnapshotList label="Degrees" items={heroSnapshot.degrees} />
@@ -264,6 +257,26 @@ const Hero = () => (
     </div>
   </section>
 );
+
+const SnapshotAnimation = () => {
+  const lottieRef = useRef(null);
+
+  useEffect(() => {
+    lottieRef.current?.setSpeed(0.8);
+  }, []);
+
+  return (
+    <Lottie
+      lottieRef={lottieRef}
+      animationData={snapshotAnimation}
+      autoplay
+      loop
+      aria-hidden="true"
+      className="h-40 w-40 max-[480px]:h-32 max-[480px]:w-32"
+      rendererSettings={{ preserveAspectRatio: "xMidYMid meet" }}
+    />
+  );
+};
 
 const Employment = () => (
   <section id="employment" className="space-y-8 scroll-mt-40 max-[480px]:space-y-6 max-[480px]:scroll-mt-32">
