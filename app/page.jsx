@@ -262,7 +262,7 @@ const SnapshotAnimation = () => {
   const lottieRef = useRef(null);
 
   useEffect(() => {
-    lottieRef.current?.setSpeed(0.8);
+    lottieRef.current?.setSpeed(0.7);
   }, []);
 
   return (
