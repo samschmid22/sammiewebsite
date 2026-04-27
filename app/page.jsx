@@ -135,7 +135,7 @@ const Header = ({ activeSection }) => {
         key={`${item.href}-${extraClasses}`}
         href={item.href}
         onClick={onClick}
-        className={`${montserrat.className} whitespace-nowrap rounded-full border px-3 py-2 text-[14px] font-bold uppercase tracking-[0.28em] transition max-[480px]:px-2.5 max-[480px]:py-1.5 ${
+        className={`${montserrat.className} whitespace-nowrap rounded-full border px-3 py-2 text-[14px] font-bold uppercase tracking-[0.22em] transition max-[480px]:px-2.5 max-[480px]:py-1.5 ${
           isActive
             ? "border-accent/70 bg-accent/15 text-accent shadow-[0_0_20px_rgba(94,209,255,0.18)]"
             : "border-transparent text-primary/80 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
