@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Anton } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import {
   heroSnapshot,
   employmentHistory,
@@ -15,9 +15,9 @@ import {
   favorites,
 } from "@/data/siteContent";
 
-const anton = Anton({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: "400",
+  weight: "700",
 });
 
 const navItems = [
@@ -135,7 +135,7 @@ const Header = ({ activeSection }) => {
         key={`${item.href}-${extraClasses}`}
         href={item.href}
         onClick={onClick}
-        className={`whitespace-nowrap rounded-full border px-3 py-2 text-base font-light uppercase tracking-[0.07em] transition max-[480px]:px-2.5 max-[480px]:py-1.5 max-[480px]:text-[0.8rem] md:text-[20px] ${
+        className={`${montserrat.className} whitespace-nowrap rounded-full border px-3 py-2 text-[14px] font-bold uppercase tracking-[0.28em] transition max-[480px]:px-2.5 max-[480px]:py-1.5 ${
           isActive
             ? "border-accent/70 bg-accent/15 text-accent shadow-[0_0_20px_rgba(94,209,255,0.18)]"
             : "border-transparent text-primary/80 hover:border-accent/40 hover:bg-surface-soft hover:text-primary"
@@ -177,13 +177,13 @@ const Header = ({ activeSection }) => {
               {mobileNavOpen ? "Close" : "Menu"}
             </button>
           </div>
-          <nav className={`${anton.className} hidden w-full items-center justify-end gap-1.5 md:flex md:flex-nowrap`}>
+          <nav className="hidden w-full items-center justify-end gap-1.5 md:flex md:flex-nowrap">
             {navItems.map((item) => renderNavLink(item))}
           </nav>
           {mobileNavOpen && (
             <div className="w-full md:hidden">
               <nav
-                className={`${anton.className} glass-panel-soft flex w-full flex-col gap-2 px-4 py-4 text-base uppercase text-primary max-[480px]:gap-1.5 max-[480px]:px-2.5 max-[480px]:py-2.5 max-[480px]:text-[0.78rem]`}
+                className="glass-panel-soft flex w-full flex-col gap-2 px-4 py-4 text-primary max-[480px]:gap-1.5 max-[480px]:px-2.5 max-[480px]:py-2.5"
               >
                 {navItems.map((item) =>
                   renderNavLink(item, "w-full text-center text-base", closeMobileNav)
