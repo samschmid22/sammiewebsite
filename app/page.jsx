@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
+import snapshotAnimation from "@/public/animations/snapshot-animation.json";
 import {
   heroSnapshot,
   employmentHistory,
@@ -19,6 +21,8 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: "700",
 });
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const navItems = [
   { label: "Home", href: "#hero" },
@@ -210,36 +214,20 @@ const Hero = () => (
         {HERO_SUPPORTING_PARAGRAPH}
       </p>
     </div>
-    <div className="glass-panel flex h-full flex-col p-6 md:p-7">
-      <div className="flex items-center gap-3">
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-subtle bg-surface-soft text-2xl text-accent shadow-[0_0_20px_rgba(56,189,248,0.2)] max-[480px]:h-11 max-[480px]:w-11 max-[480px]:rounded-xl max-[480px]:text-xl">
-          ✦
-        </div>
-        <div>
-          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-soft">
-            Snapshot
-          </p>
-          <p className="text-[1.06rem] font-semibold text-accent">Systems Builder</p>
-        </div>
+    <div className="glass-panel flex h-full flex-col justify-center p-6 md:p-7">
+      <div className="mx-auto flex h-36 w-full max-w-[18rem] items-center justify-center overflow-hidden rounded-2xl border border-accent/25 bg-[rgba(13,15,20,0.58)] shadow-[inset_0_0_24px_rgba(94,209,255,0.06),0_0_28px_rgba(94,209,255,0.08)] max-[480px]:h-28 max-[480px]:max-w-[15rem]">
+        <Lottie
+          animationData={snapshotAnimation}
+          autoplay
+          loop
+          aria-hidden="true"
+          className="h-40 w-40 max-[480px]:h-32 max-[480px]:w-32"
+          rendererSettings={{ preserveAspectRatio: "xMidYMid meet" }}
+        />
       </div>
-      <div className="mt-6 space-y-5 max-[480px]:mt-4 max-[480px]:space-y-4">
+      <div className="mt-5 space-y-5 max-[480px]:mt-4 max-[480px]:space-y-4">
         <SnapshotList label="Degrees" items={heroSnapshot.degrees} />
         <SnapshotList label="Recent Roles" items={heroSnapshot.roles} />
-        <div>
-          <p className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-soft">
-            Focus Areas
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {heroSnapshot.badges.map((badge) => (
-              <span
-                key={badge}
-                className="rounded-full border border-accent bg-accent/10 px-3 py-1 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-accent"
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
     <div className="hero-action-row lg:col-span-2 flex flex-wrap justify-center gap-3 max-[480px]:gap-2.5 md:gap-4">
