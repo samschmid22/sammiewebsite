@@ -91,16 +91,16 @@ export const independentLearning = [
 
 export const projects = [
   {
-    title: "The Human Reset",
+    title: "Exhibit A",
     hook: "AI-assisted wellness app and companion manuscript for reducing everyday environmental exposures.",
-    image: "/images/humanresetimage.png",
+    image: "/images/exhibit-a.png",
     bullets: [
       "Uses guided quizzes, prioritization logic, and action-based planning.",
       "Built with AI-assisted product ideation, feature definition, content structuring, and UX refinement.",
     ],
     links: [
       {
-        href: "/docs/thehumanreset.pdf",
+        href: "/docs/exhibit-a.pdf",
         label: "Download PDF",
       },
     ],
