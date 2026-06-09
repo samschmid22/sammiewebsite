@@ -32,7 +32,7 @@ const navItems = [
   { label: "Life Resume", href: "#life-resume" },
 ];
 
-const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260415";
+const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260609";
 const HERO_FEATURED_STATEMENT =
   "I build like an engineer, analyze like a strategist, and move like a founder.";
 const HERO_SUPPORTING_PARAGRAPH =
