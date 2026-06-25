@@ -106,6 +106,27 @@ export const projects = [
     ],
   },
   {
+    title: "PREVENTABLE DEATH MAP",
+    hook: "County-level analytics dashboard identifying health, behavioral, and socioeconomic patterns linked with premature mortality.",
+    image: "/images/data project.png",
+    bullets: [
+      "Built with Python, CDC WONDER, CDC PLACES, ACS, scikit-learn, GitHub, and Power BI.",
+      "Analyzes county risk factors, highest-risk counties, socioeconomic patterns, and predictive model results.",
+    ],
+    links: [
+      {
+        href: "https://app.powerbi.com/links/agsNJ3gHgA?ctid=41f88ecb-ca63-404d-97dd-ab0a169fd138&pbi_source=linkShare",
+        label: "VIEW DASHBOARD",
+        external: true,
+      },
+      {
+        href: "https://github.com/samschmid22/preventable-death-map/tree/main",
+        label: "VIEW GITHUB",
+        external: true,
+      },
+    ],
+  },
+  {
     title: "RoutineOS Habit System",
     hook: "Habit system app prototype designed to make daily planning more structured, actionable, and sustainable.",
     image: "/docs/routineosimage.png",
@@ -152,27 +173,6 @@ export const projects = [
       {
         href: "https://travel-scrapbook.vercel.app",
         label: "Launch Been There.",
-        external: true,
-      },
-    ],
-  },
-  {
-    title: "PREVENTABLE DEATH MAP",
-    hook: "County-level analytics dashboard identifying health, behavioral, and socioeconomic patterns linked with premature mortality.",
-    image: "/images/data project.png",
-    bullets: [
-      "Built with Python, CDC WONDER, CDC PLACES, ACS, scikit-learn, GitHub, and Power BI.",
-      "Analyzes county risk factors, highest-risk counties, socioeconomic patterns, and predictive model results.",
-    ],
-    links: [
-      {
-        href: "https://app.powerbi.com/links/agsNJ3gHgA?ctid=41f88ecb-ca63-404d-97dd-ab0a169fd138&pbi_source=linkShare",
-        label: "VIEW DASHBOARD",
-        external: true,
-      },
-      {
-        href: "https://github.com/samschmid22/preventable-death-map/tree/main",
-        label: "VIEW GITHUB",
         external: true,
       },
     ],
