@@ -1,22 +1,21 @@
 # Query: general 
 # ContextLines: 1
 
-4 results - 2 files
+4 results - 1 file
 
-app/page.jsx:
-  28    roles: [
-  29:     "General Dynamics Mission Systems",
-  30      "Nissan Motor Co.",
+data/siteContent.js:
+  11    "OpenAP | Operations Analyst",
+  12:   "General Dynamics Mission Systems | Manufacturing Engineer Intern",
+  13    "Nissan Motor Co. | Powertrain Test Intern",
 
-  38      role: "Manufacturing Engineer Intern",
-  39:     company: "General Dynamics Mission Systems",
-  40      dates: "09/2025 - 11/2025",
+  30    role: "Manufacturing Engineer Intern",
+  31:   company: "General Dynamics Mission Systems",
+  32    dates: "09/2025 – 12/2025",
 
-app/page.tsx:
-  19    roles: [
-  20:     "General Dynamics Mission Systems",
-  21      "Nissan Motor Co.",
+  100  { label: "Engineering", items: ["SolidWorks", "ANSYS"] },
+  101: {
+  102    label: "Product & Development",
 
-  29      role: "Manufacturing Engineer Intern",
-  30:     company: "General Dynamics Mission Systems",
-  31      dates: "09/2025 - 11/2025",
+  177  title: "Radar-Readable Sign for Autonomous Vehicles",
+  178: hook: "Engineering capstone focused on radar-readable sign geometry for autonomous vehicles.",
+  179  image: "/images/radarsign.png",

@@ -32,11 +32,11 @@ const navItems = [
   { label: "Life Resume", href: "#life-resume" },
 ];
 
-const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260609";
+const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260917";
 const HERO_FEATURED_STATEMENT =
-  "I build like an engineer, analyze like a strategist, and move like a founder.";
+  "I turn messy systems into clear, scalable operations.";
 const HERO_SUPPORTING_PARAGRAPH =
-  "B.S.E. in Mechanical Engineering and M.S. in Business Analytics student working across data, operations, product, and AI-assisted development. My experience spans manufacturing, vehicle testing, and defense systems, but my real edge is connecting technical depth with fast execution: understanding the system, finding the friction, and building what should exist next.";
+  "I’m an Operations Analyst with an engineering background and a bias toward making complex work simpler. I work across data, process, and product, using analysis, automation, and technical problem solving to improve how systems run. Outside my role, I build consumer apps and analytics projects that turn ideas into useful, working products.";
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
@@ -54,27 +54,35 @@ export default function Home() {
 
   useEffect(() => {
     const sectionIds = navItems.map((item) => item.href.replace("#", ""));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.35, rootMargin: "-20% 0px -20% 0px" }
-    );
+    let animationFrame = 0;
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    const updateActiveSection = () => {
+      const anchorY = window.innerHeight * 0.32;
+      const currentSection =
+        sectionIds
+          .map((id) => document.getElementById(id))
+          .filter(Boolean)
+          .findLast((section) => section.getBoundingClientRect().top <= anchorY) ??
+        document.getElementById(sectionIds[0]);
+
+      if (currentSection) {
+        setActiveSection(currentSection.id);
+      }
+    };
+
+    const handleScroll = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
 
     return () => {
-      sectionIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) observer.unobserve(el);
-      });
+      window.cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
@@ -290,7 +298,11 @@ const Employment = () => (
 );
 
 const ExperienceCard = ({ job }) => (
-  <div className="glass-panel glass-panel-hover p-6 md:p-7">
+  <div
+    className={`glass-panel glass-panel-hover p-6 md:p-7 ${
+      job.featured ? "lg:col-span-2" : ""
+    }`}
+  >
     <div className="flex flex-col gap-2 text-left">
       <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1rem] lg:text-[1.04rem]">
         {job.role}
@@ -384,7 +396,8 @@ const Projects = () => (
   <section id="projects" className="space-y-8 scroll-mt-40 max-[480px]:space-y-6 max-[480px]:scroll-mt-32">
     <SectionTitle title="Projects" />
     <div className="grid gap-6 max-[480px]:gap-4 md:grid-cols-2">
-      {projects.map((project) => {
+      {projects.map((project, index) => {
+        const isFinalOddProject = projects.length % 2 === 1 && index === projects.length - 1;
         const mediaAssets =
           Array.isArray(project.media) && project.media.length > 0
             ? project.media
@@ -437,7 +450,9 @@ const Projects = () => (
         return (
           <article
             key={project.title}
-            className="glass-panel glass-panel-hover group flex h-full flex-col p-5 md:p-6"
+            className={`glass-panel glass-panel-hover group flex h-full flex-col p-5 md:p-6 ${
+              isFinalOddProject ? "md:col-span-2 md:mx-auto md:w-[calc(50%-0.75rem)]" : ""
+            }`}
           >
             <div className="mb-4 w-full overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft shadow-[inset_0_0_26px_rgba(56,189,248,0.08)]">
               <div className="grid aspect-[2/1] grid-cols-2 gap-2 p-2">{renderMedia()}</div>
@@ -509,7 +524,7 @@ const LifeResume = () => (
       </div>
     </div>
     <article className="glass-panel p-6 text-[0.94rem] text-muted">
-      Beyond work, I chase altitude, endurance, and stories worth retelling.
+      Outside work, I travel often, chase endurance challenges, and keep finding new things worth learning or trying.
     </article>
   </section>
 );
@@ -531,7 +546,7 @@ const FavoritesPanel = () => {
               onClick={() => setOpenFavorite(openFavorite === idx ? null : idx)}
             >
               <span>{fav.label}</span>
-              <span className="text-accent">{openFavorite === idx ? "–" : "+"}</span>
+              <span className="text-accent">{openFavorite === idx ? "−" : "+"}</span>
             </button>
             {openFavorite === idx && (
               <p className="mt-3 text-[0.94rem] text-muted">{fav.value}</p>

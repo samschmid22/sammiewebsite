@@ -13,8 +13,21 @@ const syncopate = Syncopate({
 });
 
 export const metadata = {
-  title: "Samantha Schmid",
-  description: "Portfolio for Samantha Schmid",
+  title: "Samantha Schmid | Operations Analyst",
+  description:
+    "Operations Analyst with a background in mechanical engineering and business analytics, working across data, process improvement, automation, and product development.",
+  openGraph: {
+    title: "Samantha Schmid | Operations Analyst",
+    description:
+      "Operations Analyst with a background in mechanical engineering and business analytics, working across data, process improvement, automation, and product development.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Samantha Schmid | Operations Analyst",
+    description:
+      "Operations Analyst with a background in mechanical engineering and business analytics, working across data, process improvement, automation, and product development.",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

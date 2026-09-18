@@ -1,23 +1,35 @@
 export const introParagraph =
-  "Engineering-trained analyst and M.S. in Business Analytics student with internship experience in manufacturing and powertrain testing. Skilled in SQL, Python, Excel, Power BI, and AI-assisted product development. Strong background in structured problem-solving, data analysis, process improvement, and building user-focused digital products from concept to prototype.";
+  "Operations Analyst with an engineering background and experience across data operations, process improvement, automation, manufacturing, powertrain testing, and product development. Skilled in Python, SQL, Excel, Power BI, Snowflake, and AI-assisted product development.";
 
 export const heroSnapshot = {
   degrees: [
-    "MS in Business Analytics (2026 - 2027)",
-    "BSE in Mechanical Engineering (2022 - 2025)",
+    "M.S. in Business Analytics | 2026–2027",
+    "B.S.E. in Mechanical Engineering | 2022–2025",
   ],
   roles: [
-    "General Dynamics Mission Systems",
-    "Nissan Motor Co.",
+    "OpenAP | Operations Analyst",
+    "General Dynamics Mission Systems | Manufacturing Engineer Intern",
+    "Nissan Motor Co. | Powertrain Test Intern",
   ],
   badges: ["Engineering", "Data & Analytics", "Product Development"],
 };
 
 export const employmentHistory = [
   {
+    role: "Operations Analyst",
+    company: "OpenAP",
+    dates: "09/2026 – PRESENT",
+    featured: true,
+    bullets: [
+      "Manage data operations workflows across publishers, agencies, and data partners, including file preparation, transformation, validation, QA, and delivery.",
+      "Use Python, Google Colab, Excel, Snowflake, and cloud based platforms to work with large datasets and support advertising audience activation.",
+      "Improve recurring workflows through automation, documentation, troubleshooting, and process standardization.",
+    ],
+  },
+  {
     role: "Manufacturing Engineer Intern",
     company: "General Dynamics Mission Systems",
-    dates: "09/2025 - 12/2025",
+    dates: "09/2025 – 12/2025",
     bullets: [
       "Supported manufacturing engineering activities for the Air and Missile Defense Radar (AMDR) program in a high-reliability defense environment.",
       "Assisted with process documentation, cross-functional coordination, and production support to improve manufacturing execution.",
@@ -27,7 +39,7 @@ export const employmentHistory = [
   {
     role: "Powertrain Test Intern",
     company: "Nissan Motor Co.",
-    dates: "05/2024 - 08/2024",
+    dates: "05/2024 – 08/2024",
     bullets: [
       "Executed powertrain test runs and collected measurement data to support engine calibration and performance evaluation.",
       "Organized, cleaned, and analyzed test data to identify trends, compare calibrations, and support engineering decisions.",
@@ -40,7 +52,7 @@ export const education = [
   {
     school: "Arizona State University",
     program: "Master of Science in Business Analytics",
-    dates: "January 2026 - May 2027",
+    dates: "January 2026 – May 2027",
     gpa: "GPA: 4.0",
     detailLink:
       "https://docs.google.com/spreadsheets/u/1/d/1rlqH7lqekrtDR9860hvZxFQkvML7DMlj5u8sPoMORZ8/edit?usp=sharing",
@@ -48,7 +60,7 @@ export const education = [
   {
     school: "Arizona State University",
     program: "Bachelor of Science in Mechanical Engineering",
-    dates: "August 2022 - December 2025",
+    dates: "August 2022 – December 2025",
     gpa: "GPA: 3.3 / 4.0",
     detailLink:
       "https://docs.google.com/spreadsheets/d/1n6-t9dWnLEzUf3ewTaFjRiUsAYlM25JsBRmEFdhw6gY/edit",
@@ -56,19 +68,19 @@ export const education = [
   {
     school: "East Valley Institute of Technology",
     program: "Automotive Technologies",
-    dates: "July 2021 - May 2022",
+    dates: "July 2021 – May 2022",
     gpa: "GPA: 4.0 / 4.0",
   },
   {
     school: "Chandler-Gilbert Community College",
     program: "Dual Enrollment",
-    dates: "July 2018 - May 2022",
+    dates: "July 2018 – May 2022",
     gpa: "GPA: 4.0 / 4.0",
   },
   {
     school: "Casteel High School",
     program: "High School Diploma",
-    dates: "July 2018 - May 2022",
+    dates: "July 2018 – May 2022",
     gpa: "GPA: 4.0 / 4.0",
   },
 ];
@@ -92,7 +104,7 @@ export const independentLearning = [
 export const projects = [
   {
     title: "Exhibit A",
-    hook: "AI-assisted wellness app and companion manuscript for reducing everyday environmental exposures.",
+    hook: "AI-assisted wellness app and companion manuscript focused on everyday environmental exposure reduction.",
     image: "/images/exhibit-a.png",
     bullets: [
       "Uses guided quizzes, prioritization logic, and action-based planning.",
@@ -107,11 +119,11 @@ export const projects = [
   },
   {
     title: "PREVENTABLE DEATH MAP",
-    hook: "County-level analytics dashboard identifying health, behavioral, and socioeconomic patterns linked with premature mortality.",
+    hook: "County-level analytics dashboard identifying patterns linked with premature mortality.",
     image: "/images/data project.png",
     bullets: [
       "Built with Python, CDC WONDER, CDC PLACES, ACS, scikit-learn, GitHub, and Power BI.",
-      "Analyzes county risk factors, highest-risk counties, socioeconomic patterns, and predictive model results.",
+      "Analyzes county risk factors, high-risk regions, socioeconomic patterns, and model results.",
     ],
     links: [
       {
@@ -127,13 +139,30 @@ export const projects = [
     ],
   },
   {
+    title: "Been There. Done That.",
+    hook: "Interactive travel app for tracking where you’ve been and turning travel history into a visual record.",
+    image: "/docs/travelimage.png",
+    imageFit: "cover",
+    bullets: [
+      "Map based tracking for countries, cities, places, and trip history.",
+      "Designed and built as a consumer product with a visual, map first experience.",
+    ],
+    links: [
+      {
+        href: "https://apps.apple.com/us/search?term=Been%20There%20Done%20That",
+        label: "VIEW ON APP STORE",
+        external: true,
+      },
+    ],
+  },
+  {
     title: "RoutineOS Habit System",
-    hook: "Habit system app prototype designed to make daily planning more structured, actionable, and sustainable.",
+    hook: "Habit system app prototype for structured daily planning and repeatable routines.",
     image: "/docs/routineosimage.png",
     imageFit: "cover",
     bullets: [
       "Built around layered routines, sub-habits, and progress logic.",
-      "Turns messy real-life planning into repeatable day-to-day execution.",
+      "Turns messy planning into repeatable day to day execution.",
     ],
     links: [
       {
@@ -145,7 +174,7 @@ export const projects = [
   },
   {
     title: "Radar-Readable Sign for Autonomous Vehicles",
-    hook: "Engineering capstone focused on radar-readable sign geometry for autonomous vehicle applications.",
+    hook: "Engineering capstone focused on radar-readable sign geometry for autonomous vehicles.",
     image: "/images/radarsign.png",
     imageFit: "contain",
     imageMode: "portrait",
@@ -157,23 +186,6 @@ export const projects = [
       {
         href: "/docs/capstone-final-report.pdf",
         label: "View Capstone Report",
-      },
-    ],
-  },
-  {
-    title: "Been There. Done That.",
-    hook: "Interactive travel app with map-based tracking, trip history, and visual organization.",
-    image: "/docs/travelimage.png",
-    imageFit: "cover",
-    bullets: [
-      "Makes travel records engaging, searchable, and easy to explore.",
-      "Designed around a clear map-first experience and visual storytelling.",
-    ],
-    links: [
-      {
-        href: "https://travel-scrapbook.vercel.app",
-        label: "Launch Been There.",
-        external: true,
       },
     ],
   },
