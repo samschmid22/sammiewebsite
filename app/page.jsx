@@ -289,7 +289,7 @@ const SnapshotAnimation = () => {
 const Employment = () => (
   <section id="employment" className="space-y-8 scroll-mt-40 max-[480px]:space-y-6 max-[480px]:scroll-mt-32">
     <SectionTitle title="Employment" />
-    <div className="grid gap-6 max-[480px]:gap-4 lg:grid-cols-2">
+    <div className="grid gap-6 max-[480px]:gap-4">
       {employmentHistory.map((job) => (
         <ExperienceCard key={job.role} job={job} />
       ))}
@@ -298,11 +298,7 @@ const Employment = () => (
 );
 
 const ExperienceCard = ({ job }) => (
-  <div
-    className={`glass-panel glass-panel-hover p-6 md:p-7 ${
-      job.featured ? "lg:col-span-2" : ""
-    }`}
-  >
+  <div className="glass-panel glass-panel-hover p-6 md:p-7">
     <div className="flex flex-col gap-2 text-left">
       <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1rem] lg:text-[1.04rem]">
         {job.role}
@@ -396,8 +392,7 @@ const Projects = () => (
   <section id="projects" className="space-y-8 scroll-mt-40 max-[480px]:space-y-6 max-[480px]:scroll-mt-32">
     <SectionTitle title="Projects" />
     <div className="grid gap-6 max-[480px]:gap-4 md:grid-cols-2">
-      {projects.map((project, index) => {
-        const isFinalOddProject = projects.length % 2 === 1 && index === projects.length - 1;
+      {projects.map((project) => {
         const mediaAssets =
           Array.isArray(project.media) && project.media.length > 0
             ? project.media
@@ -450,9 +445,7 @@ const Projects = () => (
         return (
           <article
             key={project.title}
-            className={`glass-panel glass-panel-hover group flex h-full flex-col p-5 md:p-6 ${
-              isFinalOddProject ? "md:col-span-2 md:mx-auto md:w-[calc(50%-0.75rem)]" : ""
-            }`}
+            className="glass-panel glass-panel-hover group flex h-full flex-col p-5 md:p-6"
           >
             <div className="mb-4 w-full overflow-hidden rounded-2xl border border-accent/20 bg-surface-soft shadow-[inset_0_0_26px_rgba(56,189,248,0.08)]">
               <div className="grid aspect-[2/1] grid-cols-2 gap-2 p-2">{renderMedia()}</div>

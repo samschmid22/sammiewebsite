@@ -19,7 +19,6 @@ export const employmentHistory = [
     role: "Operations Analyst",
     company: "OpenAP",
     dates: "09/2026 – PRESENT",
-    featured: true,
     bullets: [
       "Manage data operations workflows across publishers, agencies, and data partners, including file preparation, transformation, validation, QA, and delivery.",
       "Use Python, Google Colab, Excel, Snowflake, and cloud based platforms to work with large datasets and support advertising audience activation.",
