@@ -34,7 +34,7 @@ const navItems = [
 
 const RESUME_FILE_HREF = "/docs/resume.pdf?v=20260917";
 const HERO_FEATURED_STATEMENT =
-  "I turn messy systems into clear, scalable operations.";
+  "I make complex systems clearer, smarter, and easier to use.";
 const HERO_SUPPORTING_PARAGRAPH =
   "I’m an Operations Analyst with an engineering background and a bias toward making complex work simpler. I work across data, process, and product, using analysis, automation, and technical problem solving to improve how systems run. Outside my role, I build consumer apps and analytics projects that turn ideas into useful, working products.";
 
