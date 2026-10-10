@@ -322,23 +322,14 @@ const ExperienceCard = ({ job }) => (
 );
 
 const employerLogoStyles = {
-  gdms: {
-    frame: "bg-[#090b10]",
-    image: "scale-[2.2]",
-  },
-  nissan: {
-    frame: "bg-white/95",
-    image: "scale-[1.35]",
-  },
-  openap: {
-    frame: "bg-white/95",
-    image: "scale-[1.6]",
-  },
+  gdms: "scale-[2.2]",
+  nissan: "scale-[1.35]",
+  openap: "scale-[1.6]",
 };
 
 const EmployerLogo = ({ src, variant }) => {
   const [hasLoadError, setHasLoadError] = useState(false);
-  const styles = employerLogoStyles[variant] ?? employerLogoStyles.nissan;
+  const imageStyle = employerLogoStyles[variant] ?? employerLogoStyles.nissan;
 
   if (!src || hasLoadError) {
     return null;
@@ -347,7 +338,7 @@ const EmployerLogo = ({ src, variant }) => {
   return (
     <div
       aria-hidden="true"
-      className={`absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden rounded-lg p-1.5 shadow-[0_6px_18px_rgba(0,0,0,0.2)] sm:right-6 sm:top-6 sm:h-12 sm:w-24 sm:p-2 md:right-7 md:top-7 md:h-14 md:w-28 ${styles.frame}`}
+      className="absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden p-1.5 sm:right-6 sm:top-6 sm:h-12 sm:w-24 sm:p-2 md:right-7 md:top-7 md:h-14 md:w-28"
     >
       <Image
         src={src}
@@ -355,7 +346,7 @@ const EmployerLogo = ({ src, variant }) => {
         width={224}
         height={112}
         sizes="(max-width: 639px) 56px, (max-width: 767px) 96px, 112px"
-        className={`h-full w-full object-contain object-center ${styles.image}`}
+        className={`h-full w-full object-contain object-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)] ${imageStyle}`}
         onError={() => setHasLoadError(true)}
       />
     </div>

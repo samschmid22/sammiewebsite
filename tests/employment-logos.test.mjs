@@ -47,7 +47,8 @@ test("employment logos stay bounded and do not cover card content", () => {
   assert.match(homePage, /pr-20 text-left sm:pr-28 md:pr-36/);
   assert.match(homePage, /absolute right-\[var\(--mobile-card-padding\)\]/);
   assert.match(homePage, /h-full w-full object-contain object-center/);
-  assert.match(homePage, /gdms:[\s\S]*bg-\[#090b10\]/);
+  assert.doesNotMatch(homePage, /frame: "bg-/);
+  assert.doesNotMatch(homePage, /rounded-lg bg-/);
 });
 
 test("missing logo files fail without exposing a broken image", () => {
