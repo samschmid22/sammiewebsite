@@ -18,16 +18,20 @@ export const employmentHistory = [
   {
     role: "Operations Analyst",
     company: "OpenAP",
+    logoSrc: "/images/employers/openap_logo.png",
+    logoVariant: "openap",
     dates: "09/2026 – PRESENT",
     bullets: [
       "Manage data operations workflows across publishers, agencies, and data partners, including file preparation, transformation, validation, QA, and delivery.",
-      "Use Python, Google Colab, Excel, Snowflake, and cloud based platforms to work with large datasets and support advertising audience activation.",
+      "Use Sigma, AI automation, Python, Google Colab, Excel, Snowflake, and cloud based platforms to work with large datasets and support advertising audience activation.",
       "Improve recurring workflows through automation, documentation, troubleshooting, and process standardization.",
     ],
   },
   {
     role: "Manufacturing Engineer Intern",
     company: "General Dynamics Mission Systems",
+    logoSrc: "/images/employers/gdms-logo.png",
+    logoVariant: "gdms",
     dates: "09/2025 – 12/2025",
     bullets: [
       "Supported manufacturing engineering activities for the Air and Missile Defense Radar (AMDR) program in a high-reliability defense environment.",
@@ -38,6 +42,8 @@ export const employmentHistory = [
   {
     role: "Powertrain Test Intern",
     company: "Nissan Motor Co.",
+    logoSrc: "/images/employers/nissan-logo.png",
+    logoVariant: "nissan",
     dates: "05/2024 – 08/2024",
     bullets: [
       "Executed powertrain test runs and collected measurement data to support engine calibration and performance evaluation.",

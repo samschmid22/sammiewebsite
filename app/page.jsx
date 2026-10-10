@@ -298,8 +298,8 @@ const Employment = () => (
 );
 
 const ExperienceCard = ({ job }) => (
-  <div className="glass-panel glass-panel-hover p-6 md:p-7">
-    <div className="flex flex-col gap-2 text-left">
+  <div className="glass-panel glass-panel-hover relative p-6 md:p-7">
+    <div className="flex flex-col gap-2 pr-20 text-left sm:pr-28 md:pr-36">
       <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1rem] lg:text-[1.04rem]">
         {job.role}
       </h3>
@@ -310,6 +310,7 @@ const ExperienceCard = ({ job }) => (
       )}
       <p className="text-[0.94rem] font-medium text-soft">{job.dates}</p>
     </div>
+    <EmployerLogo src={job.logoSrc} variant={job.logoVariant} />
     {job.bullets.length > 0 && (
       <ul className="mt-4 space-y-3 text-[0.94rem] text-muted md:text-[1.06rem]">
         {job.bullets.map((bullet) => (
@@ -319,6 +320,47 @@ const ExperienceCard = ({ job }) => (
     )}
   </div>
 );
+
+const employerLogoStyles = {
+  gdms: {
+    frame: "bg-[#090b10]",
+    image: "scale-[2.2]",
+  },
+  nissan: {
+    frame: "bg-white/95",
+    image: "scale-[1.35]",
+  },
+  openap: {
+    frame: "bg-white/95",
+    image: "scale-[1.6]",
+  },
+};
+
+const EmployerLogo = ({ src, variant }) => {
+  const [hasLoadError, setHasLoadError] = useState(false);
+  const styles = employerLogoStyles[variant] ?? employerLogoStyles.nissan;
+
+  if (!src || hasLoadError) {
+    return null;
+  }
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden rounded-lg p-1.5 shadow-[0_6px_18px_rgba(0,0,0,0.2)] sm:right-6 sm:top-6 sm:h-12 sm:w-24 sm:p-2 md:right-7 md:top-7 md:h-14 md:w-28 ${styles.frame}`}
+    >
+      <Image
+        src={src}
+        alt=""
+        width={224}
+        height={112}
+        sizes="(max-width: 639px) 56px, (max-width: 767px) 96px, 112px"
+        className={`h-full w-full object-contain object-center ${styles.image}`}
+        onError={() => setHasLoadError(true)}
+      />
+    </div>
+  );
+};
 
 const Intelligence = () => (
   <section id="intelligence" className="space-y-10 scroll-mt-40 max-[480px]:space-y-7 max-[480px]:scroll-mt-32">
