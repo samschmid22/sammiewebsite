@@ -299,7 +299,7 @@ const Employment = () => (
 
 const ExperienceCard = ({ job }) => (
   <div className="glass-panel glass-panel-hover relative p-6 md:p-7">
-    <div className="flex flex-col gap-2 pr-20 text-left sm:pr-28 md:pr-36">
+    <div className="flex flex-col gap-2 pr-20 text-left sm:pr-36 md:pr-48">
       <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1rem] lg:text-[1.04rem]">
         {job.role}
       </h3>
@@ -322,9 +322,9 @@ const ExperienceCard = ({ job }) => (
 );
 
 const employerLogoStyles = {
-  gdms: "scale-[2.2]",
-  nissan: "scale-[1.35]",
-  openap: "scale-[1.6]",
+  gdms: "scale-[2.5]",
+  nissan: "scale-[1.5]",
+  openap: "scale-[1.75]",
 };
 
 const EmployerLogo = ({ src, variant }) => {
@@ -338,14 +338,14 @@ const EmployerLogo = ({ src, variant }) => {
   return (
     <div
       aria-hidden="true"
-      className="absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden p-1.5 sm:right-6 sm:top-6 sm:h-12 sm:w-24 sm:p-2 md:right-7 md:top-7 md:h-14 md:w-28"
+      className="absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden p-1.5 sm:right-6 sm:top-6 sm:h-16 sm:w-32 sm:p-2 md:right-7 md:top-7 md:h-20 md:w-40"
     >
       <Image
         src={src}
         alt=""
         width={224}
         height={112}
-        sizes="(max-width: 639px) 56px, (max-width: 767px) 96px, 112px"
+        sizes="(max-width: 639px) 56px, (max-width: 767px) 128px, 160px"
         className={`h-full w-full object-contain object-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)] ${imageStyle}`}
         onError={() => setHasLoadError(true)}
       />
