@@ -419,7 +419,7 @@ const EducationCard = ({ item }) => (
   <details className="glass-panel glass-panel-hover group relative p-6" open>
     <summary
       className={`flex cursor-pointer list-none flex-col gap-3 text-left ${
-        item.logoSrc ? "pr-20 sm:pr-36" : ""
+        item.logoSrc ? "pr-20 sm:pr-48" : ""
       }`}
     >
       <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.04rem]">
@@ -455,14 +455,14 @@ const EducationLogo = ({ src }) => {
   return (
     <div
       aria-hidden="true"
-      className="absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden sm:right-6 sm:top-6 sm:h-14 sm:w-28"
+      className="absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden sm:right-6 sm:top-6 sm:h-20 sm:w-40"
     >
       <Image
         src={src}
         alt=""
         width={224}
         height={112}
-        sizes="(max-width: 639px) 56px, 112px"
+        sizes="(max-width: 639px) 56px, 160px"
         className="h-full w-full object-contain object-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)]"
         onError={() => setHasLoadError(true)}
       />

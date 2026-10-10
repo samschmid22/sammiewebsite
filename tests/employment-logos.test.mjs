@@ -54,9 +54,9 @@ test("only the two ASU education records use the ASU logo", () => {
 });
 
 test("ASU logos stay in a bounded top-right slot", () => {
-  assert.match(homePage, /item\.logoSrc \? "pr-20 sm:pr-36"/);
-  assert.match(homePage, /sm:right-6 sm:top-6 sm:h-14 sm:w-28/);
-  assert.match(homePage, /sizes="\(max-width: 639px\) 56px, 112px"/);
+  assert.match(homePage, /item\.logoSrc \? "pr-20 sm:pr-48"/);
+  assert.match(homePage, /sm:right-6 sm:top-6 sm:h-20 sm:w-40/);
+  assert.match(homePage, /sizes="\(max-width: 639px\) 56px, 160px"/);
 });
 
 test("employment logos stay bounded and do not cover card content", () => {
