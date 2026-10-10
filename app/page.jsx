@@ -299,7 +299,13 @@ const Employment = () => (
 
 const ExperienceCard = ({ job }) => (
   <div className="glass-panel glass-panel-hover relative p-6 md:p-7">
-    <div className="flex flex-col gap-2 pr-20 text-left sm:pr-36 md:pr-48">
+    <div
+      className={`flex flex-col gap-2 pr-20 text-left ${
+        job.logoVariant === "gdms"
+          ? "sm:pr-48 md:pr-64"
+          : "sm:pr-36 md:pr-48"
+      }`}
+    >
       <h3 className="font-display text-[0.9rem] font-semibold uppercase leading-tight tracking-[0.07em] text-primary sm:text-[0.96rem] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap md:text-[1rem] lg:text-[1.04rem]">
         {job.role}
       </h3>
@@ -322,14 +328,23 @@ const ExperienceCard = ({ job }) => (
 );
 
 const employerLogoStyles = {
-  gdms: "scale-[2.5]",
-  nissan: "scale-[1.5]",
-  openap: "scale-[1.75]",
+  gdms: {
+    container: "sm:w-40 md:w-56",
+    image: "scale-[2.5] sm:scale-[3]",
+  },
+  nissan: {
+    container: "sm:w-32 md:w-40",
+    image: "scale-[1.5]",
+  },
+  openap: {
+    container: "sm:w-32 md:w-40",
+    image: "scale-[1.75]",
+  },
 };
 
 const EmployerLogo = ({ src, variant }) => {
   const [hasLoadError, setHasLoadError] = useState(false);
-  const imageStyle = employerLogoStyles[variant] ?? employerLogoStyles.nissan;
+  const styles = employerLogoStyles[variant] ?? employerLogoStyles.nissan;
 
   if (!src || hasLoadError) {
     return null;
@@ -338,15 +353,19 @@ const EmployerLogo = ({ src, variant }) => {
   return (
     <div
       aria-hidden="true"
-      className="absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden p-1.5 sm:right-6 sm:top-6 sm:h-16 sm:w-32 sm:p-2 md:right-7 md:top-7 md:h-20 md:w-40"
+      className={`absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden p-1.5 sm:right-6 sm:top-6 sm:h-16 sm:p-2 md:right-7 md:top-7 md:h-20 ${styles.container}`}
     >
       <Image
         src={src}
         alt=""
         width={224}
         height={112}
-        sizes="(max-width: 639px) 56px, (max-width: 767px) 128px, 160px"
-        className={`h-full w-full object-contain object-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)] ${imageStyle}`}
+        sizes={
+          variant === "gdms"
+            ? "(max-width: 639px) 56px, (max-width: 767px) 160px, 224px"
+            : "(max-width: 639px) 56px, (max-width: 767px) 128px, 160px"
+        }
+        className={`h-full w-full object-contain object-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)] ${styles.image}`}
         onError={() => setHasLoadError(true)}
       />
     </div>
