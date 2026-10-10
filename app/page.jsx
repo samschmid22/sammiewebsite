@@ -302,7 +302,7 @@ const ExperienceCard = ({ job }) => (
     <div
       className={`flex flex-col gap-2 pr-20 text-left ${
         job.logoVariant === "gdms"
-          ? "sm:pr-48 md:pr-64"
+          ? "sm:pr-48 md:pr-[23rem]"
           : "sm:pr-36 md:pr-48"
       }`}
     >
@@ -329,8 +329,8 @@ const ExperienceCard = ({ job }) => (
 
 const employerLogoStyles = {
   gdms: {
-    container: "sm:w-40 md:w-56",
-    image: "scale-[2.5] sm:scale-[3]",
+    container: "sm:w-40 md:w-[21rem]",
+    image: "scale-[2.5] sm:scale-[3] md:scale-[4.5]",
   },
   nissan: {
     container: "sm:w-32 md:w-40",
@@ -362,7 +362,7 @@ const EmployerLogo = ({ src, variant }) => {
         height={112}
         sizes={
           variant === "gdms"
-            ? "(max-width: 639px) 56px, (max-width: 767px) 160px, 224px"
+            ? "(max-width: 639px) 56px, (max-width: 767px) 160px, 336px"
             : "(max-width: 639px) 56px, (max-width: 767px) 128px, 160px"
         }
         className={`h-full w-full object-contain object-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)] ${styles.image}`}

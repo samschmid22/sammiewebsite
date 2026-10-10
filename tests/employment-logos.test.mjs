@@ -44,11 +44,14 @@ test("employer logo assets are valid, reasonably sized PNG files", async () => {
 
 test("employment logos stay bounded and do not cover card content", () => {
   assert.match(homePage, /glass-panel glass-panel-hover relative/);
-  assert.match(homePage, /sm:pr-48 md:pr-64/);
+  assert.match(homePage, /sm:pr-48 md:pr-\[23rem\]/);
   assert.match(homePage, /sm:pr-36 md:pr-48/);
   assert.match(homePage, /absolute right-\[var\(--mobile-card-padding\)\]/);
-  assert.match(homePage, /container: "sm:w-40 md:w-56"/);
-  assert.match(homePage, /image: "scale-\[2\.5\] sm:scale-\[3\]"/);
+  assert.match(homePage, /container: "sm:w-40 md:w-\[21rem\]"/);
+  assert.match(
+    homePage,
+    /image: "scale-\[2\.5\] sm:scale-\[3\] md:scale-\[4\.5\]"/,
+  );
   assert.match(homePage, /h-full w-full object-contain object-center/);
   assert.doesNotMatch(homePage, /frame: "bg-/);
   assert.doesNotMatch(homePage, /rounded-lg bg-/);
