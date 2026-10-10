@@ -416,8 +416,12 @@ const Intelligence = () => (
 );
 
 const EducationCard = ({ item }) => (
-  <details className="glass-panel glass-panel-hover group p-6" open>
-    <summary className="flex cursor-pointer list-none flex-col gap-3 text-left">
+  <details className="glass-panel glass-panel-hover group relative p-6" open>
+    <summary
+      className={`flex cursor-pointer list-none flex-col gap-3 text-left ${
+        item.logoSrc ? "pr-20 sm:pr-36" : ""
+      }`}
+    >
       <h3 className="font-display text-[0.96rem] font-semibold uppercase leading-tight tracking-[0.08em] text-primary md:text-[1.04rem]">
         {item.school}
       </h3>
@@ -426,6 +430,7 @@ const EducationCard = ({ item }) => (
         {item.dates}
       </p>
     </summary>
+    <EducationLogo src={item.logoSrc} />
     {item.gpa && <p className="mt-2 text-[0.94rem] text-soft">{item.gpa}</p>}
     {item.detailLink && (
       <Link
@@ -439,6 +444,31 @@ const EducationCard = ({ item }) => (
     )}
   </details>
 );
+
+const EducationLogo = ({ src }) => {
+  const [hasLoadError, setHasLoadError] = useState(false);
+
+  if (!src || hasLoadError) {
+    return null;
+  }
+
+  return (
+    <div
+      aria-hidden="true"
+      className="absolute right-[var(--mobile-card-padding)] top-[var(--mobile-card-padding)] flex h-9 w-14 items-center justify-center overflow-hidden sm:right-6 sm:top-6 sm:h-14 sm:w-28"
+    >
+      <Image
+        src={src}
+        alt=""
+        width={224}
+        height={112}
+        sizes="(max-width: 639px) 56px, 112px"
+        className="h-full w-full object-contain object-center drop-shadow-[0_2px_5px_rgba(0,0,0,0.45)]"
+        onError={() => setHasLoadError(true)}
+      />
+    </div>
+  );
+};
 
 const Projects = () => (
   <section id="projects" className="space-y-8 scroll-mt-40 max-[480px]:space-y-6 max-[480px]:scroll-mt-32">

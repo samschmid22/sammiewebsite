@@ -11,28 +11,30 @@ const homePage = await readFile(
   "utf8",
 );
 
-const expectedLogoPaths = [
+const expectedEmployerLogoPaths = [
   "/images/employers/nissan-logo.png",
   "/images/employers/gdms-logo.png",
   "/images/employers/openap_logo.png",
 ];
+const asuLogoPath = "/images/employers/asu-logo.png";
+const expectedAssetPaths = [...expectedEmployerLogoPaths, asuLogoPath];
 
 test("every employer uses its expected local logo asset", () => {
-  for (const logoPath of expectedLogoPaths) {
+  for (const logoPath of expectedEmployerLogoPaths) {
     assert.match(siteContent, new RegExp(`logoSrc: ["']${logoPath}["']`));
   }
 
   assert.equal(
-    new Set(expectedLogoPaths).size,
-    expectedLogoPaths.length,
+    new Set(expectedEmployerLogoPaths).size,
+    expectedEmployerLogoPaths.length,
     "logo paths must be unique",
   );
 });
 
-test("employer logo assets are valid, reasonably sized PNG files", async () => {
+test("local logo assets are valid, reasonably sized PNG files", async () => {
   const pngSignature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
 
-  for (const logoPath of expectedLogoPaths) {
+  for (const logoPath of expectedAssetPaths) {
     const image = await readFile(
       new URL(`../public${logoPath}`, import.meta.url),
     );
@@ -40,6 +42,21 @@ test("employer logo assets are valid, reasonably sized PNG files", async () => {
     assert.deepEqual(image.subarray(0, pngSignature.length), pngSignature);
     assert.ok(image.length <= 5 * 1024 * 1024, `${logoPath} exceeds 5 MB`);
   }
+});
+
+test("only the two ASU education records use the ASU logo", () => {
+  const asuLogoAssignments = siteContent.match(
+    /logoSrc: ["']\/images\/employers\/asu-logo\.png["']/g,
+  );
+
+  assert.equal(asuLogoAssignments?.length, 2);
+  assert.match(homePage, /<EducationLogo src=\{item\.logoSrc\} \/>/);
+});
+
+test("ASU logos stay in a bounded top-right slot", () => {
+  assert.match(homePage, /item\.logoSrc \? "pr-20 sm:pr-36"/);
+  assert.match(homePage, /sm:right-6 sm:top-6 sm:h-14 sm:w-28/);
+  assert.match(homePage, /sizes="\(max-width: 639px\) 56px, 112px"/);
 });
 
 test("employment logos stay bounded and do not cover card content", () => {

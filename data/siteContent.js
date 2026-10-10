@@ -56,6 +56,7 @@ export const employmentHistory = [
 export const education = [
   {
     school: "Arizona State University",
+    logoSrc: "/images/employers/asu-logo.png",
     program: "Master of Science in Business Analytics",
     dates: "January 2026 – May 2027",
     gpa: "GPA: 4.0",
@@ -64,6 +65,7 @@ export const education = [
   },
   {
     school: "Arizona State University",
+    logoSrc: "/images/employers/asu-logo.png",
     program: "Bachelor of Science in Mechanical Engineering",
     dates: "August 2022 – December 2025",
     gpa: "GPA: 3.3 / 4.0",
