@@ -122,6 +122,11 @@ export const projects = [
         href: "/docs/exhibit-a.pdf",
         label: "Download PDF",
       },
+      {
+        href: "https://apps.apple.com/us/app/exhibit-a-cleaner-living/id6764465012",
+        label: "VIEW ON APP STORE",
+        external: true,
+      },
     ],
   },
   {
@@ -156,7 +161,7 @@ export const projects = [
     ],
     links: [
       {
-        href: "https://apps.apple.com/us/search?term=Been%20There%20Done%20That",
+        href: "https://apps.apple.com/us/app/been-there-done-that/id6807964127",
         label: "VIEW ON APP STORE",
         external: true,
       },
